@@ -1,6 +1,8 @@
 package mlh.pavan.database;
 
 
+import mlh.pavan.utils.PropertyReader;
+
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.Connection;
@@ -43,35 +45,19 @@ public class DataBaseConnection
 
     private Connection createConnection()
     {
-        Properties properties = new Properties();
         try {
-
-            java.net.URL url = ClassLoader.getSystemResource("database.properties");
-
-            try  {
-                properties.load(url.openStream());
-            } catch (FileNotFoundException fie) {
-                fie.printStackTrace();
-            }
-            catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            String dname = properties.getProperty("database.driver");
-
-            String dbConnUrl = properties.getProperty("database.url");
-            String dbUserName = properties.getProperty("database.username");
-            String dbPassword = properties.getProperty("database.password");
+            String dbConnUrl = PropertyReader.getInstance().getDbConnUrl();
+            String dbUserName = PropertyReader.getInstance().getDbUserName();
+            String dbPassword = PropertyReader.getInstance().getDbPassword();
             Connection dbConn = DriverManager.getConnection(dbConnUrl, dbUserName, dbPassword);
             if (dbConn != null) {
                 System.out.println("Database Connection Successful");
-            }
-            else {
+            } else {
                 System.out.println("Database Failed to make connection!");
             }
             return dbConn;
         }
-        catch(Exception e)
+        catch(SQLException e)
         {
             e.printStackTrace();
             return null;
