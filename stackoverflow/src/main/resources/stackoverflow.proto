@@ -23,6 +23,15 @@ enum StatusCode
    DB_FAILURE = 2;
 }
 
+enum USER_STATUS
+{
+    INACTIVE = 0;
+   ACTIVE = 1;
+   QUESTION = 2;
+   ANSWER = 3;
+   CALL = 4;
+}
+
 message Authorization
 {
    string accessToken = 1;
@@ -194,6 +203,16 @@ message UpdateRatingResponse{
 }
 
 
+message ChangeUserStatusRequest{
+  RequestHeaders requestHeaders = 1;
+  uint32 userId = 2;
+  USER_STATUS status = 3;
+}
+
+message ChangeUserStatusResponse{
+  ResponseHeaders responseHeaders = 1;
+}
+
 service StackOverflow{
   rpc Greet(GreetRequest) returns (GreetResponse);
   rpc SignUp(SignUpRequest) returns (SignUpResponse);
@@ -209,6 +228,7 @@ service StackOverflow{
   rpc DeleteSkill(DeleteSkillRequest) returns (DeleteSkillResponse);
   rpc DeleteUser(DeleteUserRequest) returns (DeleteUserResponse);
   rpc UpdateRating(UpdateRatingRequest) returns (UpdateRatingResponse);
+  rpc ChangeUserStatus(ChangeUserStatusRequest) returns (ChangeUserStatusResponse);
 }
 
 

@@ -335,6 +335,131 @@ public final class Stackoverflow {
     // @@protoc_insertion_point(enum_scope:StatusCode)
   }
 
+  /**
+   * Protobuf enum {@code USER_STATUS}
+   */
+  public enum USER_STATUS
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>ACTIVE = 0;</code>
+     */
+    ACTIVE(0),
+    /**
+     * <code>QUESTION = 1;</code>
+     */
+    QUESTION(1),
+    /**
+     * <code>ANSWER = 2;</code>
+     */
+    ANSWER(2),
+    /**
+     * <code>CALL = 3;</code>
+     */
+    CALL(3),
+    /**
+     * <code>INACTIVE = 4;</code>
+     */
+    INACTIVE(4),
+    UNRECOGNIZED(-1),
+    ;
+
+    /**
+     * <code>ACTIVE = 0;</code>
+     */
+    public static final int ACTIVE_VALUE = 0;
+    /**
+     * <code>QUESTION = 1;</code>
+     */
+    public static final int QUESTION_VALUE = 1;
+    /**
+     * <code>ANSWER = 2;</code>
+     */
+    public static final int ANSWER_VALUE = 2;
+    /**
+     * <code>CALL = 3;</code>
+     */
+    public static final int CALL_VALUE = 3;
+    /**
+     * <code>INACTIVE = 4;</code>
+     */
+    public static final int INACTIVE_VALUE = 4;
+
+
+    public final int getNumber() {
+      if (this == UNRECOGNIZED) {
+        throw new java.lang.IllegalArgumentException(
+            "Can't get the number of an unknown enum value.");
+      }
+      return value;
+    }
+
+    /**
+     * @deprecated Use {@link #forNumber(int)} instead.
+     */
+    @java.lang.Deprecated
+    public static USER_STATUS valueOf(int value) {
+      return forNumber(value);
+    }
+
+    public static USER_STATUS forNumber(int value) {
+      switch (value) {
+        case 0: return ACTIVE;
+        case 1: return QUESTION;
+        case 2: return ANSWER;
+        case 3: return CALL;
+        case 4: return INACTIVE;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<USER_STATUS>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static final com.google.protobuf.Internal.EnumLiteMap<
+        USER_STATUS> internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<USER_STATUS>() {
+            public USER_STATUS findValueByNumber(int number) {
+              return USER_STATUS.forNumber(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(ordinal());
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return mlh.pavan.grpc.Stackoverflow.getDescriptor().getEnumTypes().get(3);
+    }
+
+    private static final USER_STATUS[] VALUES = values();
+
+    public static USER_STATUS valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      if (desc.getIndex() == -1) {
+        return UNRECOGNIZED;
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int value;
+
+    private USER_STATUS(int value) {
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:USER_STATUS)
+  }
+
   public interface AuthorizationOrBuilder extends
       // @@protoc_insertion_point(interface_extends:Authorization)
       com.google.protobuf.MessageOrBuilder {
@@ -24535,6 +24660,1377 @@ public final class Stackoverflow {
 
   }
 
+  public interface ChangeUserStatusRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:ChangeUserStatusRequest)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>.RequestHeaders requestHeaders = 1;</code>
+     */
+    boolean hasRequestHeaders();
+    /**
+     * <code>.RequestHeaders requestHeaders = 1;</code>
+     */
+    mlh.pavan.grpc.Stackoverflow.RequestHeaders getRequestHeaders();
+    /**
+     * <code>.RequestHeaders requestHeaders = 1;</code>
+     */
+    mlh.pavan.grpc.Stackoverflow.RequestHeadersOrBuilder getRequestHeadersOrBuilder();
+
+    /**
+     * <code>uint32 userId = 2;</code>
+     */
+    int getUserId();
+
+    /**
+     * <code>.USER_STATUS status = 3;</code>
+     */
+    int getStatusValue();
+    /**
+     * <code>.USER_STATUS status = 3;</code>
+     */
+    mlh.pavan.grpc.Stackoverflow.USER_STATUS getStatus();
+  }
+  /**
+   * Protobuf type {@code ChangeUserStatusRequest}
+   */
+  public  static final class ChangeUserStatusRequest extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:ChangeUserStatusRequest)
+      ChangeUserStatusRequestOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use ChangeUserStatusRequest.newBuilder() to construct.
+    private ChangeUserStatusRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private ChangeUserStatusRequest() {
+      userId_ = 0;
+      status_ = 0;
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private ChangeUserStatusRequest(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              mlh.pavan.grpc.Stackoverflow.RequestHeaders.Builder subBuilder = null;
+              if (requestHeaders_ != null) {
+                subBuilder = requestHeaders_.toBuilder();
+              }
+              requestHeaders_ = input.readMessage(mlh.pavan.grpc.Stackoverflow.RequestHeaders.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(requestHeaders_);
+                requestHeaders_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 16: {
+
+              userId_ = input.readUInt32();
+              break;
+            }
+            case 24: {
+              int rawValue = input.readEnum();
+
+              status_ = rawValue;
+              break;
+            }
+            default: {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return mlh.pavan.grpc.Stackoverflow.internal_static_ChangeUserStatusRequest_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return mlh.pavan.grpc.Stackoverflow.internal_static_ChangeUserStatusRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              mlh.pavan.grpc.Stackoverflow.ChangeUserStatusRequest.class, mlh.pavan.grpc.Stackoverflow.ChangeUserStatusRequest.Builder.class);
+    }
+
+    public static final int REQUESTHEADERS_FIELD_NUMBER = 1;
+    private mlh.pavan.grpc.Stackoverflow.RequestHeaders requestHeaders_;
+    /**
+     * <code>.RequestHeaders requestHeaders = 1;</code>
+     */
+    public boolean hasRequestHeaders() {
+      return requestHeaders_ != null;
+    }
+    /**
+     * <code>.RequestHeaders requestHeaders = 1;</code>
+     */
+    public mlh.pavan.grpc.Stackoverflow.RequestHeaders getRequestHeaders() {
+      return requestHeaders_ == null ? mlh.pavan.grpc.Stackoverflow.RequestHeaders.getDefaultInstance() : requestHeaders_;
+    }
+    /**
+     * <code>.RequestHeaders requestHeaders = 1;</code>
+     */
+    public mlh.pavan.grpc.Stackoverflow.RequestHeadersOrBuilder getRequestHeadersOrBuilder() {
+      return getRequestHeaders();
+    }
+
+    public static final int USERID_FIELD_NUMBER = 2;
+    private int userId_;
+    /**
+     * <code>uint32 userId = 2;</code>
+     */
+    public int getUserId() {
+      return userId_;
+    }
+
+    public static final int STATUS_FIELD_NUMBER = 3;
+    private int status_;
+    /**
+     * <code>.USER_STATUS status = 3;</code>
+     */
+    public int getStatusValue() {
+      return status_;
+    }
+    /**
+     * <code>.USER_STATUS status = 3;</code>
+     */
+    public mlh.pavan.grpc.Stackoverflow.USER_STATUS getStatus() {
+      @SuppressWarnings("deprecation")
+      mlh.pavan.grpc.Stackoverflow.USER_STATUS result = mlh.pavan.grpc.Stackoverflow.USER_STATUS.valueOf(status_);
+      return result == null ? mlh.pavan.grpc.Stackoverflow.USER_STATUS.UNRECOGNIZED : result;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (requestHeaders_ != null) {
+        output.writeMessage(1, getRequestHeaders());
+      }
+      if (userId_ != 0) {
+        output.writeUInt32(2, userId_);
+      }
+      if (status_ != mlh.pavan.grpc.Stackoverflow.USER_STATUS.ACTIVE.getNumber()) {
+        output.writeEnum(3, status_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (requestHeaders_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, getRequestHeaders());
+      }
+      if (userId_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(2, userId_);
+      }
+      if (status_ != mlh.pavan.grpc.Stackoverflow.USER_STATUS.ACTIVE.getNumber()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(3, status_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof mlh.pavan.grpc.Stackoverflow.ChangeUserStatusRequest)) {
+        return super.equals(obj);
+      }
+      mlh.pavan.grpc.Stackoverflow.ChangeUserStatusRequest other = (mlh.pavan.grpc.Stackoverflow.ChangeUserStatusRequest) obj;
+
+      boolean result = true;
+      result = result && (hasRequestHeaders() == other.hasRequestHeaders());
+      if (hasRequestHeaders()) {
+        result = result && getRequestHeaders()
+            .equals(other.getRequestHeaders());
+      }
+      result = result && (getUserId()
+          == other.getUserId());
+      result = result && status_ == other.status_;
+      result = result && unknownFields.equals(other.unknownFields);
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasRequestHeaders()) {
+        hash = (37 * hash) + REQUESTHEADERS_FIELD_NUMBER;
+        hash = (53 * hash) + getRequestHeaders().hashCode();
+      }
+      hash = (37 * hash) + USERID_FIELD_NUMBER;
+      hash = (53 * hash) + getUserId();
+      hash = (37 * hash) + STATUS_FIELD_NUMBER;
+      hash = (53 * hash) + status_;
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static mlh.pavan.grpc.Stackoverflow.ChangeUserStatusRequest parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static mlh.pavan.grpc.Stackoverflow.ChangeUserStatusRequest parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static mlh.pavan.grpc.Stackoverflow.ChangeUserStatusRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static mlh.pavan.grpc.Stackoverflow.ChangeUserStatusRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static mlh.pavan.grpc.Stackoverflow.ChangeUserStatusRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static mlh.pavan.grpc.Stackoverflow.ChangeUserStatusRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static mlh.pavan.grpc.Stackoverflow.ChangeUserStatusRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static mlh.pavan.grpc.Stackoverflow.ChangeUserStatusRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static mlh.pavan.grpc.Stackoverflow.ChangeUserStatusRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static mlh.pavan.grpc.Stackoverflow.ChangeUserStatusRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static mlh.pavan.grpc.Stackoverflow.ChangeUserStatusRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static mlh.pavan.grpc.Stackoverflow.ChangeUserStatusRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(mlh.pavan.grpc.Stackoverflow.ChangeUserStatusRequest prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code ChangeUserStatusRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:ChangeUserStatusRequest)
+        mlh.pavan.grpc.Stackoverflow.ChangeUserStatusRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return mlh.pavan.grpc.Stackoverflow.internal_static_ChangeUserStatusRequest_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return mlh.pavan.grpc.Stackoverflow.internal_static_ChangeUserStatusRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                mlh.pavan.grpc.Stackoverflow.ChangeUserStatusRequest.class, mlh.pavan.grpc.Stackoverflow.ChangeUserStatusRequest.Builder.class);
+      }
+
+      // Construct using mlh.pavan.grpc.Stackoverflow.ChangeUserStatusRequest.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        if (requestHeadersBuilder_ == null) {
+          requestHeaders_ = null;
+        } else {
+          requestHeaders_ = null;
+          requestHeadersBuilder_ = null;
+        }
+        userId_ = 0;
+
+        status_ = 0;
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return mlh.pavan.grpc.Stackoverflow.internal_static_ChangeUserStatusRequest_descriptor;
+      }
+
+      @java.lang.Override
+      public mlh.pavan.grpc.Stackoverflow.ChangeUserStatusRequest getDefaultInstanceForType() {
+        return mlh.pavan.grpc.Stackoverflow.ChangeUserStatusRequest.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public mlh.pavan.grpc.Stackoverflow.ChangeUserStatusRequest build() {
+        mlh.pavan.grpc.Stackoverflow.ChangeUserStatusRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public mlh.pavan.grpc.Stackoverflow.ChangeUserStatusRequest buildPartial() {
+        mlh.pavan.grpc.Stackoverflow.ChangeUserStatusRequest result = new mlh.pavan.grpc.Stackoverflow.ChangeUserStatusRequest(this);
+        if (requestHeadersBuilder_ == null) {
+          result.requestHeaders_ = requestHeaders_;
+        } else {
+          result.requestHeaders_ = requestHeadersBuilder_.build();
+        }
+        result.userId_ = userId_;
+        result.status_ = status_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof mlh.pavan.grpc.Stackoverflow.ChangeUserStatusRequest) {
+          return mergeFrom((mlh.pavan.grpc.Stackoverflow.ChangeUserStatusRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(mlh.pavan.grpc.Stackoverflow.ChangeUserStatusRequest other) {
+        if (other == mlh.pavan.grpc.Stackoverflow.ChangeUserStatusRequest.getDefaultInstance()) return this;
+        if (other.hasRequestHeaders()) {
+          mergeRequestHeaders(other.getRequestHeaders());
+        }
+        if (other.getUserId() != 0) {
+          setUserId(other.getUserId());
+        }
+        if (other.status_ != 0) {
+          setStatusValue(other.getStatusValue());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        mlh.pavan.grpc.Stackoverflow.ChangeUserStatusRequest parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (mlh.pavan.grpc.Stackoverflow.ChangeUserStatusRequest) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private mlh.pavan.grpc.Stackoverflow.RequestHeaders requestHeaders_ = null;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          mlh.pavan.grpc.Stackoverflow.RequestHeaders, mlh.pavan.grpc.Stackoverflow.RequestHeaders.Builder, mlh.pavan.grpc.Stackoverflow.RequestHeadersOrBuilder> requestHeadersBuilder_;
+      /**
+       * <code>.RequestHeaders requestHeaders = 1;</code>
+       */
+      public boolean hasRequestHeaders() {
+        return requestHeadersBuilder_ != null || requestHeaders_ != null;
+      }
+      /**
+       * <code>.RequestHeaders requestHeaders = 1;</code>
+       */
+      public mlh.pavan.grpc.Stackoverflow.RequestHeaders getRequestHeaders() {
+        if (requestHeadersBuilder_ == null) {
+          return requestHeaders_ == null ? mlh.pavan.grpc.Stackoverflow.RequestHeaders.getDefaultInstance() : requestHeaders_;
+        } else {
+          return requestHeadersBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.RequestHeaders requestHeaders = 1;</code>
+       */
+      public Builder setRequestHeaders(mlh.pavan.grpc.Stackoverflow.RequestHeaders value) {
+        if (requestHeadersBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          requestHeaders_ = value;
+          onChanged();
+        } else {
+          requestHeadersBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.RequestHeaders requestHeaders = 1;</code>
+       */
+      public Builder setRequestHeaders(
+          mlh.pavan.grpc.Stackoverflow.RequestHeaders.Builder builderForValue) {
+        if (requestHeadersBuilder_ == null) {
+          requestHeaders_ = builderForValue.build();
+          onChanged();
+        } else {
+          requestHeadersBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.RequestHeaders requestHeaders = 1;</code>
+       */
+      public Builder mergeRequestHeaders(mlh.pavan.grpc.Stackoverflow.RequestHeaders value) {
+        if (requestHeadersBuilder_ == null) {
+          if (requestHeaders_ != null) {
+            requestHeaders_ =
+              mlh.pavan.grpc.Stackoverflow.RequestHeaders.newBuilder(requestHeaders_).mergeFrom(value).buildPartial();
+          } else {
+            requestHeaders_ = value;
+          }
+          onChanged();
+        } else {
+          requestHeadersBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.RequestHeaders requestHeaders = 1;</code>
+       */
+      public Builder clearRequestHeaders() {
+        if (requestHeadersBuilder_ == null) {
+          requestHeaders_ = null;
+          onChanged();
+        } else {
+          requestHeaders_ = null;
+          requestHeadersBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.RequestHeaders requestHeaders = 1;</code>
+       */
+      public mlh.pavan.grpc.Stackoverflow.RequestHeaders.Builder getRequestHeadersBuilder() {
+        
+        onChanged();
+        return getRequestHeadersFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.RequestHeaders requestHeaders = 1;</code>
+       */
+      public mlh.pavan.grpc.Stackoverflow.RequestHeadersOrBuilder getRequestHeadersOrBuilder() {
+        if (requestHeadersBuilder_ != null) {
+          return requestHeadersBuilder_.getMessageOrBuilder();
+        } else {
+          return requestHeaders_ == null ?
+              mlh.pavan.grpc.Stackoverflow.RequestHeaders.getDefaultInstance() : requestHeaders_;
+        }
+      }
+      /**
+       * <code>.RequestHeaders requestHeaders = 1;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          mlh.pavan.grpc.Stackoverflow.RequestHeaders, mlh.pavan.grpc.Stackoverflow.RequestHeaders.Builder, mlh.pavan.grpc.Stackoverflow.RequestHeadersOrBuilder> 
+          getRequestHeadersFieldBuilder() {
+        if (requestHeadersBuilder_ == null) {
+          requestHeadersBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              mlh.pavan.grpc.Stackoverflow.RequestHeaders, mlh.pavan.grpc.Stackoverflow.RequestHeaders.Builder, mlh.pavan.grpc.Stackoverflow.RequestHeadersOrBuilder>(
+                  getRequestHeaders(),
+                  getParentForChildren(),
+                  isClean());
+          requestHeaders_ = null;
+        }
+        return requestHeadersBuilder_;
+      }
+
+      private int userId_ ;
+      /**
+       * <code>uint32 userId = 2;</code>
+       */
+      public int getUserId() {
+        return userId_;
+      }
+      /**
+       * <code>uint32 userId = 2;</code>
+       */
+      public Builder setUserId(int value) {
+        
+        userId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>uint32 userId = 2;</code>
+       */
+      public Builder clearUserId() {
+        
+        userId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int status_ = 0;
+      /**
+       * <code>.USER_STATUS status = 3;</code>
+       */
+      public int getStatusValue() {
+        return status_;
+      }
+      /**
+       * <code>.USER_STATUS status = 3;</code>
+       */
+      public Builder setStatusValue(int value) {
+        status_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.USER_STATUS status = 3;</code>
+       */
+      public mlh.pavan.grpc.Stackoverflow.USER_STATUS getStatus() {
+        @SuppressWarnings("deprecation")
+        mlh.pavan.grpc.Stackoverflow.USER_STATUS result = mlh.pavan.grpc.Stackoverflow.USER_STATUS.valueOf(status_);
+        return result == null ? mlh.pavan.grpc.Stackoverflow.USER_STATUS.UNRECOGNIZED : result;
+      }
+      /**
+       * <code>.USER_STATUS status = 3;</code>
+       */
+      public Builder setStatus(mlh.pavan.grpc.Stackoverflow.USER_STATUS value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        
+        status_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.USER_STATUS status = 3;</code>
+       */
+      public Builder clearStatus() {
+        
+        status_ = 0;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFieldsProto3(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:ChangeUserStatusRequest)
+    }
+
+    // @@protoc_insertion_point(class_scope:ChangeUserStatusRequest)
+    private static final mlh.pavan.grpc.Stackoverflow.ChangeUserStatusRequest DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new mlh.pavan.grpc.Stackoverflow.ChangeUserStatusRequest();
+    }
+
+    public static mlh.pavan.grpc.Stackoverflow.ChangeUserStatusRequest getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<ChangeUserStatusRequest>
+        PARSER = new com.google.protobuf.AbstractParser<ChangeUserStatusRequest>() {
+      @java.lang.Override
+      public ChangeUserStatusRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new ChangeUserStatusRequest(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<ChangeUserStatusRequest> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ChangeUserStatusRequest> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public mlh.pavan.grpc.Stackoverflow.ChangeUserStatusRequest getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface ChangeUserStatusResponseOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:ChangeUserStatusResponse)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>.ResponseHeaders responseHeaders = 1;</code>
+     */
+    boolean hasResponseHeaders();
+    /**
+     * <code>.ResponseHeaders responseHeaders = 1;</code>
+     */
+    mlh.pavan.grpc.Stackoverflow.ResponseHeaders getResponseHeaders();
+    /**
+     * <code>.ResponseHeaders responseHeaders = 1;</code>
+     */
+    mlh.pavan.grpc.Stackoverflow.ResponseHeadersOrBuilder getResponseHeadersOrBuilder();
+  }
+  /**
+   * Protobuf type {@code ChangeUserStatusResponse}
+   */
+  public  static final class ChangeUserStatusResponse extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:ChangeUserStatusResponse)
+      ChangeUserStatusResponseOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use ChangeUserStatusResponse.newBuilder() to construct.
+    private ChangeUserStatusResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private ChangeUserStatusResponse() {
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private ChangeUserStatusResponse(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              mlh.pavan.grpc.Stackoverflow.ResponseHeaders.Builder subBuilder = null;
+              if (responseHeaders_ != null) {
+                subBuilder = responseHeaders_.toBuilder();
+              }
+              responseHeaders_ = input.readMessage(mlh.pavan.grpc.Stackoverflow.ResponseHeaders.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(responseHeaders_);
+                responseHeaders_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            default: {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return mlh.pavan.grpc.Stackoverflow.internal_static_ChangeUserStatusResponse_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return mlh.pavan.grpc.Stackoverflow.internal_static_ChangeUserStatusResponse_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              mlh.pavan.grpc.Stackoverflow.ChangeUserStatusResponse.class, mlh.pavan.grpc.Stackoverflow.ChangeUserStatusResponse.Builder.class);
+    }
+
+    public static final int RESPONSEHEADERS_FIELD_NUMBER = 1;
+    private mlh.pavan.grpc.Stackoverflow.ResponseHeaders responseHeaders_;
+    /**
+     * <code>.ResponseHeaders responseHeaders = 1;</code>
+     */
+    public boolean hasResponseHeaders() {
+      return responseHeaders_ != null;
+    }
+    /**
+     * <code>.ResponseHeaders responseHeaders = 1;</code>
+     */
+    public mlh.pavan.grpc.Stackoverflow.ResponseHeaders getResponseHeaders() {
+      return responseHeaders_ == null ? mlh.pavan.grpc.Stackoverflow.ResponseHeaders.getDefaultInstance() : responseHeaders_;
+    }
+    /**
+     * <code>.ResponseHeaders responseHeaders = 1;</code>
+     */
+    public mlh.pavan.grpc.Stackoverflow.ResponseHeadersOrBuilder getResponseHeadersOrBuilder() {
+      return getResponseHeaders();
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (responseHeaders_ != null) {
+        output.writeMessage(1, getResponseHeaders());
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (responseHeaders_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, getResponseHeaders());
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof mlh.pavan.grpc.Stackoverflow.ChangeUserStatusResponse)) {
+        return super.equals(obj);
+      }
+      mlh.pavan.grpc.Stackoverflow.ChangeUserStatusResponse other = (mlh.pavan.grpc.Stackoverflow.ChangeUserStatusResponse) obj;
+
+      boolean result = true;
+      result = result && (hasResponseHeaders() == other.hasResponseHeaders());
+      if (hasResponseHeaders()) {
+        result = result && getResponseHeaders()
+            .equals(other.getResponseHeaders());
+      }
+      result = result && unknownFields.equals(other.unknownFields);
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasResponseHeaders()) {
+        hash = (37 * hash) + RESPONSEHEADERS_FIELD_NUMBER;
+        hash = (53 * hash) + getResponseHeaders().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static mlh.pavan.grpc.Stackoverflow.ChangeUserStatusResponse parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static mlh.pavan.grpc.Stackoverflow.ChangeUserStatusResponse parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static mlh.pavan.grpc.Stackoverflow.ChangeUserStatusResponse parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static mlh.pavan.grpc.Stackoverflow.ChangeUserStatusResponse parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static mlh.pavan.grpc.Stackoverflow.ChangeUserStatusResponse parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static mlh.pavan.grpc.Stackoverflow.ChangeUserStatusResponse parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static mlh.pavan.grpc.Stackoverflow.ChangeUserStatusResponse parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static mlh.pavan.grpc.Stackoverflow.ChangeUserStatusResponse parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static mlh.pavan.grpc.Stackoverflow.ChangeUserStatusResponse parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static mlh.pavan.grpc.Stackoverflow.ChangeUserStatusResponse parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static mlh.pavan.grpc.Stackoverflow.ChangeUserStatusResponse parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static mlh.pavan.grpc.Stackoverflow.ChangeUserStatusResponse parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(mlh.pavan.grpc.Stackoverflow.ChangeUserStatusResponse prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code ChangeUserStatusResponse}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:ChangeUserStatusResponse)
+        mlh.pavan.grpc.Stackoverflow.ChangeUserStatusResponseOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return mlh.pavan.grpc.Stackoverflow.internal_static_ChangeUserStatusResponse_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return mlh.pavan.grpc.Stackoverflow.internal_static_ChangeUserStatusResponse_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                mlh.pavan.grpc.Stackoverflow.ChangeUserStatusResponse.class, mlh.pavan.grpc.Stackoverflow.ChangeUserStatusResponse.Builder.class);
+      }
+
+      // Construct using mlh.pavan.grpc.Stackoverflow.ChangeUserStatusResponse.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        if (responseHeadersBuilder_ == null) {
+          responseHeaders_ = null;
+        } else {
+          responseHeaders_ = null;
+          responseHeadersBuilder_ = null;
+        }
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return mlh.pavan.grpc.Stackoverflow.internal_static_ChangeUserStatusResponse_descriptor;
+      }
+
+      @java.lang.Override
+      public mlh.pavan.grpc.Stackoverflow.ChangeUserStatusResponse getDefaultInstanceForType() {
+        return mlh.pavan.grpc.Stackoverflow.ChangeUserStatusResponse.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public mlh.pavan.grpc.Stackoverflow.ChangeUserStatusResponse build() {
+        mlh.pavan.grpc.Stackoverflow.ChangeUserStatusResponse result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public mlh.pavan.grpc.Stackoverflow.ChangeUserStatusResponse buildPartial() {
+        mlh.pavan.grpc.Stackoverflow.ChangeUserStatusResponse result = new mlh.pavan.grpc.Stackoverflow.ChangeUserStatusResponse(this);
+        if (responseHeadersBuilder_ == null) {
+          result.responseHeaders_ = responseHeaders_;
+        } else {
+          result.responseHeaders_ = responseHeadersBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof mlh.pavan.grpc.Stackoverflow.ChangeUserStatusResponse) {
+          return mergeFrom((mlh.pavan.grpc.Stackoverflow.ChangeUserStatusResponse)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(mlh.pavan.grpc.Stackoverflow.ChangeUserStatusResponse other) {
+        if (other == mlh.pavan.grpc.Stackoverflow.ChangeUserStatusResponse.getDefaultInstance()) return this;
+        if (other.hasResponseHeaders()) {
+          mergeResponseHeaders(other.getResponseHeaders());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        mlh.pavan.grpc.Stackoverflow.ChangeUserStatusResponse parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (mlh.pavan.grpc.Stackoverflow.ChangeUserStatusResponse) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private mlh.pavan.grpc.Stackoverflow.ResponseHeaders responseHeaders_ = null;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          mlh.pavan.grpc.Stackoverflow.ResponseHeaders, mlh.pavan.grpc.Stackoverflow.ResponseHeaders.Builder, mlh.pavan.grpc.Stackoverflow.ResponseHeadersOrBuilder> responseHeadersBuilder_;
+      /**
+       * <code>.ResponseHeaders responseHeaders = 1;</code>
+       */
+      public boolean hasResponseHeaders() {
+        return responseHeadersBuilder_ != null || responseHeaders_ != null;
+      }
+      /**
+       * <code>.ResponseHeaders responseHeaders = 1;</code>
+       */
+      public mlh.pavan.grpc.Stackoverflow.ResponseHeaders getResponseHeaders() {
+        if (responseHeadersBuilder_ == null) {
+          return responseHeaders_ == null ? mlh.pavan.grpc.Stackoverflow.ResponseHeaders.getDefaultInstance() : responseHeaders_;
+        } else {
+          return responseHeadersBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.ResponseHeaders responseHeaders = 1;</code>
+       */
+      public Builder setResponseHeaders(mlh.pavan.grpc.Stackoverflow.ResponseHeaders value) {
+        if (responseHeadersBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          responseHeaders_ = value;
+          onChanged();
+        } else {
+          responseHeadersBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.ResponseHeaders responseHeaders = 1;</code>
+       */
+      public Builder setResponseHeaders(
+          mlh.pavan.grpc.Stackoverflow.ResponseHeaders.Builder builderForValue) {
+        if (responseHeadersBuilder_ == null) {
+          responseHeaders_ = builderForValue.build();
+          onChanged();
+        } else {
+          responseHeadersBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.ResponseHeaders responseHeaders = 1;</code>
+       */
+      public Builder mergeResponseHeaders(mlh.pavan.grpc.Stackoverflow.ResponseHeaders value) {
+        if (responseHeadersBuilder_ == null) {
+          if (responseHeaders_ != null) {
+            responseHeaders_ =
+              mlh.pavan.grpc.Stackoverflow.ResponseHeaders.newBuilder(responseHeaders_).mergeFrom(value).buildPartial();
+          } else {
+            responseHeaders_ = value;
+          }
+          onChanged();
+        } else {
+          responseHeadersBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.ResponseHeaders responseHeaders = 1;</code>
+       */
+      public Builder clearResponseHeaders() {
+        if (responseHeadersBuilder_ == null) {
+          responseHeaders_ = null;
+          onChanged();
+        } else {
+          responseHeaders_ = null;
+          responseHeadersBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.ResponseHeaders responseHeaders = 1;</code>
+       */
+      public mlh.pavan.grpc.Stackoverflow.ResponseHeaders.Builder getResponseHeadersBuilder() {
+        
+        onChanged();
+        return getResponseHeadersFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.ResponseHeaders responseHeaders = 1;</code>
+       */
+      public mlh.pavan.grpc.Stackoverflow.ResponseHeadersOrBuilder getResponseHeadersOrBuilder() {
+        if (responseHeadersBuilder_ != null) {
+          return responseHeadersBuilder_.getMessageOrBuilder();
+        } else {
+          return responseHeaders_ == null ?
+              mlh.pavan.grpc.Stackoverflow.ResponseHeaders.getDefaultInstance() : responseHeaders_;
+        }
+      }
+      /**
+       * <code>.ResponseHeaders responseHeaders = 1;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          mlh.pavan.grpc.Stackoverflow.ResponseHeaders, mlh.pavan.grpc.Stackoverflow.ResponseHeaders.Builder, mlh.pavan.grpc.Stackoverflow.ResponseHeadersOrBuilder> 
+          getResponseHeadersFieldBuilder() {
+        if (responseHeadersBuilder_ == null) {
+          responseHeadersBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              mlh.pavan.grpc.Stackoverflow.ResponseHeaders, mlh.pavan.grpc.Stackoverflow.ResponseHeaders.Builder, mlh.pavan.grpc.Stackoverflow.ResponseHeadersOrBuilder>(
+                  getResponseHeaders(),
+                  getParentForChildren(),
+                  isClean());
+          responseHeaders_ = null;
+        }
+        return responseHeadersBuilder_;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFieldsProto3(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:ChangeUserStatusResponse)
+    }
+
+    // @@protoc_insertion_point(class_scope:ChangeUserStatusResponse)
+    private static final mlh.pavan.grpc.Stackoverflow.ChangeUserStatusResponse DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new mlh.pavan.grpc.Stackoverflow.ChangeUserStatusResponse();
+    }
+
+    public static mlh.pavan.grpc.Stackoverflow.ChangeUserStatusResponse getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<ChangeUserStatusResponse>
+        PARSER = new com.google.protobuf.AbstractParser<ChangeUserStatusResponse>() {
+      @java.lang.Override
+      public ChangeUserStatusResponse parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new ChangeUserStatusResponse(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<ChangeUserStatusResponse> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ChangeUserStatusResponse> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public mlh.pavan.grpc.Stackoverflow.ChangeUserStatusResponse getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_Authorization_descriptor;
   private static final 
@@ -24700,6 +26196,16 @@ public final class Stackoverflow {
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_UpdateRatingResponse_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_ChangeUserStatusRequest_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_ChangeUserStatusRequest_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_ChangeUserStatusResponse_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_ChangeUserStatusResponse_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -24775,31 +26281,40 @@ public final class Stackoverflow {
       "\022\'\n\016requestHeaders\030\001 \001(\0132\017.RequestHeader" +
       "s\022\016\n\006userId\030\002 \001(\r\022\016\n\006rating\030\003 \001(\002\"A\n\024Upd" +
       "ateRatingResponse\022)\n\017responseHeaders\030\001 \001" +
-      "(\0132\020.ResponseHeaders*-\n\nSKILL_NAME\022\010\n\004JA" +
-      "VA\020\000\022\n\n\006PYTHON\020\001\022\t\n\005MYSQL\020\002*2\n\020SKILL_DIF" +
-      "FICULTY\022\010\n\004EASY\020\000\022\n\n\006MEDIUM\020\001\022\010\n\004HARD\020\002*" +
-      "=\n\nStatusCode\022\013\n\007SUCCESS\020\000\022\022\n\016INTERNAL_E" +
-      "RROR\020\001\022\016\n\nDB_FAILURE\020\0022\210\006\n\rStackOverflow" +
-      "\022&\n\005Greet\022\r.GreetRequest\032\016.GreetResponse" +
-      "\022)\n\006SignUp\022\016.SignUpRequest\032\017.SignUpRespo" +
-      "nse\022&\n\005Login\022\r.LoginRequest\032\016.LoginRespo" +
-      "nse\022/\n\010GetToken\022\020.GetTokenRequest\032\021.GetT" +
-      "okenResponse\0225\n\nCheckToken\022\022.CheckTokenR" +
-      "equest\032\023.CheckTokenResponse\022)\n\006Logout\022\016." +
-      "LogoutRequest\032\017.LogoutResponse\022A\n\016Change" +
-      "Password\022\026.ChangePasswordRequest\032\027.Chang" +
-      "ePasswordResponse\022A\n\016ChangeUserName\022\026.Ch" +
-      "angeUserNameRequest\032\027.ChangeUserNameResp" +
-      "onse\022J\n\021ChangeDescription\022\031.ChangeDescri" +
-      "ptionRequest\032\032.ChangeDescriptionResponse" +
-      "\0228\n\013ChangeSkill\022\023.ChangeSkillRequest\032\024.C" +
-      "hangeSkillResponse\022/\n\010AddSkill\022\020.AddSkil" +
-      "lRequest\032\021.AddSkillResponse\0228\n\013DeleteSki" +
-      "ll\022\023.DeleteSkillRequest\032\024.DeleteSkillRes" +
-      "ponse\0225\n\nDeleteUser\022\022.DeleteUserRequest\032" +
-      "\023.DeleteUserResponse\022;\n\014UpdateRating\022\024.U" +
-      "pdateRatingRequest\032\025.UpdateRatingRespons" +
-      "eB\020\n\016mlh.pavan.grpcb\006proto3"
+      "(\0132\020.ResponseHeaders\"p\n\027ChangeUserStatus" +
+      "Request\022\'\n\016requestHeaders\030\001 \001(\0132\017.Reques" +
+      "tHeaders\022\016\n\006userId\030\002 \001(\r\022\034\n\006status\030\003 \001(\016" +
+      "2\014.USER_STATUS\"E\n\030ChangeUserStatusRespon" +
+      "se\022)\n\017responseHeaders\030\001 \001(\0132\020.ResponseHe" +
+      "aders*-\n\nSKILL_NAME\022\010\n\004JAVA\020\000\022\n\n\006PYTHON\020" +
+      "\001\022\t\n\005MYSQL\020\002*2\n\020SKILL_DIFFICULTY\022\010\n\004EASY" +
+      "\020\000\022\n\n\006MEDIUM\020\001\022\010\n\004HARD\020\002*=\n\nStatusCode\022\013" +
+      "\n\007SUCCESS\020\000\022\022\n\016INTERNAL_ERROR\020\001\022\016\n\nDB_FA" +
+      "ILURE\020\002*K\n\013USER_STATUS\022\n\n\006ACTIVE\020\000\022\014\n\010QU" +
+      "ESTION\020\001\022\n\n\006ANSWER\020\002\022\010\n\004CALL\020\003\022\014\n\010INACTI" +
+      "VE\020\0042\321\006\n\rStackOverflow\022&\n\005Greet\022\r.GreetR" +
+      "equest\032\016.GreetResponse\022)\n\006SignUp\022\016.SignU" +
+      "pRequest\032\017.SignUpResponse\022&\n\005Login\022\r.Log" +
+      "inRequest\032\016.LoginResponse\022/\n\010GetToken\022\020." +
+      "GetTokenRequest\032\021.GetTokenResponse\0225\n\nCh" +
+      "eckToken\022\022.CheckTokenRequest\032\023.CheckToke" +
+      "nResponse\022)\n\006Logout\022\016.LogoutRequest\032\017.Lo" +
+      "goutResponse\022A\n\016ChangePassword\022\026.ChangeP" +
+      "asswordRequest\032\027.ChangePasswordResponse\022" +
+      "A\n\016ChangeUserName\022\026.ChangeUserNameReques" +
+      "t\032\027.ChangeUserNameResponse\022J\n\021ChangeDesc" +
+      "ription\022\031.ChangeDescriptionRequest\032\032.Cha" +
+      "ngeDescriptionResponse\0228\n\013ChangeSkill\022\023." +
+      "ChangeSkillRequest\032\024.ChangeSkillResponse" +
+      "\022/\n\010AddSkill\022\020.AddSkillRequest\032\021.AddSkil" +
+      "lResponse\0228\n\013DeleteSkill\022\023.DeleteSkillRe" +
+      "quest\032\024.DeleteSkillResponse\0225\n\nDeleteUse" +
+      "r\022\022.DeleteUserRequest\032\023.DeleteUserRespon" +
+      "se\022;\n\014UpdateRating\022\024.UpdateRatingRequest" +
+      "\032\025.UpdateRatingResponse\022G\n\020ChangeUserSta" +
+      "tus\022\030.ChangeUserStatusRequest\032\031.ChangeUs" +
+      "erStatusResponseB\020\n\016mlh.pavan.grpcb\006prot" +
+      "o3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -25010,6 +26525,18 @@ public final class Stackoverflow {
     internal_static_UpdateRatingResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_UpdateRatingResponse_descriptor,
+        new java.lang.String[] { "ResponseHeaders", });
+    internal_static_ChangeUserStatusRequest_descriptor =
+      getDescriptor().getMessageTypes().get(33);
+    internal_static_ChangeUserStatusRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_ChangeUserStatusRequest_descriptor,
+        new java.lang.String[] { "RequestHeaders", "UserId", "Status", });
+    internal_static_ChangeUserStatusResponse_descriptor =
+      getDescriptor().getMessageTypes().get(34);
+    internal_static_ChangeUserStatusResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_ChangeUserStatusResponse_descriptor,
         new java.lang.String[] { "ResponseHeaders", });
   }
 

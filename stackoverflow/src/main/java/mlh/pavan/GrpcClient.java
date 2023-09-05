@@ -21,7 +21,7 @@ public class GrpcClient
         skillList.add(skill1);
         skillList.add(skill2);
         SignUpRequest signUpRequest = SignUpRequest.newBuilder()
-        .setUserName("pavan3").setPassword("1234").setDescription("desc").addAllSkills(skillList).build();
+        .setUserName("pavan3213").setPassword("12341212").setDescription("desc").addAllSkills(skillList).build();
         SignUpResponse signUpResponse  = blockingStub.signUp(signUpRequest);
         System.out.println(signUpResponse);
     }
@@ -103,8 +103,8 @@ public class GrpcClient
 
         StackOverflowBlockingStub stackOverflowBlockingStub = StackOverflowGrpc.newBlockingStub(channel);
 
-//        TestSignUpRequest(stackOverflowBlockingStub);
-        TestLoginRequest(stackOverflowBlockingStub);
+        TestSignUpRequest(stackOverflowBlockingStub);
+//        TestLoginRequest(stackOverflowBlockingStub);
 //        TestCheckTokenRequest(stackOverflowBlockingStub);
 //        TestGetTokenRequest(stackOverflowBlockingStub);
 //        TestUpdatePassword(stackOverflowBlockingStub);
