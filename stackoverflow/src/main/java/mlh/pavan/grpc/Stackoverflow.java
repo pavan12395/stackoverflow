@@ -341,48 +341,48 @@ public final class Stackoverflow {
   public enum USER_STATUS
       implements com.google.protobuf.ProtocolMessageEnum {
     /**
-     * <code>ACTIVE = 0;</code>
+     * <code>INACTIVE = 0;</code>
      */
-    ACTIVE(0),
+    INACTIVE(0),
     /**
-     * <code>QUESTION = 1;</code>
+     * <code>ACTIVE = 1;</code>
      */
-    QUESTION(1),
+    ACTIVE(1),
     /**
-     * <code>ANSWER = 2;</code>
+     * <code>QUESTION = 2;</code>
      */
-    ANSWER(2),
+    QUESTION(2),
     /**
-     * <code>CALL = 3;</code>
+     * <code>ANSWER = 3;</code>
      */
-    CALL(3),
+    ANSWER(3),
     /**
-     * <code>INACTIVE = 4;</code>
+     * <code>CALL = 4;</code>
      */
-    INACTIVE(4),
+    CALL(4),
     UNRECOGNIZED(-1),
     ;
 
     /**
-     * <code>ACTIVE = 0;</code>
+     * <code>INACTIVE = 0;</code>
      */
-    public static final int ACTIVE_VALUE = 0;
+    public static final int INACTIVE_VALUE = 0;
     /**
-     * <code>QUESTION = 1;</code>
+     * <code>ACTIVE = 1;</code>
      */
-    public static final int QUESTION_VALUE = 1;
+    public static final int ACTIVE_VALUE = 1;
     /**
-     * <code>ANSWER = 2;</code>
+     * <code>QUESTION = 2;</code>
      */
-    public static final int ANSWER_VALUE = 2;
+    public static final int QUESTION_VALUE = 2;
     /**
-     * <code>CALL = 3;</code>
+     * <code>ANSWER = 3;</code>
      */
-    public static final int CALL_VALUE = 3;
+    public static final int ANSWER_VALUE = 3;
     /**
-     * <code>INACTIVE = 4;</code>
+     * <code>CALL = 4;</code>
      */
-    public static final int INACTIVE_VALUE = 4;
+    public static final int CALL_VALUE = 4;
 
 
     public final int getNumber() {
@@ -403,11 +403,11 @@ public final class Stackoverflow {
 
     public static USER_STATUS forNumber(int value) {
       switch (value) {
-        case 0: return ACTIVE;
-        case 1: return QUESTION;
-        case 2: return ANSWER;
-        case 3: return CALL;
-        case 4: return INACTIVE;
+        case 0: return INACTIVE;
+        case 1: return ACTIVE;
+        case 2: return QUESTION;
+        case 3: return ANSWER;
+        case 4: return CALL;
         default: return null;
       }
     }
@@ -24855,7 +24855,7 @@ public final class Stackoverflow {
       if (userId_ != 0) {
         output.writeUInt32(2, userId_);
       }
-      if (status_ != mlh.pavan.grpc.Stackoverflow.USER_STATUS.ACTIVE.getNumber()) {
+      if (status_ != mlh.pavan.grpc.Stackoverflow.USER_STATUS.INACTIVE.getNumber()) {
         output.writeEnum(3, status_);
       }
       unknownFields.writeTo(output);
@@ -24875,7 +24875,7 @@ public final class Stackoverflow {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt32Size(2, userId_);
       }
-      if (status_ != mlh.pavan.grpc.Stackoverflow.USER_STATUS.ACTIVE.getNumber()) {
+      if (status_ != mlh.pavan.grpc.Stackoverflow.USER_STATUS.INACTIVE.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(3, status_);
       }
@@ -26290,9 +26290,9 @@ public final class Stackoverflow {
       "\001\022\t\n\005MYSQL\020\002*2\n\020SKILL_DIFFICULTY\022\010\n\004EASY" +
       "\020\000\022\n\n\006MEDIUM\020\001\022\010\n\004HARD\020\002*=\n\nStatusCode\022\013" +
       "\n\007SUCCESS\020\000\022\022\n\016INTERNAL_ERROR\020\001\022\016\n\nDB_FA" +
-      "ILURE\020\002*K\n\013USER_STATUS\022\n\n\006ACTIVE\020\000\022\014\n\010QU" +
-      "ESTION\020\001\022\n\n\006ANSWER\020\002\022\010\n\004CALL\020\003\022\014\n\010INACTI" +
-      "VE\020\0042\321\006\n\rStackOverflow\022&\n\005Greet\022\r.GreetR" +
+      "ILURE\020\002*K\n\013USER_STATUS\022\014\n\010INACTIVE\020\000\022\n\n\006" +
+      "ACTIVE\020\001\022\014\n\010QUESTION\020\002\022\n\n\006ANSWER\020\003\022\010\n\004CA" +
+      "LL\020\0042\321\006\n\rStackOverflow\022&\n\005Greet\022\r.GreetR" +
       "equest\032\016.GreetResponse\022)\n\006SignUp\022\016.SignU" +
       "pRequest\032\017.SignUpResponse\022&\n\005Login\022\r.Log" +
       "inRequest\032\016.LoginResponse\022/\n\010GetToken\022\020." +

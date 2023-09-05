@@ -32,4 +32,6 @@ Queries
 
     public static final String UpdateRating = "update users set rating=:rating where id=:userid";
 
+    public static final String ChangeUserStatus = "update users set user_status=:user_status where id=:id";
+
 }

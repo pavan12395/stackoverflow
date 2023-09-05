@@ -389,6 +389,26 @@ public class StackOverFlowService extends StackOverflowImplBase
         }
     }
 
+    public void changeUserStatus(ChangeUserStatusRequest request, io.grpc.stub.StreamObserver<ChangeUserStatusResponse> responseObserver)
+    {
+        try
+        {
+            queryEngine.updateUserStatus(request.getUserId(),request.getStatus());
+            ResponseHeaders responseHeaders = ResponseHeaders.newBuilder().setStatus(StatusCode.SUCCESS).build();
+            ChangeUserStatusResponse changeUserStatusResponse = ChangeUserStatusResponse.newBuilder().setResponseHeaders(responseHeaders).build();
+            responseObserver.onNext(changeUserStatusResponse);
+        }
+        catch(SQLException e)
+        {
+            ResponseHeaders responseHeaders = ResponseHeaders.newBuilder().setStatus(StatusCode.DB_FAILURE).addErrorMessages(e.getMessage()).build();
+            ChangeUserStatusResponse changeUserStatusResponse = ChangeUserStatusResponse.newBuilder().setResponseHeaders(responseHeaders).build();
+            responseObserver.onNext(changeUserStatusResponse);
+        }
+        finally {
+            responseObserver.onCompleted();
+        }
+    }
+
 
 }
 
