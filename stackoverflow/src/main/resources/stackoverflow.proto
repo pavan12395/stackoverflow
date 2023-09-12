@@ -25,11 +25,8 @@ enum StatusCode
 
 enum USER_STATUS
 {
-    INACTIVE = 0;
-   ACTIVE = 1;
-   QUESTION = 2;
-   ANSWER = 3;
-   CALL = 4;
+   ACTIVE = 0;
+   ANSWER = 1;
 }
 
 message Authorization
