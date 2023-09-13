@@ -4,39 +4,42 @@ option java_package = "mlh.pavan.grpc";
 
 enum SKILL_NAME
 {
-  JAVA = 0;
-  PYTHON = 1;
-  MYSQL = 2;
+  NO_SKILL = 0;
+  JAVA = 2;
+  PYTHON = 3;
+  MYSQL = 4;
 }
 
 enum SKILL_DIFFICULTY
 {
-  EASY = 0;
-  MEDIUM = 1;
-  HARD = 2;
+  NO_DIFFICULTY = 0;
+  EASY = 1;
+  MEDIUM = 2;
+  HARD = 3;
 }
 
 enum StatusCode
 {
-   SUCCESS = 0;
-   INTERNAL_ERROR = 1;
-   DB_FAILURE = 2;
+  SUCCESS = 0;
+  INTERNAL_ERROR = 1;
+  DB_FAILURE = 2;
 }
 
 enum USER_STATUS
 {
-   INACTIVE = 0;
-   ACTIVE = 1;
-   ANSWER = 2;
+  INACTIVE = 0;
+  ACTIVE = 1;
+  ANSWER = 2;
 }
 
 message Authorization
 {
-   string accessToken = 1;
-   string refreshToken = 2;
+  string accessToken = 1;
+  string refreshToken = 2;
 }
 message RequestHeaders{
   Authorization authorization = 1;
+  User user = 2;
 }
 
 
@@ -47,16 +50,16 @@ message ResponseHeaders{
 
 message User
 {
-   uint64 userId = 1;
-   string userName = 2;
-   string description = 3;
-   repeated Skill skills = 4;
+  uint64 userId = 1;
+  string userName = 2;
+  string description = 3;
+  repeated Skill skills = 4;
 }
 
 message Skill
 {
-    SKILL_NAME skillName = 1;
-    SKILL_DIFFICULTY difficulty = 2;
+  SKILL_NAME skillName = 1;
+  SKILL_DIFFICULTY difficulty = 2;
 }
 
 message GreetRequest{
@@ -122,7 +125,6 @@ message LogoutResponse{
 
 message ChangePasswordRequest{
   RequestHeaders requestHeaders = 1;
-  uint32  userId = 2;
   string password = 3;
   string newPassword = 4;
 }
@@ -133,7 +135,6 @@ message ChangePasswordResponse{
 
 message ChangeUserNameRequest{
   RequestHeaders requestHeaders = 1;
-  uint32 userId = 2;
   string userName = 3;
 }
 
@@ -143,7 +144,6 @@ message ChangeUserNameResponse{
 
 message ChangeDescriptionRequest{
   RequestHeaders requestHeaders = 1;
-  uint32 userId = 2;
   string description = 3;
 }
 
@@ -153,7 +153,6 @@ message ChangeDescriptionResponse{
 
 message ChangeSkillRequest{
   RequestHeaders requestHeaders = 1;
-  uint32 userId = 2;
   Skill skill = 3;
 }
 
@@ -163,7 +162,6 @@ message ChangeSkillResponse{
 
 message AddSkillRequest{
   RequestHeaders requestHeaders = 1;
-  uint32 userId = 2;
   Skill skill = 3;
 }
 
@@ -173,7 +171,6 @@ message AddSkillResponse{
 
 message DeleteSkillRequest{
   RequestHeaders requestHeaders = 1;
-  uint32 userId = 2;
   SKILL_NAME skillName = 3;
 }
 
@@ -192,7 +189,6 @@ message DeleteUserResponse{
 
 message UpdateRatingRequest{
   RequestHeaders requestHeaders = 1;
-  uint32 userId = 2;
   float rating = 3;
 }
 
@@ -203,7 +199,6 @@ message UpdateRatingResponse{
 
 message ChangeUserStatusRequest{
   RequestHeaders requestHeaders = 1;
-  uint32 userId = 2;
   USER_STATUS status = 3;
 }
 
@@ -228,6 +223,8 @@ service StackOverflow{
   rpc UpdateRating(UpdateRatingRequest) returns (UpdateRatingResponse);
   rpc ChangeUserStatus(ChangeUserStatusRequest) returns (ChangeUserStatusResponse);
 }
+
+
 
 
 
