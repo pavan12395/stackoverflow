@@ -47,57 +47,57 @@ public class GrpcClient
     }
     public static void TestUpdatePassword(StackOverflowBlockingStub blockingStub)
     {
-        ChangePasswordRequest changePasswordRequest = ChangePasswordRequest.newBuilder().setPassword("12344445").setUserId(1).build();
+        ChangePasswordRequest changePasswordRequest = ChangePasswordRequest.newBuilder().setPassword("12344445").build();
         ChangePasswordResponse changePasswordResponse = blockingStub.changePassword(changePasswordRequest);
         System.out.println(changePasswordResponse);
     }
     public static void TestUpdateUserName(StackOverflowBlockingStub blockingStub)
     {
-        ChangeUserNameRequest changeUserNameRequest = ChangeUserNameRequest.newBuilder().setUserId(1).setUserName("pavan1").build();
+        ChangeUserNameRequest changeUserNameRequest = ChangeUserNameRequest.newBuilder().setUserName("pavan1").build();
         ChangeUserNameResponse changeUserNameResponse = blockingStub.changeUserName(changeUserNameRequest);
         System.out.println(changeUserNameResponse);
     }
     public static void TestUpdateDescription(StackOverflowBlockingStub blockingStub)
     {
-        ChangeDescriptionRequest changeDescriptionRequest = ChangeDescriptionRequest.newBuilder().setUserId(1).setDescription("Hello world!").build();
+        ChangeDescriptionRequest changeDescriptionRequest = ChangeDescriptionRequest.newBuilder().setDescription("Hello world!").build();
         ChangeDescriptionResponse changeDescriptionResponse = blockingStub.changeDescription(changeDescriptionRequest);
         System.out.println(changeDescriptionResponse);
     }
     public static void TestChangeSkill(StackOverflowBlockingStub blockingStub)
     {
         Skill skill = Skill.newBuilder().setSkillName(SKILL_NAME.JAVA).setDifficultyValue(SKILL_DIFFICULTY.HARD_VALUE).build();
-        ChangeSkillRequest changeSkillRequest = ChangeSkillRequest.newBuilder().setUserId(1).setSkill(skill).build();
+        ChangeSkillRequest changeSkillRequest = ChangeSkillRequest.newBuilder().setSkill(skill).build();
         ChangeSkillResponse changeSkillResponse = blockingStub.changeSkill(changeSkillRequest);
         System.out.println(changeSkillResponse);
     }
     public static void TestAddSkill(StackOverflowBlockingStub blockingStub)
     {
         Skill skill = Skill.newBuilder().setSkillName(SKILL_NAME.MYSQL).setDifficultyValue(SKILL_DIFFICULTY.HARD_VALUE).build();
-        AddSkillRequest addSkillRequest = AddSkillRequest.newBuilder().setUserId(1).setSkill(skill).build();
+        AddSkillRequest addSkillRequest = AddSkillRequest.newBuilder().setSkill(skill).build();
         AddSkillResponse addSkillResponse = blockingStub.addSkill(addSkillRequest);
         System.out.println(addSkillResponse);
     }
     public static void TestDeleteSkill(StackOverflowBlockingStub blockingStub)
     {
-        DeleteSkillRequest deleteSkillRequest = DeleteSkillRequest.newBuilder().setUserId(1).setSkillName(SKILL_NAME.MYSQL).build();
+        DeleteSkillRequest deleteSkillRequest = DeleteSkillRequest.newBuilder().setSkillName(SKILL_NAME.MYSQL).build();
         DeleteSkillResponse deleteSkillResponse = blockingStub.deleteSkill(deleteSkillRequest);
         System.out.println(deleteSkillResponse);
     }
     public static void TestDeleteUser(StackOverflowBlockingStub blockingStub)
     {
-        DeleteUserRequest deleteUserRequest = DeleteUserRequest.newBuilder().setUserId(1).build();
+        DeleteUserRequest deleteUserRequest = DeleteUserRequest.newBuilder().build();
         DeleteUserResponse deleteUserResponse = blockingStub.deleteUser(deleteUserRequest);
         System.out.println(deleteUserResponse);
     }
     public static void TestUpdateRating(StackOverflowBlockingStub blockingStub)
     {
-        UpdateRatingRequest updateRatingRequest = UpdateRatingRequest.newBuilder().setUserId(1).setRating(3.45f).build();
+        UpdateRatingRequest updateRatingRequest = UpdateRatingRequest.newBuilder().setRating(3.45f).build();
         UpdateRatingResponse updateRatingResponse = blockingStub.updateRating(updateRatingRequest);
         System.out.println(updateRatingResponse);
     }
     public static void TestChangeUserStatus(StackOverflowBlockingStub blockingStub)
     {
-        ChangeUserStatusRequest changeUserStatusRequest = ChangeUserStatusRequest.newBuilder().setUserId(2).setStatus(USER_STATUS.CALL).build();
+        ChangeUserStatusRequest changeUserStatusRequest = ChangeUserStatusRequest.newBuilder().setStatus(USER_STATUS.ACTIVE).build();
         ChangeUserStatusResponse changeUserStatusResponse = blockingStub.changeUserStatus(changeUserStatusRequest);
         System.out.println(changeUserStatusResponse);
     }

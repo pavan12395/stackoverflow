@@ -180,7 +180,6 @@ message DeleteSkillResponse{
 
 message DeleteUserRequest{
   RequestHeaders requestHeaders = 1;
-  uint32 userId = 2;
 }
 
 message DeleteUserResponse{

@@ -199,7 +199,8 @@ public class StackOverFlowService extends StackOverflowImplBase
     {
         try {
             Validator.ValidateChangePassword(request);
-            long userId = request.getUserId();
+            User user = Utils.checkToken(request.getRequestHeaders().getAuthorization().getAccessToken(),"ACCESS");
+            long userId = user.getUserId();
             String password = request.getPassword();
             String hashPassword = Utils.hashPassword(password);
             String newPassword = request.getNewPassword();
@@ -229,7 +230,8 @@ public class StackOverFlowService extends StackOverflowImplBase
     {
         try{
             Validator.ValidateChangeUserName(request);
-            long userId = request.getUserId();
+            User user = Utils.checkToken(request.getRequestHeaders().getAuthorization().getAccessToken(),"ACCESS");
+            long userId = user.getUserId();
             String userName = request.getUserName();
             queryEngine.updateUserName(userId,userName);
             ResponseHeaders responseHeaders = ResponseHeaders.newBuilder().setStatus(StatusCode.SUCCESS).build();
@@ -257,7 +259,8 @@ public class StackOverFlowService extends StackOverflowImplBase
     {
         try{
             Validator.ValidateChangeDescription(request);
-            long userId = request.getUserId();
+            User user = Utils.checkToken(request.getRequestHeaders().getAuthorization().getAccessToken(),"ACCESS");
+            long userId = user.getUserId();
             String description = request.getDescription();
             queryEngine.updateDescription(userId,description);
             ResponseHeaders responseHeaders = ResponseHeaders.newBuilder().setStatus(StatusCode.SUCCESS).build();
@@ -284,7 +287,8 @@ public class StackOverFlowService extends StackOverflowImplBase
     public void changeSkill(ChangeSkillRequest request, io.grpc.stub.StreamObserver<ChangeSkillResponse> responseObserver)
     {
         try{
-            long userId = request.getUserId();
+            User user = Utils.checkToken(request.getRequestHeaders().getAuthorization().getAccessToken(),"ACCESS");
+            long userId = user.getUserId();
             Skill skill = request.getSkill();
             queryEngine.updateSkill(userId,skill);
             ResponseHeaders responseHeaders = ResponseHeaders.newBuilder().setStatus(StatusCode.SUCCESS).build();
@@ -305,7 +309,8 @@ public class StackOverFlowService extends StackOverflowImplBase
     public void addSkill(AddSkillRequest request, io.grpc.stub.StreamObserver<AddSkillResponse> responseObserver)
     {
         try{
-            long userId = request.getUserId();
+            User user = Utils.checkToken(request.getRequestHeaders().getAuthorization().getAccessToken(),"ACCESS");
+            long userId = user.getUserId();
             Skill skill = request.getSkill();
             queryEngine.addSkill(userId,skill);
             ResponseHeaders responseHeaders = ResponseHeaders.newBuilder().setStatus(StatusCode.SUCCESS).build();
@@ -329,7 +334,8 @@ public class StackOverFlowService extends StackOverflowImplBase
     public void deleteSkill(DeleteSkillRequest request, io.grpc.stub.StreamObserver<DeleteSkillResponse> responseObserver)
     {
         try{
-            long userId = request.getUserId();
+            User user = Utils.checkToken(request.getRequestHeaders().getAuthorization().getAccessToken(),"ACCESS");
+            long userId = user.getUserId();
             int skillName = request.getSkillNameValue();
             queryEngine.deleteSkill(userId,skillName);
             ResponseHeaders responseHeaders = ResponseHeaders.newBuilder().setStatus(StatusCode.SUCCESS).build();
@@ -350,7 +356,8 @@ public class StackOverFlowService extends StackOverflowImplBase
     public void deleteUser(DeleteUserRequest request, io.grpc.stub.StreamObserver<DeleteUserResponse> responseObserver)
     {
         try{
-            long userId = request.getUserId();
+            User user = Utils.checkToken(request.getRequestHeaders().getAuthorization().getAccessToken(),"ACCESS");
+            long userId = user.getUserId();
             queryEngine.deleteSkills(userId);
             queryEngine.deleteUser(userId);
             ResponseHeaders responseHeaders = ResponseHeaders.newBuilder().setStatus(StatusCode.SUCCESS).build();
@@ -371,7 +378,8 @@ public class StackOverFlowService extends StackOverflowImplBase
     public void updateRating(UpdateRatingRequest request, io.grpc.stub.StreamObserver<UpdateRatingResponse> responseObserver)
     {
         try{
-            long userId = request.getUserId();
+            User user = Utils.checkToken(request.getRequestHeaders().getAuthorization().getAccessToken(),"ACCESS");
+            long userId = user.getUserId();
             float rating = request.getRating();
             queryEngine.updateRating(userId,rating);
             ResponseHeaders responseHeaders = ResponseHeaders.newBuilder().setStatus(StatusCode.SUCCESS).build();
@@ -393,7 +401,9 @@ public class StackOverFlowService extends StackOverflowImplBase
     {
         try
         {
-            queryEngine.updateUserStatus(request.getUserId(),request.getStatus());
+            User user = Utils.checkToken(request.getRequestHeaders().getAuthorization().getAccessToken(),"ACCESS");
+            long userId = user.getUserId();
+            queryEngine.updateUserStatus(userId,request.getStatus());
             ResponseHeaders responseHeaders = ResponseHeaders.newBuilder().setStatus(StatusCode.SUCCESS).build();
             ChangeUserStatusResponse changeUserStatusResponse = ChangeUserStatusResponse.newBuilder().setResponseHeaders(responseHeaders).build();
             responseObserver.onNext(changeUserStatusResponse);

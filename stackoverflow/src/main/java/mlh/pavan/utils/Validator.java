@@ -56,12 +56,17 @@ public class Validator
     {
         if(StringUtils.isEmptyOrWhitespaceOnly(checkTokenRequest.getRequestHeaders().getAuthorization().getAccessToken()))
         {
-            ValidateException validateException = new ValidateException("Empty RefreshToken");
+            ValidateException validateException = new ValidateException("Empty AccessToken");
             throw validateException;
         }
     }
     public static void ValidateChangePassword(ChangePasswordRequest changePasswordRequest) throws ValidateException
     {
+        if(StringUtils.isEmptyOrWhitespaceOnly(changePasswordRequest.getRequestHeaders().getAuthorization().getAccessToken()))
+        {
+            ValidateException validateException = new ValidateException("Empty AccessToken");
+            throw validateException;
+        }
         if(StringUtils.isEmptyOrWhitespaceOnly(changePasswordRequest.getPassword()) || changePasswordRequest.getPassword().length()<=3)
         {
             ValidateException validateException = new ValidateException("Invalid Password");
@@ -70,6 +75,11 @@ public class Validator
     }
     public static void ValidateChangeUserName(ChangeUserNameRequest request) throws ValidateException
     {
+        if(StringUtils.isEmptyOrWhitespaceOnly(request.getRequestHeaders().getAuthorization().getAccessToken()))
+        {
+            ValidateException validateException = new ValidateException("Empty AccessToken");
+            throw validateException;
+        }
         if(StringUtils.isEmptyOrWhitespaceOnly(request.getUserName()))
         {
             ValidateException validateException = new ValidateException("Empty USername");
@@ -78,9 +88,14 @@ public class Validator
     }
     public static void ValidateChangeDescription(ChangeDescriptionRequest request) throws ValidateException
     {
+        if(StringUtils.isEmptyOrWhitespaceOnly(request.getRequestHeaders().getAuthorization().getAccessToken()))
+        {
+            ValidateException validateException = new ValidateException("Empty AccessToken");
+            throw validateException;
+        }
         if(StringUtils.isEmptyOrWhitespaceOnly(request.getDescription()))
         {
-            ValidateException validateException = new ValidateException("Empty USername");
+            ValidateException validateException = new ValidateException("Empty Description");
             throw validateException;
         }
     }
