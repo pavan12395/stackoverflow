@@ -1,6 +1,7 @@
 package mlh.pavan.utils;
 
 import com.mysql.cj.util.StringUtils;
+import org.mindrot.jbcrypt.BCrypt;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -15,6 +16,8 @@ public class PropertyReader
     private String dbUserName;
     private String accessTokenSecret;
     private String refreshTokenSecret;
+
+    private String salt;
 
     public String getAccessTokenSecret() {
         return accessTokenSecret;
@@ -39,6 +42,8 @@ public class PropertyReader
     public String getDriverName() {
         return driverName;
     }
+
+    public String getSalt(){return salt;}
 
 
     private static PropertyReader instance;
@@ -88,6 +93,8 @@ public class PropertyReader
             this.dbPassword = readEnv("database.password",dataBaseproperties.getProperty("database.password"));
             this.accessTokenSecret = readEnv("ACCESS_TOKEN_SECRET",authProperties.getProperty("ACCESS_TOKEN_SECRET"));
             this.refreshTokenSecret = readEnv("REFRESH_TOKEN_SECRET",authProperties.getProperty("REFRESH_TOKEN_SECRET"));
+            this.salt = readEnv("PASSWORD_SALT",authProperties.getProperty("PASSWORD_SALT"));
+            System.out.println("Salt : "+salt);
         }
         catch(Exception e)
         {

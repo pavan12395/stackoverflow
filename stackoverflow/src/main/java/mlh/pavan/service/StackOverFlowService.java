@@ -204,8 +204,8 @@ public class StackOverFlowService extends StackOverflowImplBase
             long userId = user.getUserId();
             String password = request.getPassword();
             String hashPassword = Utils.hashPassword(password);
-            String newPassword = request.getNewPassword();
-            queryEngine.updatePassword(userId, hashPassword,newPassword);
+            String newHashPassword = Utils.hashPassword(request.getNewPassword());
+            queryEngine.updatePassword(userId, hashPassword,newHashPassword);
             ResponseHeaders responseHeaders = ResponseHeaders.newBuilder().setStatus(StatusCode.SUCCESS).build();
             ChangePasswordResponse changePasswordResponse = ChangePasswordResponse.newBuilder().setResponseHeaders(responseHeaders).build();
             responseObserver.onNext(changePasswordResponse);
@@ -357,19 +357,23 @@ public class StackOverFlowService extends StackOverflowImplBase
     public void deleteUser(DeleteUserRequest request, io.grpc.stub.StreamObserver<DeleteUserResponse> responseObserver)
     {
         try{
+            queryEngine.getDataBaseConnection().startTransaction();
             User user = Utils.checkToken(request.getRequestHeaders().getAuthorization().getAccessToken(),"ACCESS");
             long userId = user.getUserId();
             queryEngine.deleteSkills(userId);
+            queryEngine.deleteLiveUser(userId);
             queryEngine.deleteUser(userId);
             ResponseHeaders responseHeaders = ResponseHeaders.newBuilder().setStatus(StatusCode.SUCCESS).build();
             DeleteUserResponse deleteUserResponse = DeleteUserResponse.newBuilder().setResponseHeaders(responseHeaders).build();
             responseObserver.onNext(deleteUserResponse);
+            queryEngine.getDataBaseConnection().commitTransaction();
         }
         catch(SQLException e)
         {
             ResponseHeaders responseHeaders = ResponseHeaders.newBuilder().setStatus(StatusCode.DB_FAILURE).addErrorMessages(e.getMessage()).build();
             DeleteUserResponse deleteUserResponse = DeleteUserResponse.newBuilder().setResponseHeaders(responseHeaders).build();
             responseObserver.onNext(deleteUserResponse);
+            queryEngine.getDataBaseConnection().rollBackTransaction();
         }
         finally {
             responseObserver.onCompleted();

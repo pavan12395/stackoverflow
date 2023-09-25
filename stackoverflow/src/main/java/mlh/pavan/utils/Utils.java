@@ -61,8 +61,7 @@ public class Utils
     }
     // Method to hash a password
     public static String hashPassword(String password) {
-        String salt = BCrypt.gensalt();
-        return BCrypt.hashpw(password, salt);
+        return BCrypt.hashpw(password,PropertyReader.getInstance().getSalt());
     }
 
     // Method to verify a password
