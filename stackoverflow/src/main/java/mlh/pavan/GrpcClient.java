@@ -13,7 +13,7 @@ import java.util.List;
 
 public class GrpcClient
 {
-    public static String accessToken = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyIiwiZXhwIjoxNzAxNjc0ODYyLCJpc3MiOiJzdGFja292ZXJmbG93IiwidXNlcklkIjoyMiwidXNlck5hbWUiOiJwYXZhbjEyMzQ1NiIsImRlc2NyaXB0aW9uIjoiZGVzYyIsInNraWxscyI6Ilt7XCJza2lsbE5hbWVfXCI6MyxcImRpZmZpY3VsdHlfXCI6MixcIm1lbW9pemVkSXNJbml0aWFsaXplZFwiOi0xLFwidW5rbm93bkZpZWxkc1wiOntcImZpZWxkc1wiOnt9fSxcIm1lbW9pemVkU2l6ZVwiOi0xLFwibWVtb2l6ZWRIYXNoQ29kZVwiOjB9LHtcInNraWxsTmFtZV9cIjoyLFwiZGlmZmljdWx0eV9cIjoyLFwibWVtb2l6ZWRJc0luaXRpYWxpemVkXCI6LTEsXCJ1bmtub3duRmllbGRzXCI6e1wiZmllbGRzXCI6e319LFwibWVtb2l6ZWRTaXplXCI6LTEsXCJtZW1vaXplZEhhc2hDb2RlXCI6MH1dIn0.5ypKnI1llQV0x3uF-Tg58c49C8gItyQRx-ThnI1wehs";
+    public static String accessToken = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyIiwiZXhwIjoxNjk1Njc2NjEzLCJpc3MiOiJzdGFja292ZXJmbG93IiwidXNlcklkIjoyNCwidXNlck5hbWUiOiJwYXZhbjEiLCJkZXNjcmlwdGlvbiI6ImRlc2MiLCJza2lsbHMiOiJbe1wic2tpbGxOYW1lX1wiOjMsXCJkaWZmaWN1bHR5X1wiOjIsXCJtZW1vaXplZElzSW5pdGlhbGl6ZWRcIjotMSxcInVua25vd25GaWVsZHNcIjp7XCJmaWVsZHNcIjp7fX0sXCJtZW1vaXplZFNpemVcIjotMSxcIm1lbW9pemVkSGFzaENvZGVcIjowfSx7XCJza2lsbE5hbWVfXCI6MixcImRpZmZpY3VsdHlfXCI6MixcIm1lbW9pemVkSXNJbml0aWFsaXplZFwiOi0xLFwidW5rbm93bkZpZWxkc1wiOntcImZpZWxkc1wiOnt9fSxcIm1lbW9pemVkU2l6ZVwiOi0xLFwibWVtb2l6ZWRIYXNoQ29kZVwiOjB9XSJ9.yk2R1NzleQb9inBL-xzN7z1ha2AeWZdD_fX4qNoAjlY";
     public static String refreshToken = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyIiwiZXhwIjoxNjk1OTY5MjU1LCJpc3MiOiJzdGFja292ZXJmbG93IiwidXNlcklkIjoxNiwidXNlck5hbWUiOiJwYXZhbjEyMzQ1NiIsImRlc2NyaXB0aW9uIjoiZGVzYyIsInNraWxscyI6Ilt7XCJza2lsbE5hbWVfXCI6MyxcImRpZmZpY3VsdHlfXCI6MixcIm1lbW9pemVkSXNJbml0aWFsaXplZFwiOi0xLFwidW5rbm93bkZpZWxkc1wiOntcImZpZWxkc1wiOnt9fSxcIm1lbW9pemVkU2l6ZVwiOi0xLFwibWVtb2l6ZWRIYXNoQ29kZVwiOjB9LHtcInNraWxsTmFtZV9cIjoyLFwiZGlmZmljdWx0eV9cIjoyLFwibWVtb2l6ZWRJc0luaXRpYWxpemVkXCI6LTEsXCJ1bmtub3duRmllbGRzXCI6e1wiZmllbGRzXCI6e319LFwibWVtb2l6ZWRTaXplXCI6LTEsXCJtZW1vaXplZEhhc2hDb2RlXCI6MH1dIn0.OEl5Wndl3JWuQPEDHyKh-7QG3rIPkGrC5CVFWl33ZWc";
     public static void TestSignUpRequest(StackOverflowBlockingStub blockingStub)
     {
@@ -23,7 +23,7 @@ public class GrpcClient
         skillList.add(skill1);
         skillList.add(skill2);
         SignUpRequest signUpRequest = SignUpRequest.newBuilder()
-        .setUserName("pavan1234567").setPassword("loginpassword").setDescription("desc").addAllSkills(skillList).build();
+        .setUserName("pavan2").setPassword("loginpassword").setDescription("desc").addAllSkills(skillList).build();
         SignUpResponse signUpResponse  = blockingStub.signUp(signUpRequest);
         System.out.println(signUpResponse);
     }
@@ -57,7 +57,7 @@ public class GrpcClient
     {
         Authorization authorization = Authorization.newBuilder().setAccessToken(accessToken).build();
         RequestHeaders requestHeaders = RequestHeaders.newBuilder().setAuthorization(authorization).build();
-        ChangeUserNameRequest changeUserNameRequest = ChangeUserNameRequest.newBuilder().setRequestHeaders(requestHeaders).setUserName("pavan1234567").build();
+        ChangeUserNameRequest changeUserNameRequest = ChangeUserNameRequest.newBuilder().setRequestHeaders(requestHeaders).setUserName("pavan2").build();
         ChangeUserNameResponse changeUserNameResponse = blockingStub.changeUserName(changeUserNameRequest);
         System.out.println(changeUserNameResponse);
     }

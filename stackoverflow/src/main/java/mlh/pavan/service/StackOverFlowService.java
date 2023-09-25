@@ -234,6 +234,10 @@ public class StackOverFlowService extends StackOverflowImplBase
             User user = Utils.checkToken(request.getRequestHeaders().getAuthorization().getAccessToken(),"ACCESS");
             long userId = user.getUserId();
             String userName = request.getUserName();
+            if(queryEngine.checkUserName(userName))
+            {
+                throw new Exception("UserName already exists");
+            }
             queryEngine.updateUserName(userId,userName);
             ResponseHeaders responseHeaders = ResponseHeaders.newBuilder().setStatus(StatusCode.SUCCESS).build();
             ChangeUserNameResponse changeUserNameResponse = ChangeUserNameResponse.newBuilder().setResponseHeaders(responseHeaders).build();
