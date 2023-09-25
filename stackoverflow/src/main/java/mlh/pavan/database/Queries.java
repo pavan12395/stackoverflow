@@ -36,4 +36,6 @@ Queries
 
     public static final String InsertLiveUser = "insert into live_users(id) VALUES(:id)";
 
+    public static final String GetUserStatus = "select status from live_users where id=:id";
+
 }

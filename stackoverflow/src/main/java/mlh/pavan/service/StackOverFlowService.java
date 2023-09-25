@@ -404,7 +404,15 @@ public class StackOverFlowService extends StackOverflowImplBase
         {
             User user = Utils.checkToken(request.getRequestHeaders().getAuthorization().getAccessToken(),"ACCESS");
             long userId = user.getUserId();
+            USER_STATUS oldStatus = queryEngine.getUserStatus(userId);
+            if(oldStatus==null)
+            {
+                throw new Exception("Unable to Fetch User Status");
+            }
             queryEngine.updateUserStatus(userId,request.getStatus());
+            if(USER_STATUS.forNumber(request.getStatusValue())==USER_STATUS.QUESTION){
+                // call the <address:port>/userAdded api
+            }
             ResponseHeaders responseHeaders = ResponseHeaders.newBuilder().setStatus(StatusCode.SUCCESS).build();
             ChangeUserStatusResponse changeUserStatusResponse = ChangeUserStatusResponse.newBuilder().setResponseHeaders(responseHeaders).build();
             responseObserver.onNext(changeUserStatusResponse);
@@ -412,6 +420,12 @@ public class StackOverFlowService extends StackOverflowImplBase
         catch(SQLException e)
         {
             ResponseHeaders responseHeaders = ResponseHeaders.newBuilder().setStatus(StatusCode.DB_FAILURE).addErrorMessages(e.getMessage()).build();
+            ChangeUserStatusResponse changeUserStatusResponse = ChangeUserStatusResponse.newBuilder().setResponseHeaders(responseHeaders).build();
+            responseObserver.onNext(changeUserStatusResponse);
+        }
+        catch(Exception e)
+        {
+            ResponseHeaders responseHeaders = ResponseHeaders.newBuilder().setStatus(StatusCode.INTERNAL_ERROR).addErrorMessages(e.getMessage()).build();
             ChangeUserStatusResponse changeUserStatusResponse = ChangeUserStatusResponse.newBuilder().setResponseHeaders(responseHeaders).build();
             responseObserver.onNext(changeUserStatusResponse);
         }

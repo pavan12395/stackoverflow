@@ -203,4 +203,16 @@ public class QueryEngine
         query = query.replace(":id",String.valueOf(userId));
         this.executeQuery(query);
     }
+    public USER_STATUS getUserStatus(long userId) throws SQLException
+    {
+        String query = Queries.GetUserStatus;
+        query = query.replace(":id",String.valueOf(userId));
+        ResultSet resultSet = this.executeSelectQuery(query);
+        while(resultSet.next())
+        {
+            int status = resultSet.getInt("status");
+            return USER_STATUS.forNumber(status);
+        }
+        return null;
+    }
 }
