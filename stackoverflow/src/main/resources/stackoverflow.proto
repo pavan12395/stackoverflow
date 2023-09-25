@@ -29,7 +29,9 @@ enum USER_STATUS
 {
   INACTIVE = 0;
   ACTIVE = 1;
-  ANSWER = 2;
+  QUESTION = 2;
+  ANSWER = 3;
+  CALL = 4;
 }
 
 message Authorization

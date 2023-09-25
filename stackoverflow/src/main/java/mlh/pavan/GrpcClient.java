@@ -21,7 +21,7 @@ public class GrpcClient
         skillList.add(skill1);
         skillList.add(skill2);
         SignUpRequest signUpRequest = SignUpRequest.newBuilder()
-        .setUserName("pavan3213").setPassword("12341212").setDescription("desc").addAllSkills(skillList).build();
+        .setUserName("pavan").setPassword("1234").setDescription("desc").addAllSkills(skillList).build();
         SignUpResponse signUpResponse  = blockingStub.signUp(signUpRequest);
         System.out.println(signUpResponse);
     }
@@ -33,7 +33,7 @@ public class GrpcClient
     }
     public static void TestCheckTokenRequest(StackOverflowBlockingStub blockingStub)
     {
-        String accessToken = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyIiwiZXhwIjoxNjkzNTU4NzkwLCJpc3MiOiJzdGFja292ZXJmbG93IiwidXNlcklkIjo0LCJ1c2VyTmFtZSI6InBhdmFuMyIsImRlc2NyaXB0aW9uIjoiZGVzYyIsInNraWxscyI6Ilt7XCJza2lsbE5hbWVfXCI6MSxcImRpZmZpY3VsdHlfXCI6MSxcIm1lbW9pemVkSXNJbml0aWFsaXplZFwiOi0xLFwidW5rbm93bkZpZWxkc1wiOntcImZpZWxkc1wiOnt9fSxcIm1lbW9pemVkU2l6ZVwiOi0xLFwibWVtb2l6ZWRIYXNoQ29kZVwiOjB9LHtcInNraWxsTmFtZV9cIjowLFwiZGlmZmljdWx0eV9cIjoxLFwibWVtb2l6ZWRJc0luaXRpYWxpemVkXCI6LTEsXCJ1bmtub3duRmllbGRzXCI6e1wiZmllbGRzXCI6e319LFwibWVtb2l6ZWRTaXplXCI6LTEsXCJtZW1vaXplZEhhc2hDb2RlXCI6MH1dIn0.-UA-nWyCZmbSp5vS4BpZAmaMcBliE96A5yfxOWVlx9U";
+        String accessToken = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyIiwiZXhwIjoxNzAxNjM2MDIzLCJpc3MiOiJzdGFja292ZXJmbG93IiwidXNlcklkIjo4LCJ1c2VyTmFtZSI6InBhdmFuIiwiZGVzY3JpcHRpb24iOiJkZXNjIiwic2tpbGxzIjoiW3tcInNraWxsTmFtZV9cIjozLFwiZGlmZmljdWx0eV9cIjoyLFwibWVtb2l6ZWRJc0luaXRpYWxpemVkXCI6LTEsXCJ1bmtub3duRmllbGRzXCI6e1wiZmllbGRzXCI6e319LFwibWVtb2l6ZWRTaXplXCI6LTEsXCJtZW1vaXplZEhhc2hDb2RlXCI6MH0se1wic2tpbGxOYW1lX1wiOjIsXCJkaWZmaWN1bHR5X1wiOjIsXCJtZW1vaXplZElzSW5pdGlhbGl6ZWRcIjotMSxcInVua25vd25GaWVsZHNcIjp7XCJmaWVsZHNcIjp7fX0sXCJtZW1vaXplZFNpemVcIjotMSxcIm1lbW9pemVkSGFzaENvZGVcIjowfV0ifQ.Gq_PqmopEJVGcuVk0oCaMqv0a6j-PK1wxOUAhqwJfss";
         CheckTokenRequest checkTokenRequest = CheckTokenRequest.newBuilder().setRequestHeaders(RequestHeaders.newBuilder().setAuthorization(Authorization.newBuilder().setAccessToken(accessToken).build())).build();
         CheckTokenResponse checkTokenResponse = blockingStub.checkToken(checkTokenRequest);
         System.out.println(checkTokenResponse);
@@ -111,7 +111,7 @@ public class GrpcClient
 
 //        TestSignUpRequest(stackOverflowBlockingStub);
 //        TestLoginRequest(stackOverflowBlockingStub);
-//        TestCheckTokenRequest(stackOverflowBlockingStub);
+        TestCheckTokenRequest(stackOverflowBlockingStub);
 //        TestGetTokenRequest(stackOverflowBlockingStub);
 //        TestUpdatePassword(stackOverflowBlockingStub);
 //        TestUpdateUserName(stackOverflowBlockingStub);
@@ -121,6 +121,6 @@ public class GrpcClient
 //        TestDeleteSkill(stackOverflowBlockingStub);
 //        TestDeleteUser(stackOverflowBlockingStub);
 //        TestUpdateRating(stackOverflowBlockingStub);
-        TestChangeUserStatus(stackOverflowBlockingStub);
+//        TestChangeUserStatus(stackOverflowBlockingStub);
     }
 }

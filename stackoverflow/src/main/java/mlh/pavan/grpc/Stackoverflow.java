@@ -367,9 +367,17 @@ public final class Stackoverflow {
      */
     ACTIVE(1),
     /**
-     * <code>ANSWER = 2;</code>
+     * <code>QUESTION = 2;</code>
      */
-    ANSWER(2),
+    QUESTION(2),
+    /**
+     * <code>ANSWER = 3;</code>
+     */
+    ANSWER(3),
+    /**
+     * <code>CALL = 4;</code>
+     */
+    CALL(4),
     UNRECOGNIZED(-1),
     ;
 
@@ -382,9 +390,17 @@ public final class Stackoverflow {
      */
     public static final int ACTIVE_VALUE = 1;
     /**
-     * <code>ANSWER = 2;</code>
+     * <code>QUESTION = 2;</code>
      */
-    public static final int ANSWER_VALUE = 2;
+    public static final int QUESTION_VALUE = 2;
+    /**
+     * <code>ANSWER = 3;</code>
+     */
+    public static final int ANSWER_VALUE = 3;
+    /**
+     * <code>CALL = 4;</code>
+     */
+    public static final int CALL_VALUE = 4;
 
 
     public final int getNumber() {
@@ -407,7 +423,9 @@ public final class Stackoverflow {
       switch (value) {
         case 0: return INACTIVE;
         case 1: return ACTIVE;
-        case 2: return ANSWER;
+        case 2: return QUESTION;
+        case 3: return ANSWER;
+        case 4: return CALL;
         default: return null;
       }
     }
@@ -25914,31 +25932,31 @@ public final class Stackoverflow {
       "\022\n\n\006PYTHON\020\003\022\t\n\005MYSQL\020\004*E\n\020SKILL_DIFFICU" +
       "LTY\022\021\n\rNO_DIFFICULTY\020\000\022\010\n\004EASY\020\001\022\n\n\006MEDI" +
       "UM\020\002\022\010\n\004HARD\020\003*=\n\nStatusCode\022\013\n\007SUCCESS\020" +
-      "\000\022\022\n\016INTERNAL_ERROR\020\001\022\016\n\nDB_FAILURE\020\002*3\n" +
-      "\013USER_STATUS\022\014\n\010INACTIVE\020\000\022\n\n\006ACTIVE\020\001\022\n" +
-      "\n\006ANSWER\020\0022\321\006\n\rStackOverflow\022&\n\005Greet\022\r." +
-      "GreetRequest\032\016.GreetResponse\022)\n\006SignUp\022\016" +
-      ".SignUpRequest\032\017.SignUpResponse\022&\n\005Login" +
-      "\022\r.LoginRequest\032\016.LoginResponse\022/\n\010GetTo" +
-      "ken\022\020.GetTokenRequest\032\021.GetTokenResponse" +
-      "\0225\n\nCheckToken\022\022.CheckTokenRequest\032\023.Che" +
-      "ckTokenResponse\022)\n\006Logout\022\016.LogoutReques" +
-      "t\032\017.LogoutResponse\022A\n\016ChangePassword\022\026.C" +
-      "hangePasswordRequest\032\027.ChangePasswordRes" +
-      "ponse\022A\n\016ChangeUserName\022\026.ChangeUserName" +
-      "Request\032\027.ChangeUserNameResponse\022J\n\021Chan" +
-      "geDescription\022\031.ChangeDescriptionRequest" +
-      "\032\032.ChangeDescriptionResponse\0228\n\013ChangeSk" +
-      "ill\022\023.ChangeSkillRequest\032\024.ChangeSkillRe" +
-      "sponse\022/\n\010AddSkill\022\020.AddSkillRequest\032\021.A" +
-      "ddSkillResponse\0228\n\013DeleteSkill\022\023.DeleteS" +
-      "killRequest\032\024.DeleteSkillResponse\0225\n\nDel" +
-      "eteUser\022\022.DeleteUserRequest\032\023.DeleteUser" +
-      "Response\022;\n\014UpdateRating\022\024.UpdateRatingR" +
-      "equest\032\025.UpdateRatingResponse\022G\n\020ChangeU" +
-      "serStatus\022\030.ChangeUserStatusRequest\032\031.Ch" +
-      "angeUserStatusResponseB\020\n\016mlh.pavan.grpc" +
-      "b\006proto3"
+      "\000\022\022\n\016INTERNAL_ERROR\020\001\022\016\n\nDB_FAILURE\020\002*K\n" +
+      "\013USER_STATUS\022\014\n\010INACTIVE\020\000\022\n\n\006ACTIVE\020\001\022\014" +
+      "\n\010QUESTION\020\002\022\n\n\006ANSWER\020\003\022\010\n\004CALL\020\0042\321\006\n\rS" +
+      "tackOverflow\022&\n\005Greet\022\r.GreetRequest\032\016.G" +
+      "reetResponse\022)\n\006SignUp\022\016.SignUpRequest\032\017" +
+      ".SignUpResponse\022&\n\005Login\022\r.LoginRequest\032" +
+      "\016.LoginResponse\022/\n\010GetToken\022\020.GetTokenRe" +
+      "quest\032\021.GetTokenResponse\0225\n\nCheckToken\022\022" +
+      ".CheckTokenRequest\032\023.CheckTokenResponse\022" +
+      ")\n\006Logout\022\016.LogoutRequest\032\017.LogoutRespon" +
+      "se\022A\n\016ChangePassword\022\026.ChangePasswordReq" +
+      "uest\032\027.ChangePasswordResponse\022A\n\016ChangeU" +
+      "serName\022\026.ChangeUserNameRequest\032\027.Change" +
+      "UserNameResponse\022J\n\021ChangeDescription\022\031." +
+      "ChangeDescriptionRequest\032\032.ChangeDescrip" +
+      "tionResponse\0228\n\013ChangeSkill\022\023.ChangeSkil" +
+      "lRequest\032\024.ChangeSkillResponse\022/\n\010AddSki" +
+      "ll\022\020.AddSkillRequest\032\021.AddSkillResponse\022" +
+      "8\n\013DeleteSkill\022\023.DeleteSkillRequest\032\024.De" +
+      "leteSkillResponse\0225\n\nDeleteUser\022\022.Delete" +
+      "UserRequest\032\023.DeleteUserResponse\022;\n\014Upda" +
+      "teRating\022\024.UpdateRatingRequest\032\025.UpdateR" +
+      "atingResponse\022G\n\020ChangeUserStatus\022\030.Chan" +
+      "geUserStatusRequest\032\031.ChangeUserStatusRe" +
+      "sponseB\020\n\016mlh.pavan.grpcb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
