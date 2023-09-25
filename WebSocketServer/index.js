@@ -19,7 +19,11 @@ connectDB();
 
 async function getAllUsers()
 {
-    let users = await LiveUser.findAll({status:2})
+    let users = await LiveUser.findAll({
+        where: {
+          status: 2
+        }
+      })
     users = users.map(user=>user.dataValues)
     return users
 }
