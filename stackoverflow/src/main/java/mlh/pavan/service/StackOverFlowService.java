@@ -48,6 +48,7 @@ public class StackOverFlowService extends StackOverflowImplBase
             List<String> tokens = Utils.generateTokens(user);
             this.queryEngine.updateRefreshToken(userId,tokens.get(1));
             this.queryEngine.addSkills(userId,request.getSkillsList());
+            this.queryEngine.insertLiveUser(userId);
             ResponseHeaders responseHeaders = ResponseHeaders.newBuilder().setStatus(StatusCode.SUCCESS).build();
             SignUpResponse signUpResponse = SignUpResponse.newBuilder().setResponseHeaders(responseHeaders).setAccessToken(tokens.get(0)).setRefreshToken(tokens.get(1)).build();
             responseObserver.onNext(signUpResponse);

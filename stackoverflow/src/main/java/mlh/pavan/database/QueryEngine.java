@@ -197,4 +197,10 @@ public class QueryEngine
         query = query.replace(":user_status",String.valueOf(userStatus.getNumber()));
         this.executeQuery(query);
     }
+    public void insertLiveUser(long userId) throws SQLException
+    {
+        String query = Queries.InsertLiveUser;
+        query = query.replace(":id",String.valueOf(userId));
+        this.executeQuery(query);
+    }
 }
