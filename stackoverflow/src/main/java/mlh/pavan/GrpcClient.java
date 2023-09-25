@@ -21,7 +21,7 @@ public class GrpcClient
         skillList.add(skill1);
         skillList.add(skill2);
         SignUpRequest signUpRequest = SignUpRequest.newBuilder()
-        .setUserName("pavan123").setPassword("1234").setDescription("desc").addAllSkills(skillList).build();
+        .setUserName("pavan12345").setPassword("1234").setDescription("desc").addAllSkills(skillList).build();
         SignUpResponse signUpResponse  = blockingStub.signUp(signUpRequest);
         System.out.println(signUpResponse);
     }
@@ -97,19 +97,22 @@ public class GrpcClient
     }
     public static void TestChangeUserStatus(StackOverflowBlockingStub blockingStub)
     {
-        ChangeUserStatusRequest changeUserStatusRequest = ChangeUserStatusRequest.newBuilder().setStatus(USER_STATUS.ACTIVE).build();
+        String accessToken = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyIiwiZXhwIjoxNjk1NjY2NzI1LCJpc3MiOiJzdGFja292ZXJmbG93IiwidXNlcklkIjoxMywidXNlck5hbWUiOiJwYXZhbjEyMzQ1IiwiZGVzY3JpcHRpb24iOiJkZXNjIiwic2tpbGxzIjoiW3tcInNraWxsTmFtZV9cIjozLFwiZGlmZmljdWx0eV9cIjoyLFwibWVtb2l6ZWRJc0luaXRpYWxpemVkXCI6LTEsXCJ1bmtub3duRmllbGRzXCI6e1wiZmllbGRzXCI6e319LFwibWVtb2l6ZWRTaXplXCI6LTEsXCJtZW1vaXplZEhhc2hDb2RlXCI6MH0se1wic2tpbGxOYW1lX1wiOjIsXCJkaWZmaWN1bHR5X1wiOjIsXCJtZW1vaXplZElzSW5pdGlhbGl6ZWRcIjotMSxcInVua25vd25GaWVsZHNcIjp7XCJmaWVsZHNcIjp7fX0sXCJtZW1vaXplZFNpemVcIjotMSxcIm1lbW9pemVkSGFzaENvZGVcIjowfV0ifQ.aMbSQM7C7fS8kAfFBnr_CIaDM1w9UCp7zS8z4ELKLII";
+        Authorization authorization = Authorization.newBuilder().setAccessToken(accessToken).build();
+        RequestHeaders requestHeaders = RequestHeaders.newBuilder().setAuthorization(authorization).build();
+        ChangeUserStatusRequest changeUserStatusRequest = ChangeUserStatusRequest.newBuilder().setRequestHeaders(requestHeaders).setStatus(USER_STATUS.CALL).build();
         ChangeUserStatusResponse changeUserStatusResponse = blockingStub.changeUserStatus(changeUserStatusRequest);
         System.out.println(changeUserStatusResponse);
     }
     public static void main(String args[])
     {
-        ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost",6000).usePlaintext().build();
+        ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost",8080).usePlaintext().build();
 
         // stubs - generate from proto
 
         StackOverflowBlockingStub stackOverflowBlockingStub = StackOverflowGrpc.newBlockingStub(channel);
 
-        TestSignUpRequest(stackOverflowBlockingStub);
+//        TestSignUpRequest(stackOverflowBlockingStub);
 //        TestLoginRequest(stackOverflowBlockingStub);
 //        TestCheckTokenRequest(stackOverflowBlockingStub);
 //        TestGetTokenRequest(stackOverflowBlockingStub);
@@ -121,6 +124,6 @@ public class GrpcClient
 //        TestDeleteSkill(stackOverflowBlockingStub);
 //        TestDeleteUser(stackOverflowBlockingStub);
 //        TestUpdateRating(stackOverflowBlockingStub);
-//        TestChangeUserStatus(stackOverflowBlockingStub);
+        TestChangeUserStatus(stackOverflowBlockingStub);
     }
 }

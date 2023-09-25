@@ -410,8 +410,10 @@ public class StackOverFlowService extends StackOverflowImplBase
                 throw new Exception("Unable to Fetch User Status");
             }
             queryEngine.updateUserStatus(userId,request.getStatus());
-            if(USER_STATUS.forNumber(request.getStatusValue())==USER_STATUS.QUESTION){
+            if(USER_STATUS.forNumber(request.getStatusValue())==USER_STATUS.QUESTION || oldStatus==USER_STATUS.QUESTION){
                 // call the <address:port>/userAdded api
+                System.out.println("Calling the API");
+                Utils.CallUserAddedEndPoint();
             }
             ResponseHeaders responseHeaders = ResponseHeaders.newBuilder().setStatus(StatusCode.SUCCESS).build();
             ChangeUserStatusResponse changeUserStatusResponse = ChangeUserStatusResponse.newBuilder().setResponseHeaders(responseHeaders).build();

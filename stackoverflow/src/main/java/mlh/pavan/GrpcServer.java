@@ -10,7 +10,7 @@ public class GrpcServer {
     public static void main(String[] args) throws Exception
     {
         System.out.println("starting GRPC Server");
-        Server server = ServerBuilder.forPort(6000).addService(new StackOverFlowService()).build();
+        Server server = ServerBuilder.forPort(8080).addService(new StackOverFlowService()).build();
         try
         {
             server.start();

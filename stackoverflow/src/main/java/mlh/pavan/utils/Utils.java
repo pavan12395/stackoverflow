@@ -10,6 +10,10 @@ import java.util.*;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.mindrot.jbcrypt.BCrypt;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.HttpClients;
 
 import javax.crypto.SecretKey;
 
@@ -80,5 +84,13 @@ public class Utils
             List<Skill> skillsList = gson.fromJson(skillsJson, new TypeToken<List<Skill>>() {}.getType());
             User user = User.newBuilder().setUserId(userId).setUserName(userName).setDescription(description).addAllSkills(skillsList).build();
             return user;
+    }
+    public static void CallUserAddedEndPoint() throws Exception {
+        HttpClient httpClient = HttpClients.createDefault();
+        HttpPost httpPost = new HttpPost("http://localhost:5000/userAdded");
+        httpPost.addHeader("Authorization","AIzaSyDaGmWKa4JsXZ-HjGw7ISLn_3namBGewQe");
+        HttpResponse response = httpClient.execute(httpPost);
+        int statusCode = response.getStatusLine().getStatusCode();
+        System.out.println("Status Code: " + statusCode);
     }
 }
