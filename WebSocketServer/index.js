@@ -1,4 +1,4 @@
-const {USER_ADDED_ROUTE,USERS_EVENT,ERROR_FETCH_LIVE_USERS_MESSAGE,SERVER_LISTENING_MESSAGE,WEB_SOCKET_MESSAGE,INVALID_API_KEY,API_KEY,QUESTION_STATUS,WEB_SOCKET_PORT,SERVER_PORT} = require("./constants/constants")
+const {USER_ADDED_ROUTE,USERS_EVENT,ERROR_FETCH_LIVE_USERS_MESSAGE,SERVER_LISTENING_MESSAGE,WEB_SOCKET_MESSAGE,INVALID_API_KEY,API_KEY,QUESTION_STATUS,WEB_SOCKET_PORT,SERVER_PORT,SUCCESS} = require("./constants/constants")
 const express = require('express');
 const app = express();
 const {connectDB} = require("./database/db")
@@ -33,14 +33,14 @@ app.post(USER_ADDED_ROUTE,async (req,res,next)=>
     const apiKey = req.headers.authorization;
     if(apiKey !== API_KEY)
     {
-        console.log("invalid api key");
+        console.log(INVALID_API_KEY);
         return res.status(403).json({message:INVALID_API_KEY});
     }
     try
     {
         const users = await getAllUsers()
         io.emit(USERS_EVENT,users)
-        return res.status(200).send("Success");
+        return res.status(200).send(SUCCESS);
     }
     catch(e)
     {

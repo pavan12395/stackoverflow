@@ -64,14 +64,14 @@ public class StackOverFlowService extends StackOverflowImplBase
             SignUpResponse signUpResponse = SignUpResponse.newBuilder().setResponseHeaders(responseHeaders).build();
             responseObserver.onNext(signUpResponse);
             queryEngine.getDataBaseConnection().rollBackTransaction();
-            logger.error(Constants.SIGNUP_ERROR_LOG,e.getMessage());
+            logger.error(String.format(Constants.SIGNUP_ERROR_LOG,e.getMessage()));
         }
         catch(Exception e)
         {
             ResponseHeaders responseHeaders = Utils.getResponseHeaders(e,StatusCode.INTERNAL_ERROR);
             SignUpResponse signUpResponse = SignUpResponse.newBuilder().setResponseHeaders(responseHeaders).build();
             responseObserver.onNext(signUpResponse);
-            logger.error(Constants.SIGNUP_ERROR_LOG,e.getMessage());
+            logger.error(String.format(Constants.SIGNUP_ERROR_LOG,e.getMessage()));
 
         }
         finally {
@@ -107,14 +107,14 @@ public class StackOverFlowService extends StackOverflowImplBase
             ResponseHeaders responseHeaders = Utils.getResponseHeaders(e,StatusCode.DB_FAILURE);
             LoginResponse loginResponse = LoginResponse.newBuilder().setResponseHeaders(responseHeaders).build();
             responseObserver.onNext(loginResponse);
-            logger.error(Constants.LOGIN_ERROR_LOG,e.getMessage());
+            logger.error(String.format(Constants.LOGIN_ERROR_LOG,e.getMessage()));
         }
         catch(Exception e)
         {
             ResponseHeaders responseHeaders = Utils.getResponseHeaders(e,StatusCode.INTERNAL_ERROR);
             LoginResponse loginResponse = LoginResponse.newBuilder().setResponseHeaders(responseHeaders).build();
             responseObserver.onNext(loginResponse);
-            logger.error(Constants.LOGIN_ERROR_LOG,e.getMessage());
+            logger.error(String.format(Constants.LOGIN_ERROR_LOG,e.getMessage()));
         }
         finally {
             responseObserver.onCompleted();
@@ -136,7 +136,7 @@ public class StackOverFlowService extends StackOverflowImplBase
         }
         catch(Exception e)
         {
-            logger.error(Constants.CHECK_TOKEN_ERROR_LOG,e.getMessage());
+            logger.error(String.format(Constants.CHECK_TOKEN_ERROR_LOG,e.getMessage()));
             ResponseHeaders responseHeaders = ResponseHeaders.newBuilder().setStatus(StatusCode.INTERNAL_ERROR).addErrorMessages(Constants.INVALID_JWT).build();
             CheckTokenResponse checkTokenResponse = CheckTokenResponse.newBuilder().setResponseHeaders(responseHeaders).build();
             responseObserver.onNext(checkTokenResponse);
@@ -164,14 +164,14 @@ public class StackOverFlowService extends StackOverflowImplBase
         }
         catch(SQLException e)
         {
-            logger.error(Constants.GET_TOKEN_ERROR_LOG,e.getMessage());
+            logger.error(String.format(Constants.GET_TOKEN_ERROR_LOG,e.getMessage()));
             ResponseHeaders responseHeaders = Utils.getResponseHeaders(e,StatusCode.DB_FAILURE);
             GetTokenResponse getTokenResponse = GetTokenResponse.newBuilder().setResponseHeaders(responseHeaders).build();
             responseObserver.onNext(getTokenResponse);
         }
         catch(Exception e)
         {
-            logger.error(Constants.GET_TOKEN_ERROR_LOG,e.getMessage());
+            logger.error(String.format(Constants.GET_TOKEN_ERROR_LOG,e.getMessage()));
             ResponseHeaders responseHeaders = Utils.getResponseHeaders(e,StatusCode.INTERNAL_ERROR);
             GetTokenResponse getTokenResponse = GetTokenResponse.newBuilder().setResponseHeaders(responseHeaders).build();
             responseObserver.onNext(getTokenResponse);
@@ -191,14 +191,14 @@ public class StackOverFlowService extends StackOverflowImplBase
         }
         catch(SQLException e)
         {
-            logger.error(Constants.LOGOUT_ERROR_LOG,e.getMessage());
+            logger.error(String.format(Constants.LOGOUT_ERROR_LOG,e.getMessage()));
             ResponseHeaders responseHeaders = Utils.getResponseHeaders(e,StatusCode.DB_FAILURE);
             LogoutResponse logoutResponse = LogoutResponse.newBuilder().setResponseHeaders(responseHeaders).build();
             responseObserver.onNext(logoutResponse);
         }
         catch(Exception e)
         {
-            logger.error(Constants.LOGOUT_ERROR_LOG,e.getMessage());
+            logger.error(String.format(Constants.LOGOUT_ERROR_LOG,e.getMessage()));
             ResponseHeaders responseHeaders = Utils.getResponseHeaders(e,StatusCode.INTERNAL_ERROR);
             LogoutResponse logoutResponse = LogoutResponse.newBuilder().setResponseHeaders(responseHeaders).build();
             responseObserver.onNext(logoutResponse);
@@ -226,14 +226,14 @@ public class StackOverFlowService extends StackOverflowImplBase
         }
         catch(SQLException e)
         {
-            logger.error(Constants.CHANGE_PASSWORD_ERROR_LOG,e.getMessage());
+            logger.error(String.format(Constants.CHANGE_PASSWORD_ERROR_LOG,e.getMessage()));
             ResponseHeaders responseHeaders = Utils.getResponseHeaders(e,StatusCode.DB_FAILURE);
             ChangePasswordResponse changePasswordResponse = ChangePasswordResponse.newBuilder().setResponseHeaders(responseHeaders).build();
             responseObserver.onNext(changePasswordResponse);
         }
         catch(Exception e)
         {
-            logger.error(Constants.CHANGE_PASSWORD_ERROR_LOG,e.getMessage());
+            logger.error(String.format(Constants.CHANGE_PASSWORD_ERROR_LOG,e.getMessage()));
             ResponseHeaders responseHeaders = Utils.getResponseHeaders(e,StatusCode.INTERNAL_ERROR);
             ChangePasswordResponse changePasswordResponse = ChangePasswordResponse.newBuilder().setResponseHeaders(responseHeaders).build();
             responseObserver.onNext(changePasswordResponse);
@@ -263,14 +263,14 @@ public class StackOverFlowService extends StackOverflowImplBase
         }
         catch(SQLException e)
         {
-            logger.error(Constants.CHANGE_USERNAME_ERROR_LOG,e.getMessage());
+            logger.error(String.format(Constants.CHANGE_USERNAME_ERROR_LOG,e.getMessage()));
             ResponseHeaders responseHeaders = Utils.getResponseHeaders(e,StatusCode.DB_FAILURE);
             ChangeUserNameResponse changeUserNameResponse = ChangeUserNameResponse.newBuilder().setResponseHeaders(responseHeaders).build();
             responseObserver.onNext(changeUserNameResponse);
         }
         catch(Exception e)
         {
-            logger.error(Constants.CHANGE_USERNAME_ERROR_LOG,e.getMessage());
+            logger.error(String.format(Constants.CHANGE_USERNAME_ERROR_LOG,e.getMessage()));
             ResponseHeaders responseHeaders = Utils.getResponseHeaders(e,StatusCode.INTERNAL_ERROR);
             ChangeUserNameResponse changeUserNameResponse = ChangeUserNameResponse.newBuilder().setResponseHeaders(responseHeaders).build();
             responseObserver.onNext(changeUserNameResponse);
@@ -296,14 +296,14 @@ public class StackOverFlowService extends StackOverflowImplBase
         }
         catch(SQLException e)
         {
-            logger.error(Constants.CHANGE_DESCRIPTION_ERROR_LOG,e.getMessage());
+            logger.error(String.format(Constants.CHANGE_DESCRIPTION_ERROR_LOG,e.getMessage()));
             ResponseHeaders responseHeaders = Utils.getResponseHeaders(e,StatusCode.DB_FAILURE);
             ChangeDescriptionResponse changeDescriptionResponse = ChangeDescriptionResponse.newBuilder().setResponseHeaders(responseHeaders).build();
             responseObserver.onNext(changeDescriptionResponse);
         }
         catch(Exception e)
         {
-            logger.error(Constants.CHANGE_DESCRIPTION_ERROR_LOG,e.getMessage());
+            logger.error(String.format(Constants.CHANGE_DESCRIPTION_ERROR_LOG,e.getMessage()));
             ResponseHeaders responseHeaders = Utils.getResponseHeaders(e,StatusCode.INTERNAL_ERROR);
             ChangeDescriptionResponse changeDescriptionResponse = ChangeDescriptionResponse.newBuilder().setResponseHeaders(responseHeaders).build();
             responseObserver.onNext(changeDescriptionResponse);
@@ -328,7 +328,7 @@ public class StackOverFlowService extends StackOverflowImplBase
         }
         catch(SQLException e)
         {
-            logger.error(Constants.CHANGE_SKILL_ERROR_LOG,e.getMessage());
+            logger.error(String.format(Constants.CHANGE_SKILL_ERROR_LOG,e.getMessage()));
             ResponseHeaders responseHeaders = Utils.getResponseHeaders(e,StatusCode.DB_FAILURE);
             ChangeSkillResponse changeSkillResponse = ChangeSkillResponse.newBuilder().setResponseHeaders(responseHeaders).build();
             responseObserver.onNext(changeSkillResponse);
@@ -353,7 +353,7 @@ public class StackOverFlowService extends StackOverflowImplBase
         }
         catch (SQLException e)
         {
-            logger.error(Constants.ADD_SKILL_ERROR_LOG,e.getMessage());
+            logger.error(String.format(Constants.ADD_SKILL_ERROR_LOG,e.getMessage()));
             ResponseHeaders responseHeaders = Utils.getResponseHeaders(e,StatusCode.DB_FAILURE);
             AddSkillResponse addSkillResponse = AddSkillResponse.newBuilder().setResponseHeaders(responseHeaders).build();
             responseObserver.onNext(addSkillResponse);
@@ -379,7 +379,7 @@ public class StackOverFlowService extends StackOverflowImplBase
         }
         catch(SQLException e)
         {
-            logger.error(Constants.DELETE_SKILL_ERROR_LOG,e.getMessage());
+            logger.error(String.format(Constants.DELETE_SKILL_ERROR_LOG,e.getMessage()));
             ResponseHeaders responseHeaders = Utils.getResponseHeaders(e,StatusCode.DB_FAILURE);
             DeleteSkillResponse deleteSkillResponse = DeleteSkillResponse.newBuilder().setResponseHeaders(responseHeaders).build();
             responseObserver.onNext(deleteSkillResponse);
@@ -407,7 +407,7 @@ public class StackOverFlowService extends StackOverflowImplBase
         }
         catch(SQLException e)
         {
-            logger.error(Constants.DELETE_USER_ERROR_LOG,e.getMessage());
+            logger.error(String.format(Constants.DELETE_USER_ERROR_LOG,e.getMessage()));
             ResponseHeaders responseHeaders = Utils.getResponseHeaders(e,StatusCode.DB_FAILURE);
             DeleteUserResponse deleteUserResponse = DeleteUserResponse.newBuilder().setResponseHeaders(responseHeaders).build();
             responseObserver.onNext(deleteUserResponse);
@@ -433,7 +433,7 @@ public class StackOverFlowService extends StackOverflowImplBase
         }
         catch(SQLException e)
         {
-            logger.error(Constants.UPDATE_RATING_ERROR_LOG,e.getMessage());
+            logger.error(String.format(Constants.UPDATE_RATING_ERROR_LOG,e.getMessage()));
             ResponseHeaders responseHeaders = Utils.getResponseHeaders(e,StatusCode.DB_FAILURE);
             UpdateRatingResponse updateRatingResponse = UpdateRatingResponse.newBuilder().setResponseHeaders(responseHeaders).build();
             responseObserver.onNext(updateRatingResponse);
@@ -468,14 +468,14 @@ public class StackOverFlowService extends StackOverflowImplBase
         }
         catch(SQLException e)
         {
-            logger.error(Constants.CHANGE_USER_STATUS_ERROR_LOG,e.getMessage());
+            logger.error(String.format(Constants.CHANGE_USER_STATUS_ERROR_LOG,e.getMessage()));
             ResponseHeaders responseHeaders = Utils.getResponseHeaders(e,StatusCode.DB_FAILURE);
             ChangeUserStatusResponse changeUserStatusResponse = ChangeUserStatusResponse.newBuilder().setResponseHeaders(responseHeaders).build();
             responseObserver.onNext(changeUserStatusResponse);
         }
         catch(Exception e)
         {
-            logger.error(Constants.CHANGE_USER_STATUS_ERROR_LOG,e.getMessage());
+            logger.error(String.format(Constants.CHANGE_USER_STATUS_ERROR_LOG,e.getMessage()));
             ResponseHeaders responseHeaders = Utils.getResponseHeaders(e,StatusCode.INTERNAL_ERROR);
             ChangeUserStatusResponse changeUserStatusResponse = ChangeUserStatusResponse.newBuilder().setResponseHeaders(responseHeaders).build();
             responseObserver.onNext(changeUserStatusResponse);
