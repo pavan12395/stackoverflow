@@ -21,6 +21,10 @@ public class PropertyReader
 
     private String salt;
 
+    private String userAddedEndPoint;
+
+    private String userAddedAPIKey;
+
     public String getAccessTokenSecret() {
         return accessTokenSecret;
     }
@@ -48,6 +52,9 @@ public class PropertyReader
     public String getSalt(){return salt;}
 
     public Integer getGrpcServerPort(){return grpcServerPort;}
+
+    public String getUserAddedEndPoint(){return userAddedEndPoint;}
+    public String getUserAddedAPIKey(){return userAddedAPIKey;}
 
 
     private static PropertyReader instance;
@@ -99,6 +106,8 @@ public class PropertyReader
             this.refreshTokenSecret = readEnv("REFRESH_TOKEN_SECRET",authProperties.getProperty("REFRESH_TOKEN_SECRET"));
             this.salt = readEnv("PASSWORD_SALT",authProperties.getProperty("PASSWORD_SALT"));
             this.grpcServerPort = Integer.parseInt(readEnv("GRPC_SERVER_PORT",authProperties.getProperty("GRPC_SERVER_PORT")));
+            this.userAddedEndPoint = readEnv("USER_ADDED_ENDPOINT",authProperties.getProperty("USER_ADDED_ENDPOINT"));
+            this.userAddedAPIKey = readEnv("USER_ADDED_APIKEY",authProperties.getProperty("USR_ADDED_APIKEY"));
         }
         catch(Exception e)
         {

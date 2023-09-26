@@ -1,6 +1,7 @@
 package mlh.pavan.Constants;
 
 
+import io.jsonwebtoken.SignatureAlgorithm;
 import mlh.pavan.utils.Utils;
 
 import java.util.Date;
@@ -68,10 +69,36 @@ public class Constants
 
     public static int ACCESS_EXPIRY = 10;
 
+    public static int REFRESH_EXPIRY = 5000;
+
     public static String INVALID_JWT ="Invalid JWT token";
 
     public static String EMPTY_REFRESH_TOKEN ="";
 
     public static String USER_FETCH_STATUS_UNABLE = "Unable to Fetch User Status";
     public static String USER_ADDED_API = "Calling UserAdded API";
+
+    public static String Authorization = "Authorization";
+
+    public static String USER_ID_CLAIM = "userId";
+
+    public static String USERNAME_CLAIM = "userName";
+
+    public static String DESC_CLAIM = "description";
+    public static String SKILL_CLAIM = "skills";
+
+    public static String USER_SUBJECT = "user";
+
+    public static String ISSUER = "stackoverflow";
+
+    public static SignatureAlgorithm SIGNING_ALGO = SignatureAlgorithm.HS256;
+
+    public static String USER_ADDED_LOG = "Reply from User Added Endpoint : %s";
+
+    public static String SUCCESS_DB = "Database Connection Successful";
+
+    public static String ERR_DB = "Database Failed to make connection!";
+
+    public static String AUTH_PROP_PATH = "auth.properties";
+
 }

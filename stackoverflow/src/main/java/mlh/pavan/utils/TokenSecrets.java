@@ -2,6 +2,8 @@ package mlh.pavan.utils;
 
 
 
+import mlh.pavan.Constants.Constants;
+
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.Connection;
@@ -19,7 +21,7 @@ public class TokenSecrets
     private TokenSecrets()
     {
         Properties properties = new Properties();
-            java.net.URL url = ClassLoader.getSystemResource("auth.properties");
+            java.net.URL url = ClassLoader.getSystemResource(Constants.AUTH_PROP_PATH);
             this.refreshTokenSecret = PropertyReader.getInstance().getRefreshTokenSecret();
             this.accessTokenSecret = PropertyReader.getInstance().getAccessTokenSecret();
     }

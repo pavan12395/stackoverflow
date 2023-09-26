@@ -1,6 +1,7 @@
 package mlh.pavan.database;
 
 
+import mlh.pavan.Constants.Constants;
 import mlh.pavan.utils.PropertyReader;
 
 import java.io.FileNotFoundException;
@@ -51,9 +52,9 @@ public class DataBaseConnection
             String dbPassword = PropertyReader.getInstance().getDbPassword();
             Connection dbConn = DriverManager.getConnection(dbConnUrl, dbUserName, dbPassword);
             if (dbConn != null) {
-                System.out.println("Database Connection Successful");
+                System.out.println(Constants.SUCCESS_DB);
             } else {
-                System.out.println("Database Failed to make connection!");
+                System.out.println(Constants.ERR_DB);
             }
             return dbConn;
         }
