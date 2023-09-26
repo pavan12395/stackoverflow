@@ -1,6 +1,7 @@
 package mlh.pavan.utils;
 
 import com.mysql.cj.util.StringUtils;
+import org.mindrot.jbcrypt.BCrypt;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -15,6 +16,14 @@ public class PropertyReader
     private String dbUserName;
     private String accessTokenSecret;
     private String refreshTokenSecret;
+
+    private Integer grpcServerPort;
+
+    private String salt;
+
+    private String userAddedEndPoint;
+
+    private String userAddedAPIKey;
 
     public String getAccessTokenSecret() {
         return accessTokenSecret;
@@ -39,6 +48,13 @@ public class PropertyReader
     public String getDriverName() {
         return driverName;
     }
+
+    public String getSalt(){return salt;}
+
+    public Integer getGrpcServerPort(){return grpcServerPort;}
+
+    public String getUserAddedEndPoint(){return userAddedEndPoint;}
+    public String getUserAddedAPIKey(){return userAddedAPIKey;}
 
 
     private static PropertyReader instance;
@@ -88,6 +104,10 @@ public class PropertyReader
             this.dbPassword = readEnv("database.password",dataBaseproperties.getProperty("database.password"));
             this.accessTokenSecret = readEnv("ACCESS_TOKEN_SECRET",authProperties.getProperty("ACCESS_TOKEN_SECRET"));
             this.refreshTokenSecret = readEnv("REFRESH_TOKEN_SECRET",authProperties.getProperty("REFRESH_TOKEN_SECRET"));
+            this.salt = readEnv("PASSWORD_SALT",authProperties.getProperty("PASSWORD_SALT"));
+            this.grpcServerPort = Integer.parseInt(readEnv("GRPC_SERVER_PORT",authProperties.getProperty("GRPC_SERVER_PORT")));
+            this.userAddedEndPoint = readEnv("USER_ADDED_ENDPOINT",authProperties.getProperty("USER_ADDED_ENDPOINT"));
+            this.userAddedAPIKey = readEnv("USER_ADDED_APIKEY",authProperties.getProperty("USER_ADDED_APIKEY"));
         }
         catch(Exception e)
         {

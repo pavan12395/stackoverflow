@@ -139,7 +139,7 @@ public class QueryEngine
         String query = Queries.UpdatePassword;
         query = query.replace(":password",singleQuotes(password));
         query = query.replace(":userid",String.valueOf(userId));
-        query = query.replace(":newpassword",newPassword);
+        query = query.replace(":newpassword",singleQuotes(newPassword));
         this.executeQuery(query);
     }
     public void updateUserName(long userId,String userName) throws SQLException
@@ -214,5 +214,11 @@ public class QueryEngine
             return USER_STATUS.forNumber(status);
         }
         return null;
+    }
+    public void deleteLiveUser(long userId) throws SQLException
+    {
+        String query = Queries.DeleteLiveUser;
+        query = query.replace(":id",String.valueOf(userId));
+        this.executeQuery(query);
     }
 }

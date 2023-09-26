@@ -10,7 +10,7 @@ public class Validator
     {
         if(StringUtils.isEmptyOrWhitespaceOnly(signUpRequest.getUserName()))
         {
-            ValidateException validateException = new ValidateException("Empty Username");
+            ValidateException validateException = new ValidateException("Empty User name !");
             throw validateException;
         }
         else if(StringUtils.isEmptyOrWhitespaceOnly(signUpRequest.getDescription()))

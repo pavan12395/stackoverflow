@@ -3,23 +3,28 @@ package mlh.pavan;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
 import mlh.pavan.service.StackOverFlowService;
+import mlh.pavan.Constants.Constants;
+import mlh.pavan.utils.PropertyReader;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 
 public class GrpcServer {
 
+    private static final Logger logger = LogManager.getLogger(GrpcServer.class);
+
     public static void main(String[] args) throws Exception
     {
-        System.out.println("starting GRPC Server");
-        Server server = ServerBuilder.forPort(8080).addService(new StackOverFlowService()).build();
+        Server server = ServerBuilder.forPort(PropertyReader.getInstance().getGrpcServerPort()).addService(new StackOverFlowService()).build();
         try
         {
+            logger.info(Constants.SERVER_LISTENING_MESSAGE);
             server.start();
-            System.out.println("Server started at "+ server.getPort());
             server.awaitTermination();
         }
         catch(Exception e)
         {
-            System.out.println(e.toString());
+            logger.error("Server terminated"+e.getMessage());
         }
     }
 }
