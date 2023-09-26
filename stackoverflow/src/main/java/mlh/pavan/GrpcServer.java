@@ -15,6 +15,7 @@ public class GrpcServer {
 
     public static void main(String[] args) throws Exception
     {
+        logger.info("Hello world");
         Server server = ServerBuilder.forPort(PropertyReader.getInstance().getGrpcServerPort()).addService(new StackOverFlowService()).build();
         try
         {
