@@ -23,7 +23,7 @@ public class GrpcClient
         skillList.add(skill1);
         skillList.add(skill2);
         SignUpRequest signUpRequest = SignUpRequest.newBuilder()
-        .setUserName("pavan1").setPassword("pass").setDescription("desc").addAllSkills(skillList).build();
+        .setUserName("pavan2").setPassword("pass").setDescription("desc").addAllSkills(skillList).build();
         SignUpResponse signUpResponse  = blockingStub.signUp(signUpRequest);
         System.out.println(signUpResponse);
     }
@@ -139,6 +139,6 @@ public class GrpcClient
 //        TestDeleteSkill(stackOverflowBlockingStub);
 //        TestDeleteUser(stackOverflowBlockingStub);
 //        TestUpdateRating(stackOverflowBlockingStub);
-        TestChangeUserStatus(stackOverflowBlockingStub);
+//        TestChangeUserStatus(stackOverflowBlockingStub);
     }
 }
