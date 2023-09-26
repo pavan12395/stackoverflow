@@ -18,8 +18,8 @@ public class GrpcServer {
         Server server = ServerBuilder.forPort(PropertyReader.getInstance().getGrpcServerPort()).addService(new StackOverFlowService()).build();
         try
         {
+            logger.info(Constants.SERVER_LISTENING_MESSAGE);
             server.start();
-            logger.info(Constants.SERVER_LISTENING_MESSAGE + server.getPort());
             server.awaitTermination();
         }
         catch(Exception e)
