@@ -1,6 +1,5 @@
 package mlh.pavan.service;
 
-import com.sun.org.apache.bcel.internal.Const;
 import mlh.pavan.Constants.Constants;
 import mlh.pavan.database.QueryEngine;
 import mlh.pavan.database.dao.UserDAO;
