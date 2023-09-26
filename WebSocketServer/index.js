@@ -1,9 +1,9 @@
+const {USER_ADDED_ROUTE,USERS_EVENT,ERROR_FETCH_LIVE_USERS_MESSAGE,SERVER_LISTENING_MESSAGE,WEB_SOCKET_MESSAGE,INVALID_API_KEY,API_KEY,QUESTION_STATUS,WEB_SOCKET_PORT,SERVER_PORT} = require("./constants/constants")
 const express = require('express');
 const app = express();
 const {connectDB} = require("./database/db")
-const io = require('socket.io')(4000)
+const io = require('socket.io')(WEB_SOCKET_PORT)
 const {LiveUser} = require("./models/LiveUsers")
-const {USER_ADDED_ROUTE,USERS_EVENT,ERROR_FETCH_LIVE_USERS_MESSAGE,SERVER_LISTENING_MESSAGE,WEB_SOCKET_MESSAGE,INVALID_API_KEY,API_KEY} = require("./constants/constants")
 // necessary middlewares
 app.use(function(req, res, next) {
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -21,7 +21,7 @@ async function getAllUsers()
 {
     let users = await LiveUser.findAll({
         where: {
-          status: 2
+          status: QUESTION_STATUS
         }
       })
     users = users.map(user=>user.dataValues)
@@ -47,7 +47,7 @@ app.post(USER_ADDED_ROUTE,async (req,res,next)=>
     }
 });
 
-app.listen(5000,()=>
+app.listen(SERVER_PORT,()=>
 {
     console.log(SERVER_LISTENING_MESSAGE)
 });

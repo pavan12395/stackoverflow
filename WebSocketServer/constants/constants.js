@@ -10,4 +10,5 @@ const database = process.env.DATABASE
 const username = process.env.DB_USERNAME
 const password = process.env.DB_PASSWORD
 const host = process.env.DB_HOST
+const QUESTION_STATUS = process.env.QUESTION_STATUS || 2
 module.exports = {USER_ADDED_ROUTE,USERS_EVENT,ERROR_FETCH_LIVE_USERS_MESSAGE,SERVER_LISTENING_MESSAGE,WEB_SOCKET_MESSAGE,INVALID_API_KEY,API_KEY,database,username,password,host}
