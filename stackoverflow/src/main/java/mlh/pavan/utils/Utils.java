@@ -92,4 +92,13 @@ public class Utils
         int statusCode = response.getStatusLine().getStatusCode();
         System.out.println("Status Code: " + statusCode);
     }
+    public static ResponseHeaders getResponseHeaders(Exception e,StatusCode statusCode) {
+        if (statusCode == StatusCode.SUCCESS) {
+            ResponseHeaders responseHeaders = ResponseHeaders.newBuilder().setStatus(statusCode).build();
+            return responseHeaders;
+        } else {
+            ResponseHeaders responseHeaders = ResponseHeaders.newBuilder().setStatus(statusCode).addErrorMessages(e.getMessage()).build();
+            return responseHeaders;
+        }
+    }
 }

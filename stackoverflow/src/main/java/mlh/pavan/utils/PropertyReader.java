@@ -17,6 +17,8 @@ public class PropertyReader
     private String accessTokenSecret;
     private String refreshTokenSecret;
 
+    private Integer grpcServerPort;
+
     private String salt;
 
     public String getAccessTokenSecret() {
@@ -44,6 +46,8 @@ public class PropertyReader
     }
 
     public String getSalt(){return salt;}
+
+    public Integer getGrpcServerPort(){return grpcServerPort;}
 
 
     private static PropertyReader instance;
@@ -94,7 +98,7 @@ public class PropertyReader
             this.accessTokenSecret = readEnv("ACCESS_TOKEN_SECRET",authProperties.getProperty("ACCESS_TOKEN_SECRET"));
             this.refreshTokenSecret = readEnv("REFRESH_TOKEN_SECRET",authProperties.getProperty("REFRESH_TOKEN_SECRET"));
             this.salt = readEnv("PASSWORD_SALT",authProperties.getProperty("PASSWORD_SALT"));
-            System.out.println("Salt : "+salt);
+            this.grpcServerPort = Integer.parseInt(readEnv("GRPC_SERVER_PORT",authProperties.getProperty("GRPC_SERVER_PORT")));
         }
         catch(Exception e)
         {
