@@ -33,6 +33,7 @@ app.post(USER_ADDED_ROUTE,async (req,res,next)=>
     const apiKey = req.headers.authorization;
     if(apiKey !== API_KEY)
     {
+        console.log("invalid api key");
         return res.status(403).json({message:INVALID_API_KEY});
     }
     try
@@ -43,6 +44,7 @@ app.post(USER_ADDED_ROUTE,async (req,res,next)=>
     }
     catch(e)
     {
+        console.log(e)
         return res.status(500).json({message:ERROR_FETCH_LIVE_USERS_MESSAGE});
     }
 });

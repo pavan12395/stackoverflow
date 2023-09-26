@@ -107,7 +107,7 @@ public class PropertyReader
             this.salt = readEnv("PASSWORD_SALT",authProperties.getProperty("PASSWORD_SALT"));
             this.grpcServerPort = Integer.parseInt(readEnv("GRPC_SERVER_PORT",authProperties.getProperty("GRPC_SERVER_PORT")));
             this.userAddedEndPoint = readEnv("USER_ADDED_ENDPOINT",authProperties.getProperty("USER_ADDED_ENDPOINT"));
-            this.userAddedAPIKey = readEnv("USER_ADDED_APIKEY",authProperties.getProperty("USR_ADDED_APIKEY"));
+            this.userAddedAPIKey = readEnv("USER_ADDED_APIKEY",authProperties.getProperty("USER_ADDED_APIKEY"));
         }
         catch(Exception e)
         {
