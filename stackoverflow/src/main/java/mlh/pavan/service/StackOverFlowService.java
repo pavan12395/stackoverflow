@@ -186,7 +186,8 @@ public class StackOverFlowService extends StackOverflowImplBase
     {
         try{
             logger.info(Constants.LOGOUT_REQUEST);
-            long userId = request.getUserId();
+            User user = Utils.checkToken(request.getRequestHeaders().getAuthorization().getAccessToken(),Constants.ACCESS);
+            long userId = user.getUserId();
             queryEngine.updateRefreshToken(userId,Constants.EMPTY_REFRESH_TOKEN);
         }
         catch(SQLException e)
