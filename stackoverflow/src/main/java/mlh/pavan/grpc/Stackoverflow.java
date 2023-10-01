@@ -24393,6 +24393,16 @@ public final class Stackoverflow {
      * <code>.USER_STATUS status = 3;</code>
      */
     mlh.pavan.grpc.Stackoverflow.USER_STATUS getStatus();
+
+    /**
+     * <code>string webRTCSecret = 4;</code>
+     */
+    java.lang.String getWebRTCSecret();
+    /**
+     * <code>string webRTCSecret = 4;</code>
+     */
+    com.google.protobuf.ByteString
+        getWebRTCSecretBytes();
   }
   /**
    * Protobuf type {@code ChangeUserStatusRequest}
@@ -24408,6 +24418,7 @@ public final class Stackoverflow {
     }
     private ChangeUserStatusRequest() {
       status_ = 0;
+      webRTCSecret_ = "";
     }
 
     @java.lang.Override
@@ -24451,6 +24462,12 @@ public final class Stackoverflow {
               int rawValue = input.readEnum();
 
               status_ = rawValue;
+              break;
+            }
+            case 34: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              webRTCSecret_ = s;
               break;
             }
             default: {
@@ -24523,6 +24540,40 @@ public final class Stackoverflow {
       return result == null ? mlh.pavan.grpc.Stackoverflow.USER_STATUS.UNRECOGNIZED : result;
     }
 
+    public static final int WEBRTCSECRET_FIELD_NUMBER = 4;
+    private volatile java.lang.Object webRTCSecret_;
+    /**
+     * <code>string webRTCSecret = 4;</code>
+     */
+    public java.lang.String getWebRTCSecret() {
+      java.lang.Object ref = webRTCSecret_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        webRTCSecret_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string webRTCSecret = 4;</code>
+     */
+    public com.google.protobuf.ByteString
+        getWebRTCSecretBytes() {
+      java.lang.Object ref = webRTCSecret_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        webRTCSecret_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -24543,6 +24594,9 @@ public final class Stackoverflow {
       if (status_ != mlh.pavan.grpc.Stackoverflow.USER_STATUS.INACTIVE.getNumber()) {
         output.writeEnum(3, status_);
       }
+      if (!getWebRTCSecretBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, webRTCSecret_);
+      }
       unknownFields.writeTo(output);
     }
 
@@ -24559,6 +24613,9 @@ public final class Stackoverflow {
       if (status_ != mlh.pavan.grpc.Stackoverflow.USER_STATUS.INACTIVE.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(3, status_);
+      }
+      if (!getWebRTCSecretBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, webRTCSecret_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -24582,6 +24639,8 @@ public final class Stackoverflow {
             .equals(other.getRequestHeaders());
       }
       result = result && status_ == other.status_;
+      result = result && getWebRTCSecret()
+          .equals(other.getWebRTCSecret());
       result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
@@ -24599,6 +24658,8 @@ public final class Stackoverflow {
       }
       hash = (37 * hash) + STATUS_FIELD_NUMBER;
       hash = (53 * hash) + status_;
+      hash = (37 * hash) + WEBRTCSECRET_FIELD_NUMBER;
+      hash = (53 * hash) + getWebRTCSecret().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -24740,6 +24801,8 @@ public final class Stackoverflow {
         }
         status_ = 0;
 
+        webRTCSecret_ = "";
+
         return this;
       }
 
@@ -24772,6 +24835,7 @@ public final class Stackoverflow {
           result.requestHeaders_ = requestHeadersBuilder_.build();
         }
         result.status_ = status_;
+        result.webRTCSecret_ = webRTCSecret_;
         onBuilt();
         return result;
       }
@@ -24825,6 +24889,10 @@ public final class Stackoverflow {
         }
         if (other.status_ != 0) {
           setStatusValue(other.getStatusValue());
+        }
+        if (!other.getWebRTCSecret().isEmpty()) {
+          webRTCSecret_ = other.webRTCSecret_;
+          onChanged();
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -25013,6 +25081,75 @@ public final class Stackoverflow {
       public Builder clearStatus() {
         
         status_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object webRTCSecret_ = "";
+      /**
+       * <code>string webRTCSecret = 4;</code>
+       */
+      public java.lang.String getWebRTCSecret() {
+        java.lang.Object ref = webRTCSecret_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          webRTCSecret_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string webRTCSecret = 4;</code>
+       */
+      public com.google.protobuf.ByteString
+          getWebRTCSecretBytes() {
+        java.lang.Object ref = webRTCSecret_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          webRTCSecret_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string webRTCSecret = 4;</code>
+       */
+      public Builder setWebRTCSecret(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        webRTCSecret_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string webRTCSecret = 4;</code>
+       */
+      public Builder clearWebRTCSecret() {
+        
+        webRTCSecret_ = getDefaultInstance().getWebRTCSecret();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string webRTCSecret = 4;</code>
+       */
+      public Builder setWebRTCSecretBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        webRTCSecret_ = value;
         onChanged();
         return this;
       }
@@ -25923,40 +26060,41 @@ public final class Stackoverflow {
       "eaders\"N\n\023UpdateRatingRequest\022\'\n\016request" +
       "Headers\030\001 \001(\0132\017.RequestHeaders\022\016\n\006rating" +
       "\030\003 \001(\002\"A\n\024UpdateRatingResponse\022)\n\017respon" +
-      "seHeaders\030\001 \001(\0132\020.ResponseHeaders\"`\n\027Cha" +
+      "seHeaders\030\001 \001(\0132\020.ResponseHeaders\"v\n\027Cha" +
       "ngeUserStatusRequest\022\'\n\016requestHeaders\030\001" +
       " \001(\0132\017.RequestHeaders\022\034\n\006status\030\003 \001(\0162\014." +
-      "USER_STATUS\"E\n\030ChangeUserStatusResponse\022" +
-      ")\n\017responseHeaders\030\001 \001(\0132\020.ResponseHeade" +
-      "rs*;\n\nSKILL_NAME\022\014\n\010NO_SKILL\020\000\022\010\n\004JAVA\020\002" +
-      "\022\n\n\006PYTHON\020\003\022\t\n\005MYSQL\020\004*E\n\020SKILL_DIFFICU" +
-      "LTY\022\021\n\rNO_DIFFICULTY\020\000\022\010\n\004EASY\020\001\022\n\n\006MEDI" +
-      "UM\020\002\022\010\n\004HARD\020\003*=\n\nStatusCode\022\013\n\007SUCCESS\020" +
-      "\000\022\022\n\016INTERNAL_ERROR\020\001\022\016\n\nDB_FAILURE\020\002*K\n" +
-      "\013USER_STATUS\022\014\n\010INACTIVE\020\000\022\n\n\006ACTIVE\020\001\022\014" +
-      "\n\010QUESTION\020\002\022\n\n\006ANSWER\020\003\022\010\n\004CALL\020\0042\321\006\n\rS" +
-      "tackOverflow\022&\n\005Greet\022\r.GreetRequest\032\016.G" +
-      "reetResponse\022)\n\006SignUp\022\016.SignUpRequest\032\017" +
-      ".SignUpResponse\022&\n\005Login\022\r.LoginRequest\032" +
-      "\016.LoginResponse\022/\n\010GetToken\022\020.GetTokenRe" +
-      "quest\032\021.GetTokenResponse\0225\n\nCheckToken\022\022" +
-      ".CheckTokenRequest\032\023.CheckTokenResponse\022" +
-      ")\n\006Logout\022\016.LogoutRequest\032\017.LogoutRespon" +
-      "se\022A\n\016ChangePassword\022\026.ChangePasswordReq" +
-      "uest\032\027.ChangePasswordResponse\022A\n\016ChangeU" +
-      "serName\022\026.ChangeUserNameRequest\032\027.Change" +
-      "UserNameResponse\022J\n\021ChangeDescription\022\031." +
-      "ChangeDescriptionRequest\032\032.ChangeDescrip" +
-      "tionResponse\0228\n\013ChangeSkill\022\023.ChangeSkil" +
-      "lRequest\032\024.ChangeSkillResponse\022/\n\010AddSki" +
-      "ll\022\020.AddSkillRequest\032\021.AddSkillResponse\022" +
-      "8\n\013DeleteSkill\022\023.DeleteSkillRequest\032\024.De" +
-      "leteSkillResponse\0225\n\nDeleteUser\022\022.Delete" +
-      "UserRequest\032\023.DeleteUserResponse\022;\n\014Upda" +
-      "teRating\022\024.UpdateRatingRequest\032\025.UpdateR" +
-      "atingResponse\022G\n\020ChangeUserStatus\022\030.Chan" +
-      "geUserStatusRequest\032\031.ChangeUserStatusRe" +
-      "sponseB\020\n\016mlh.pavan.grpcb\006proto3"
+      "USER_STATUS\022\024\n\014webRTCSecret\030\004 \001(\t\"E\n\030Cha" +
+      "ngeUserStatusResponse\022)\n\017responseHeaders" +
+      "\030\001 \001(\0132\020.ResponseHeaders*;\n\nSKILL_NAME\022\014" +
+      "\n\010NO_SKILL\020\000\022\010\n\004JAVA\020\002\022\n\n\006PYTHON\020\003\022\t\n\005MY" +
+      "SQL\020\004*E\n\020SKILL_DIFFICULTY\022\021\n\rNO_DIFFICUL" +
+      "TY\020\000\022\010\n\004EASY\020\001\022\n\n\006MEDIUM\020\002\022\010\n\004HARD\020\003*=\n\n" +
+      "StatusCode\022\013\n\007SUCCESS\020\000\022\022\n\016INTERNAL_ERRO" +
+      "R\020\001\022\016\n\nDB_FAILURE\020\002*K\n\013USER_STATUS\022\014\n\010IN" +
+      "ACTIVE\020\000\022\n\n\006ACTIVE\020\001\022\014\n\010QUESTION\020\002\022\n\n\006AN" +
+      "SWER\020\003\022\010\n\004CALL\020\0042\321\006\n\rStackOverflow\022&\n\005Gr" +
+      "eet\022\r.GreetRequest\032\016.GreetResponse\022)\n\006Si" +
+      "gnUp\022\016.SignUpRequest\032\017.SignUpResponse\022&\n" +
+      "\005Login\022\r.LoginRequest\032\016.LoginResponse\022/\n" +
+      "\010GetToken\022\020.GetTokenRequest\032\021.GetTokenRe" +
+      "sponse\0225\n\nCheckToken\022\022.CheckTokenRequest" +
+      "\032\023.CheckTokenResponse\022)\n\006Logout\022\016.Logout" +
+      "Request\032\017.LogoutResponse\022A\n\016ChangePasswo" +
+      "rd\022\026.ChangePasswordRequest\032\027.ChangePassw" +
+      "ordResponse\022A\n\016ChangeUserName\022\026.ChangeUs" +
+      "erNameRequest\032\027.ChangeUserNameResponse\022J" +
+      "\n\021ChangeDescription\022\031.ChangeDescriptionR" +
+      "equest\032\032.ChangeDescriptionResponse\0228\n\013Ch" +
+      "angeSkill\022\023.ChangeSkillRequest\032\024.ChangeS" +
+      "killResponse\022/\n\010AddSkill\022\020.AddSkillReque" +
+      "st\032\021.AddSkillResponse\0228\n\013DeleteSkill\022\023.D" +
+      "eleteSkillRequest\032\024.DeleteSkillResponse\022" +
+      "5\n\nDeleteUser\022\022.DeleteUserRequest\032\023.Dele" +
+      "teUserResponse\022;\n\014UpdateRating\022\024.UpdateR" +
+      "atingRequest\032\025.UpdateRatingResponse\022G\n\020C" +
+      "hangeUserStatus\022\030.ChangeUserStatusReques" +
+      "t\032\031.ChangeUserStatusResponseB\020\n\016mlh.pava" +
+      "n.grpcb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -26173,7 +26311,7 @@ public final class Stackoverflow {
     internal_static_ChangeUserStatusRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ChangeUserStatusRequest_descriptor,
-        new java.lang.String[] { "RequestHeaders", "Status", });
+        new java.lang.String[] { "RequestHeaders", "Status", "WebRTCSecret", });
     internal_static_ChangeUserStatusResponse_descriptor =
       getDescriptor().getMessageTypes().get(34);
     internal_static_ChangeUserStatusResponse_fieldAccessorTable = new

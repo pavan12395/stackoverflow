@@ -457,7 +457,7 @@ public class StackOverFlowService extends StackOverflowImplBase
             {
                 throw new Exception(Constants.USER_FETCH_STATUS_UNABLE);
             }
-            queryEngine.updateUserStatus(userId,request.getStatus());
+            queryEngine.updateUserStatus(userId,request.getStatus(),request.getWebRTCSecret());
             if(USER_STATUS.forNumber(request.getStatusValue())==USER_STATUS.QUESTION || oldStatus==USER_STATUS.QUESTION){
                 // call the <address:port>/userAdded api
                 logger.info(Constants.USER_ADDED_API);

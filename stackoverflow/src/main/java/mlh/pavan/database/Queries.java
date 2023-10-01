@@ -32,7 +32,7 @@ Queries
 
     public static final String UpdateRating = "update users set rating=:rating where id=:userid";
 
-    public static final String ChangeUserStatus = "update live_users set status=:user_status where id=:id";
+    public static final String ChangeUserStatus = "update live_users set status=:user_status,webrtc_secret=:webrtc_secret where id=:id";
 
     public static final String InsertLiveUser = "insert into live_users(id) VALUES(:id)";
 

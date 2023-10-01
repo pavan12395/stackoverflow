@@ -190,11 +190,12 @@ public class QueryEngine
         query = query.replace(":rating",String.valueOf(rating));
         this.executeQuery(query);
     }
-    public void updateUserStatus(long userId,USER_STATUS userStatus) throws SQLException
+    public void updateUserStatus(long userId,USER_STATUS userStatus,String webrtcSecret) throws SQLException
     {
         String query = Queries.ChangeUserStatus;
         query = query.replace(":id",String.valueOf(userId));
         query = query.replace(":user_status",String.valueOf(userStatus.getNumber()));
+        query = query.replace(":webrtc_secret",webrtcSecret);
         this.executeQuery(query);
     }
     public void insertLiveUser(long userId) throws SQLException
