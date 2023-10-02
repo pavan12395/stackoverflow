@@ -1,7 +1,9 @@
 package mlh.pavan.service;
 
+import io.grpc.stub.StreamObserver;
 import mlh.pavan.Constants.Constants;
 import mlh.pavan.database.QueryEngine;
+import mlh.pavan.database.dao.GetUserDetailsDAO;
 import mlh.pavan.database.dao.UserDAO;
 import mlh.pavan.exception.ValidateException;
 import mlh.pavan.grpc.StackOverflowGrpc.*;
@@ -487,7 +489,37 @@ public class StackOverFlowService extends StackOverflowImplBase
         }
     }
 
-
+    @Override
+    public void getUserDetailsById(GetUserDetailsByIdRequest request, StreamObserver<GetUserDetailsByIdResponse> responseObserver) {
+        try
+        {
+            logger.info(Constants.GET_USER_DETAILS_BY_ID_REQUEST);
+            User user = Utils.checkToken(request.getRequestHeaders().getAuthorization().getAccessToken(),Constants.ACCESS);
+            long userId = user.getUserId();
+            GetUserDetailsDAO getUserDetailsDAO = queryEngine.getUserDetailsById(userId);
+            ResponseHeaders responseHeaders = Utils.getResponseHeaders(null,StatusCode.SUCCESS)
+            GetUserDetailsByIdResponse getUserDetailsByIdResponse = GetUserDetailsByIdResponse.newBuilder().setResponseHeaders(responseHeaders).setRating(getUserDetailsDAO.getRating()).setUsername(getUserDetailsDAO.getUserName()).build();
+            responseObserver.onNext(getUserDetailsByIdResponse);
+        }
+        catch(SQLException e)
+        {
+            logger.error(Constants.GET_USER_DETAILS_BY_ID_ERROR_LOG);
+            ResponseHeaders responseHeaders = Utils.getResponseHeaders(e,StatusCode.DB_FAILURE);
+            GetUserDetailsByIdResponse getUserDetailsByIdResponse = GetUserDetailsByIdResponse.newBuilder().setResponseHeaders(responseHeaders).build();
+            responseObserver.onNext(getUserDetailsByIdResponse);
+        }
+        catch(Exception e)
+        {
+            logger.error(Constants.GET_USER_DETAILS_BY_ID_ERROR_LOG);
+            ResponseHeaders responseHeaders = Utils.getResponseHeaders(e,StatusCode.INTERNAL_ERROR);
+            GetUserDetailsByIdResponse getUserDetailsByIdResponse = GetUserDetailsByIdResponse.newBuilder().setResponseHeaders(responseHeaders).build();
+            responseObserver.onNext(getUserDetailsByIdResponse);
+        }
+        finally {
+            logger.info(Constants.GET_USER_DETAILS_BY_ID_RESPONSE);
+            responseObserver.onCompleted();
+        }
+    }
 }
 
 

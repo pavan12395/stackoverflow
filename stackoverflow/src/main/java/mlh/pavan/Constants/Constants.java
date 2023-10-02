@@ -101,4 +101,10 @@ public class Constants
 
     public static String AUTH_PROP_PATH = "auth.properties";
 
+    public static String GET_USER_DETAILS_BY_ID_RESPONSE = "Sent GetUserDetailsById Response";
+
+    public static String GET_USER_DETAILS_BY_ID_ERROR_LOG = "Error in GetUSerDetailsBy Id : %s";
+
+    public static String GET_USER_DETAILS_BY_ID_REQUEST = "Recieved GetUserDetailsById Request";
+
 }

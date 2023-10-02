@@ -1,5 +1,6 @@
 package mlh.pavan.database;
 
+import mlh.pavan.database.dao.GetUserDetailsDAO;
 import mlh.pavan.database.dao.UserDAO;
 import mlh.pavan.grpc.Stackoverflow.*;
 
@@ -222,5 +223,18 @@ public class QueryEngine
         String query = Queries.DeleteLiveUser;
         query = query.replace(":id",String.valueOf(userId));
         this.executeQuery(query);
+    }
+    public GetUserDetailsDAO getUserDetailsById(long userId) throws SQLException{
+        String query = Queries.GetUserDetailsById;
+        query = query.replace(":id",String.valueOf(userId));
+        ResultSet resultSet = this.executeSelectQuery(query);
+        while(resultSet.next())
+        {
+            String username = resultSet.getString("username");
+            double rating = resultSet.getDouble("rating");
+            GetUserDetailsDAO getUserDetailsDAO = new GetUserDetailsDAO(username,rating);
+            return getUserDetailsDAO;
+        }
+        return null;
     }
 }

@@ -507,6 +507,38 @@ public final class StackOverflowGrpc {
      return getChangeUserStatusMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<mlh.pavan.grpc.Stackoverflow.GetUserDetailsByIdRequest,
+      mlh.pavan.grpc.Stackoverflow.GetUserDetailsByIdResponse> getGetUserDetailsByIdMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "GetUserDetailsById",
+      requestType = mlh.pavan.grpc.Stackoverflow.GetUserDetailsByIdRequest.class,
+      responseType = mlh.pavan.grpc.Stackoverflow.GetUserDetailsByIdResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<mlh.pavan.grpc.Stackoverflow.GetUserDetailsByIdRequest,
+      mlh.pavan.grpc.Stackoverflow.GetUserDetailsByIdResponse> getGetUserDetailsByIdMethod() {
+    io.grpc.MethodDescriptor<mlh.pavan.grpc.Stackoverflow.GetUserDetailsByIdRequest, mlh.pavan.grpc.Stackoverflow.GetUserDetailsByIdResponse> getGetUserDetailsByIdMethod;
+    if ((getGetUserDetailsByIdMethod = StackOverflowGrpc.getGetUserDetailsByIdMethod) == null) {
+      synchronized (StackOverflowGrpc.class) {
+        if ((getGetUserDetailsByIdMethod = StackOverflowGrpc.getGetUserDetailsByIdMethod) == null) {
+          StackOverflowGrpc.getGetUserDetailsByIdMethod = getGetUserDetailsByIdMethod = 
+              io.grpc.MethodDescriptor.<mlh.pavan.grpc.Stackoverflow.GetUserDetailsByIdRequest, mlh.pavan.grpc.Stackoverflow.GetUserDetailsByIdResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(
+                  "StackOverflow", "GetUserDetailsById"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  mlh.pavan.grpc.Stackoverflow.GetUserDetailsByIdRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  mlh.pavan.grpc.Stackoverflow.GetUserDetailsByIdResponse.getDefaultInstance()))
+                  .setSchemaDescriptor(new StackOverflowMethodDescriptorSupplier("GetUserDetailsById"))
+                  .build();
+          }
+        }
+     }
+     return getGetUserDetailsByIdMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -639,6 +671,13 @@ public final class StackOverflowGrpc {
       asyncUnimplementedUnaryCall(getChangeUserStatusMethod(), responseObserver);
     }
 
+    /**
+     */
+    public void getUserDetailsById(mlh.pavan.grpc.Stackoverflow.GetUserDetailsByIdRequest request,
+        io.grpc.stub.StreamObserver<mlh.pavan.grpc.Stackoverflow.GetUserDetailsByIdResponse> responseObserver) {
+      asyncUnimplementedUnaryCall(getGetUserDetailsByIdMethod(), responseObserver);
+    }
+
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
@@ -746,6 +785,13 @@ public final class StackOverflowGrpc {
                 mlh.pavan.grpc.Stackoverflow.ChangeUserStatusRequest,
                 mlh.pavan.grpc.Stackoverflow.ChangeUserStatusResponse>(
                   this, METHODID_CHANGE_USER_STATUS)))
+          .addMethod(
+            getGetUserDetailsByIdMethod(),
+            asyncUnaryCall(
+              new MethodHandlers<
+                mlh.pavan.grpc.Stackoverflow.GetUserDetailsByIdRequest,
+                mlh.pavan.grpc.Stackoverflow.GetUserDetailsByIdResponse>(
+                  this, METHODID_GET_USER_DETAILS_BY_ID)))
           .build();
     }
   }
@@ -887,6 +933,14 @@ public final class StackOverflowGrpc {
       asyncUnaryCall(
           getChannel().newCall(getChangeUserStatusMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     */
+    public void getUserDetailsById(mlh.pavan.grpc.Stackoverflow.GetUserDetailsByIdRequest request,
+        io.grpc.stub.StreamObserver<mlh.pavan.grpc.Stackoverflow.GetUserDetailsByIdResponse> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(getGetUserDetailsByIdMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -1010,6 +1064,13 @@ public final class StackOverflowGrpc {
     public mlh.pavan.grpc.Stackoverflow.ChangeUserStatusResponse changeUserStatus(mlh.pavan.grpc.Stackoverflow.ChangeUserStatusRequest request) {
       return blockingUnaryCall(
           getChannel(), getChangeUserStatusMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public mlh.pavan.grpc.Stackoverflow.GetUserDetailsByIdResponse getUserDetailsById(mlh.pavan.grpc.Stackoverflow.GetUserDetailsByIdRequest request) {
+      return blockingUnaryCall(
+          getChannel(), getGetUserDetailsByIdMethod(), getCallOptions(), request);
     }
   }
 
@@ -1150,6 +1211,14 @@ public final class StackOverflowGrpc {
       return futureUnaryCall(
           getChannel().newCall(getChangeUserStatusMethod(), getCallOptions()), request);
     }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<mlh.pavan.grpc.Stackoverflow.GetUserDetailsByIdResponse> getUserDetailsById(
+        mlh.pavan.grpc.Stackoverflow.GetUserDetailsByIdRequest request) {
+      return futureUnaryCall(
+          getChannel().newCall(getGetUserDetailsByIdMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_GREET = 0;
@@ -1167,6 +1236,7 @@ public final class StackOverflowGrpc {
   private static final int METHODID_DELETE_USER = 12;
   private static final int METHODID_UPDATE_RATING = 13;
   private static final int METHODID_CHANGE_USER_STATUS = 14;
+  private static final int METHODID_GET_USER_DETAILS_BY_ID = 15;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -1245,6 +1315,10 @@ public final class StackOverflowGrpc {
           serviceImpl.changeUserStatus((mlh.pavan.grpc.Stackoverflow.ChangeUserStatusRequest) request,
               (io.grpc.stub.StreamObserver<mlh.pavan.grpc.Stackoverflow.ChangeUserStatusResponse>) responseObserver);
           break;
+        case METHODID_GET_USER_DETAILS_BY_ID:
+          serviceImpl.getUserDetailsById((mlh.pavan.grpc.Stackoverflow.GetUserDetailsByIdRequest) request,
+              (io.grpc.stub.StreamObserver<mlh.pavan.grpc.Stackoverflow.GetUserDetailsByIdResponse>) responseObserver);
+          break;
         default:
           throw new AssertionError();
       }
@@ -1321,6 +1395,7 @@ public final class StackOverflowGrpc {
               .addMethod(getDeleteUserMethod())
               .addMethod(getUpdateRatingMethod())
               .addMethod(getChangeUserStatusMethod())
+              .addMethod(getGetUserDetailsByIdMethod())
               .build();
         }
       }
