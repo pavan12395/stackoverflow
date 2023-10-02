@@ -195,7 +195,8 @@ public class QueryEngine
         String query = Queries.ChangeUserStatus;
         query = query.replace(":id",String.valueOf(userId));
         query = query.replace(":user_status",String.valueOf(userStatus.getNumber()));
-        query = query.replace(":webrtc_secret",webrtcSecret);
+        query = query.replace(":webrtc_secret",singleQuotes(webrtcSecret.substring(1,webrtcSecret.length()-1)));
+        System.out.println(query);
         this.executeQuery(query);
     }
     public void insertLiveUser(long userId) throws SQLException

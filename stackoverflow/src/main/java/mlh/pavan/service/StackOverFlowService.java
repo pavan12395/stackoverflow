@@ -72,7 +72,7 @@ public class StackOverFlowService extends StackOverflowImplBase
             SignUpResponse signUpResponse = SignUpResponse.newBuilder().setResponseHeaders(responseHeaders).build();
             responseObserver.onNext(signUpResponse);
             logger.error(String.format(Constants.SIGNUP_ERROR_LOG,e.getMessage()));
-
+            queryEngine.getDataBaseConnection().rollBackTransaction();
         }
         finally {
             responseObserver.onCompleted();

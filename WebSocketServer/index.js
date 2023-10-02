@@ -4,6 +4,7 @@ const app = express();
 const {connectDB} = require("./database/db")
 const io = require('socket.io')(WEB_SOCKET_PORT)
 const {LiveUser} = require("./models/LiveUsers")
+const cors = require('cors');
 // necessary middlewares
 app.use(function(req, res, next) {
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -14,6 +15,7 @@ app.use(function(req, res, next) {
 });
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
+app.use(cors());
 connectDB();
 
 

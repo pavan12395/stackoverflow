@@ -81,6 +81,7 @@ public class DataBaseConnection
         try
         {
             this.getConnection().commit();
+            this.getConnection().setAutoCommit(true);
         }
         catch(Exception e)
         {
