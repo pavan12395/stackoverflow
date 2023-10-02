@@ -15,6 +15,10 @@ const LiveUser = sequelize.define("live_users",
     webrtc_secret:{
         type: DataTypes.STRING,
         allowNull: true
+    },
+    question_details: {
+        type: DataTypes.STRING,
+        allowNull : false
     }
 },
 {
