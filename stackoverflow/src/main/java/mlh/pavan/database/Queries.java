@@ -34,6 +34,8 @@ Queries
 
     public static final String ChangeUserStatus = "update live_users set status=:user_status,webrtc_secret=:webrtc_secret where id=:id";
 
+    public static final String ChangeUserStatusWithQuestionDetails = "update live_users set status=:user_status,webrtc_secret=:webrtc_secret,question_details=:question_details where id=:id";
+
     public static final String InsertLiveUser = "insert into live_users(id) VALUES(:id)";
 
     public static final String GetUserStatus = "select status from live_users where id=:id";

@@ -24403,6 +24403,16 @@ public final class Stackoverflow {
      */
     com.google.protobuf.ByteString
         getWebRTCSecretBytes();
+
+    /**
+     * <code>string questionDetails = 5;</code>
+     */
+    java.lang.String getQuestionDetails();
+    /**
+     * <code>string questionDetails = 5;</code>
+     */
+    com.google.protobuf.ByteString
+        getQuestionDetailsBytes();
   }
   /**
    * Protobuf type {@code ChangeUserStatusRequest}
@@ -24419,6 +24429,7 @@ public final class Stackoverflow {
     private ChangeUserStatusRequest() {
       status_ = 0;
       webRTCSecret_ = "";
+      questionDetails_ = "";
     }
 
     @java.lang.Override
@@ -24468,6 +24479,12 @@ public final class Stackoverflow {
               java.lang.String s = input.readStringRequireUtf8();
 
               webRTCSecret_ = s;
+              break;
+            }
+            case 42: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              questionDetails_ = s;
               break;
             }
             default: {
@@ -24574,6 +24591,40 @@ public final class Stackoverflow {
       }
     }
 
+    public static final int QUESTIONDETAILS_FIELD_NUMBER = 5;
+    private volatile java.lang.Object questionDetails_;
+    /**
+     * <code>string questionDetails = 5;</code>
+     */
+    public java.lang.String getQuestionDetails() {
+      java.lang.Object ref = questionDetails_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        questionDetails_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string questionDetails = 5;</code>
+     */
+    public com.google.protobuf.ByteString
+        getQuestionDetailsBytes() {
+      java.lang.Object ref = questionDetails_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        questionDetails_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -24597,6 +24648,9 @@ public final class Stackoverflow {
       if (!getWebRTCSecretBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 4, webRTCSecret_);
       }
+      if (!getQuestionDetailsBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 5, questionDetails_);
+      }
       unknownFields.writeTo(output);
     }
 
@@ -24616,6 +24670,9 @@ public final class Stackoverflow {
       }
       if (!getWebRTCSecretBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, webRTCSecret_);
+      }
+      if (!getQuestionDetailsBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, questionDetails_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -24641,6 +24698,8 @@ public final class Stackoverflow {
       result = result && status_ == other.status_;
       result = result && getWebRTCSecret()
           .equals(other.getWebRTCSecret());
+      result = result && getQuestionDetails()
+          .equals(other.getQuestionDetails());
       result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
@@ -24660,6 +24719,8 @@ public final class Stackoverflow {
       hash = (53 * hash) + status_;
       hash = (37 * hash) + WEBRTCSECRET_FIELD_NUMBER;
       hash = (53 * hash) + getWebRTCSecret().hashCode();
+      hash = (37 * hash) + QUESTIONDETAILS_FIELD_NUMBER;
+      hash = (53 * hash) + getQuestionDetails().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -24803,6 +24864,8 @@ public final class Stackoverflow {
 
         webRTCSecret_ = "";
 
+        questionDetails_ = "";
+
         return this;
       }
 
@@ -24836,6 +24899,7 @@ public final class Stackoverflow {
         }
         result.status_ = status_;
         result.webRTCSecret_ = webRTCSecret_;
+        result.questionDetails_ = questionDetails_;
         onBuilt();
         return result;
       }
@@ -24892,6 +24956,10 @@ public final class Stackoverflow {
         }
         if (!other.getWebRTCSecret().isEmpty()) {
           webRTCSecret_ = other.webRTCSecret_;
+          onChanged();
+        }
+        if (!other.getQuestionDetails().isEmpty()) {
+          questionDetails_ = other.questionDetails_;
           onChanged();
         }
         this.mergeUnknownFields(other.unknownFields);
@@ -25150,6 +25218,75 @@ public final class Stackoverflow {
   checkByteStringIsUtf8(value);
         
         webRTCSecret_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object questionDetails_ = "";
+      /**
+       * <code>string questionDetails = 5;</code>
+       */
+      public java.lang.String getQuestionDetails() {
+        java.lang.Object ref = questionDetails_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          questionDetails_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string questionDetails = 5;</code>
+       */
+      public com.google.protobuf.ByteString
+          getQuestionDetailsBytes() {
+        java.lang.Object ref = questionDetails_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          questionDetails_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string questionDetails = 5;</code>
+       */
+      public Builder setQuestionDetails(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        questionDetails_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string questionDetails = 5;</code>
+       */
+      public Builder clearQuestionDetails() {
+        
+        questionDetails_ = getDefaultInstance().getQuestionDetails();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string questionDetails = 5;</code>
+       */
+      public Builder setQuestionDetailsBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        questionDetails_ = value;
         onChanged();
         return this;
       }
@@ -27551,48 +27688,48 @@ public final class Stackoverflow {
       "eaders\"N\n\023UpdateRatingRequest\022\'\n\016request" +
       "Headers\030\001 \001(\0132\017.RequestHeaders\022\016\n\006rating" +
       "\030\003 \001(\002\"A\n\024UpdateRatingResponse\022)\n\017respon" +
-      "seHeaders\030\001 \001(\0132\020.ResponseHeaders\"v\n\027Cha" +
-      "ngeUserStatusRequest\022\'\n\016requestHeaders\030\001" +
-      " \001(\0132\017.RequestHeaders\022\034\n\006status\030\003 \001(\0162\014." +
-      "USER_STATUS\022\024\n\014webRTCSecret\030\004 \001(\t\"E\n\030Cha" +
-      "ngeUserStatusResponse\022)\n\017responseHeaders" +
-      "\030\001 \001(\0132\020.ResponseHeaders\"T\n\031GetUserDetai" +
-      "lsByIdRequest\022\'\n\016requestHeaders\030\001 \001(\0132\017." +
-      "RequestHeaders\022\016\n\006userId\030\002 \001(\003\"i\n\032GetUse" +
-      "rDetailsByIdResponse\022)\n\017responseHeaders\030" +
-      "\001 \001(\0132\020.ResponseHeaders\022\020\n\010username\030\002 \001(" +
-      "\t\022\016\n\006rating\030\003 \001(\001*;\n\nSKILL_NAME\022\014\n\010NO_SK" +
-      "ILL\020\000\022\010\n\004JAVA\020\002\022\n\n\006PYTHON\020\003\022\t\n\005MYSQL\020\004*E" +
-      "\n\020SKILL_DIFFICULTY\022\021\n\rNO_DIFFICULTY\020\000\022\010\n" +
-      "\004EASY\020\001\022\n\n\006MEDIUM\020\002\022\010\n\004HARD\020\003*=\n\nStatusC" +
-      "ode\022\013\n\007SUCCESS\020\000\022\022\n\016INTERNAL_ERROR\020\001\022\016\n\n" +
-      "DB_FAILURE\020\002*K\n\013USER_STATUS\022\014\n\010INACTIVE\020" +
-      "\000\022\n\n\006ACTIVE\020\001\022\014\n\010QUESTION\020\002\022\n\n\006ANSWER\020\003\022" +
-      "\010\n\004CALL\020\0042\240\007\n\rStackOverflow\022&\n\005Greet\022\r.G" +
-      "reetRequest\032\016.GreetResponse\022)\n\006SignUp\022\016." +
-      "SignUpRequest\032\017.SignUpResponse\022&\n\005Login\022" +
-      "\r.LoginRequest\032\016.LoginResponse\022/\n\010GetTok" +
-      "en\022\020.GetTokenRequest\032\021.GetTokenResponse\022" +
-      "5\n\nCheckToken\022\022.CheckTokenRequest\032\023.Chec" +
-      "kTokenResponse\022)\n\006Logout\022\016.LogoutRequest" +
-      "\032\017.LogoutResponse\022A\n\016ChangePassword\022\026.Ch" +
-      "angePasswordRequest\032\027.ChangePasswordResp" +
-      "onse\022A\n\016ChangeUserName\022\026.ChangeUserNameR" +
-      "equest\032\027.ChangeUserNameResponse\022J\n\021Chang" +
-      "eDescription\022\031.ChangeDescriptionRequest\032" +
-      "\032.ChangeDescriptionResponse\0228\n\013ChangeSki" +
-      "ll\022\023.ChangeSkillRequest\032\024.ChangeSkillRes" +
-      "ponse\022/\n\010AddSkill\022\020.AddSkillRequest\032\021.Ad" +
-      "dSkillResponse\0228\n\013DeleteSkill\022\023.DeleteSk" +
-      "illRequest\032\024.DeleteSkillResponse\0225\n\nDele" +
-      "teUser\022\022.DeleteUserRequest\032\023.DeleteUserR" +
-      "esponse\022;\n\014UpdateRating\022\024.UpdateRatingRe" +
-      "quest\032\025.UpdateRatingResponse\022G\n\020ChangeUs" +
-      "erStatus\022\030.ChangeUserStatusRequest\032\031.Cha" +
-      "ngeUserStatusResponse\022M\n\022GetUserDetailsB" +
-      "yId\022\032.GetUserDetailsByIdRequest\032\033.GetUse" +
-      "rDetailsByIdResponseB\020\n\016mlh.pavan.grpcb\006" +
-      "proto3"
+      "seHeaders\030\001 \001(\0132\020.ResponseHeaders\"\217\001\n\027Ch" +
+      "angeUserStatusRequest\022\'\n\016requestHeaders\030" +
+      "\001 \001(\0132\017.RequestHeaders\022\034\n\006status\030\003 \001(\0162\014" +
+      ".USER_STATUS\022\024\n\014webRTCSecret\030\004 \001(\t\022\027\n\017qu" +
+      "estionDetails\030\005 \001(\t\"E\n\030ChangeUserStatusR" +
+      "esponse\022)\n\017responseHeaders\030\001 \001(\0132\020.Respo" +
+      "nseHeaders\"T\n\031GetUserDetailsByIdRequest\022" +
+      "\'\n\016requestHeaders\030\001 \001(\0132\017.RequestHeaders" +
+      "\022\016\n\006userId\030\002 \001(\003\"i\n\032GetUserDetailsByIdRe" +
+      "sponse\022)\n\017responseHeaders\030\001 \001(\0132\020.Respon" +
+      "seHeaders\022\020\n\010username\030\002 \001(\t\022\016\n\006rating\030\003 " +
+      "\001(\001*;\n\nSKILL_NAME\022\014\n\010NO_SKILL\020\000\022\010\n\004JAVA\020" +
+      "\002\022\n\n\006PYTHON\020\003\022\t\n\005MYSQL\020\004*E\n\020SKILL_DIFFIC" +
+      "ULTY\022\021\n\rNO_DIFFICULTY\020\000\022\010\n\004EASY\020\001\022\n\n\006MED" +
+      "IUM\020\002\022\010\n\004HARD\020\003*=\n\nStatusCode\022\013\n\007SUCCESS" +
+      "\020\000\022\022\n\016INTERNAL_ERROR\020\001\022\016\n\nDB_FAILURE\020\002*K" +
+      "\n\013USER_STATUS\022\014\n\010INACTIVE\020\000\022\n\n\006ACTIVE\020\001\022" +
+      "\014\n\010QUESTION\020\002\022\n\n\006ANSWER\020\003\022\010\n\004CALL\020\0042\240\007\n\r" +
+      "StackOverflow\022&\n\005Greet\022\r.GreetRequest\032\016." +
+      "GreetResponse\022)\n\006SignUp\022\016.SignUpRequest\032" +
+      "\017.SignUpResponse\022&\n\005Login\022\r.LoginRequest" +
+      "\032\016.LoginResponse\022/\n\010GetToken\022\020.GetTokenR" +
+      "equest\032\021.GetTokenResponse\0225\n\nCheckToken\022" +
+      "\022.CheckTokenRequest\032\023.CheckTokenResponse" +
+      "\022)\n\006Logout\022\016.LogoutRequest\032\017.LogoutRespo" +
+      "nse\022A\n\016ChangePassword\022\026.ChangePasswordRe" +
+      "quest\032\027.ChangePasswordResponse\022A\n\016Change" +
+      "UserName\022\026.ChangeUserNameRequest\032\027.Chang" +
+      "eUserNameResponse\022J\n\021ChangeDescription\022\031" +
+      ".ChangeDescriptionRequest\032\032.ChangeDescri" +
+      "ptionResponse\0228\n\013ChangeSkill\022\023.ChangeSki" +
+      "llRequest\032\024.ChangeSkillResponse\022/\n\010AddSk" +
+      "ill\022\020.AddSkillRequest\032\021.AddSkillResponse" +
+      "\0228\n\013DeleteSkill\022\023.DeleteSkillRequest\032\024.D" +
+      "eleteSkillResponse\0225\n\nDeleteUser\022\022.Delet" +
+      "eUserRequest\032\023.DeleteUserResponse\022;\n\014Upd" +
+      "ateRating\022\024.UpdateRatingRequest\032\025.Update" +
+      "RatingResponse\022G\n\020ChangeUserStatus\022\030.Cha" +
+      "ngeUserStatusRequest\032\031.ChangeUserStatusR" +
+      "esponse\022M\n\022GetUserDetailsById\022\032.GetUserD" +
+      "etailsByIdRequest\032\033.GetUserDetailsByIdRe" +
+      "sponseB\020\n\016mlh.pavan.grpcb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -27809,7 +27946,7 @@ public final class Stackoverflow {
     internal_static_ChangeUserStatusRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ChangeUserStatusRequest_descriptor,
-        new java.lang.String[] { "RequestHeaders", "Status", "WebRTCSecret", });
+        new java.lang.String[] { "RequestHeaders", "Status", "WebRTCSecret", "QuestionDetails", });
     internal_static_ChangeUserStatusResponse_descriptor =
       getDescriptor().getMessageTypes().get(34);
     internal_static_ChangeUserStatusResponse_fieldAccessorTable = new

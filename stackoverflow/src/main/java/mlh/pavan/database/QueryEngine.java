@@ -1,5 +1,6 @@
 package mlh.pavan.database;
 
+import com.mysql.cj.util.StringUtils;
 import mlh.pavan.database.dao.GetUserDetailsDAO;
 import mlh.pavan.database.dao.UserDAO;
 import mlh.pavan.grpc.Stackoverflow.*;
@@ -195,8 +196,15 @@ public class QueryEngine
     {
         String query = Queries.ChangeUserStatus;
         query = query.replace(":id",String.valueOf(userId));
+        if(StringUtils.isEmptyOrWhitespaceOnly(webrtcSecret))
+        {
+            query = query.replace(":webrtc_secret",singleQuotes(""));
+        }
+        else {
+            query = query.replace(":webrtc_secret",singleQuotes(webrtcSecret.substring(1,webrtcSecret.length()-1)));
+
+        }
         query = query.replace(":user_status",String.valueOf(userStatus.getNumber()));
-        query = query.replace(":webrtc_secret",singleQuotes(webrtcSecret.substring(1,webrtcSecret.length()-1)));
         System.out.println(query);
         this.executeQuery(query);
     }
@@ -236,5 +244,22 @@ public class QueryEngine
             return getUserDetailsDAO;
         }
         return null;
+    }
+    public void updateUserStatusWithQuestion(long userId,USER_STATUS userStatus,String webrtcSecret,String questionDetails) throws SQLException
+    {
+        String query = Queries.ChangeUserStatusWithQuestionDetails;
+        query = query.replace(":id",String.valueOf(userId));
+        query = query.replace(":user_status",String.valueOf(userStatus.getNumber()));
+        if(StringUtils.isEmptyOrWhitespaceOnly(webrtcSecret))
+        {
+            query = query.replace(":webrtc_secret",singleQuotes(""));
+        }
+        else {
+            query = query.replace(":webrtc_secret",singleQuotes(webrtcSecret.substring(1,webrtcSecret.length()-1)));
+
+        }
+        query = query.replace(":question_details",singleQuotes(questionDetails));
+        System.out.println(query);
+        this.executeQuery(query);
     }
 }

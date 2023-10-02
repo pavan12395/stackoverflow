@@ -61,5 +61,6 @@ io.on("connection",async (socket)=>
     console.log(WEB_SOCKET_MESSAGE);
     const users = await getAllUsers();
     console.log("Fetched Users : ",users);
+    console.log("Emitting WElcome EVent : ",users);
     socket.emit("welcome",users);
 });

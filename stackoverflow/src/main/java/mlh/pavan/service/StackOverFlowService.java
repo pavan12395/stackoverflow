@@ -1,5 +1,6 @@
 package mlh.pavan.service;
 
+import com.mysql.cj.util.StringUtils;
 import io.grpc.stub.StreamObserver;
 import mlh.pavan.Constants.Constants;
 import mlh.pavan.database.QueryEngine;
@@ -459,8 +460,14 @@ public class StackOverFlowService extends StackOverflowImplBase
             {
                 throw new Exception(Constants.USER_FETCH_STATUS_UNABLE);
             }
-            queryEngine.updateUserStatus(userId,request.getStatus(),request.getWebRTCSecret());
-            if(USER_STATUS.forNumber(request.getStatusValue())==USER_STATUS.QUESTION || oldStatus==USER_STATUS.QUESTION){
+            if(StringUtils.isEmptyOrWhitespaceOnly(request.getQuestionDetails())) {
+                queryEngine.updateUserStatus(userId, request.getStatus(), request.getWebRTCSecret());
+            }
+            else
+            {
+                queryEngine.updateUserStatusWithQuestion(userId,request.getStatus(),request.getWebRTCSecret(),request.getQuestionDetails());
+            }
+            if (USER_STATUS.forNumber(request.getStatusValue()) == USER_STATUS.QUESTION || oldStatus == USER_STATUS.QUESTION) {
                 // call the <address:port>/userAdded api
                 logger.info(Constants.USER_ADDED_API);
                 Utils.CallUserAddedEndPoint();
