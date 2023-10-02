@@ -56,7 +56,10 @@ app.listen(SERVER_PORT,()=>
     console.log(SERVER_LISTENING_MESSAGE)
 });
 
-io.on("connection",(socket)=>
+io.on("connection",async (socket)=>
 {
     console.log(WEB_SOCKET_MESSAGE);
+    const users = await getAllUsers();
+    console.log("Fetched Users : ",users);
+    socket.emit("welcome",users);
 });

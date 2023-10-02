@@ -39,5 +39,4 @@ Queries
     public static final String GetUserStatus = "select status from live_users where id=:id";
 
     public static final String DeleteLiveUser = "delete from live_users where id=:id";
-
 }
