@@ -41,6 +41,7 @@ public class StackOverFlowService extends StackOverflowImplBase
     {
         try
         {
+            queryEngine.getDataBaseConnection().startTransaction();
             Validator.ValidateSignUp(request);
             logger.info(Constants.SIGNUP_REQUEST);
             String passwordHash = Utils.hashPassword(request.getPassword());
@@ -48,7 +49,6 @@ public class StackOverFlowService extends StackOverflowImplBase
             {
                 throw new Exception(Constants.USERNAME_ALREADY_PRESENT);
             }
-            queryEngine.getDataBaseConnection().startTransaction();
             long userId = this.queryEngine.insertUser(request.getUserName(),passwordHash, request.getDescription());
             User user = User.newBuilder().setUserId(userId).setUserName(request.getUserName()).setDescription(request.getDescription()).addAllSkills(request.getSkillsList()).build();
             List<String> tokens = Utils.generateTokens(user);
@@ -396,8 +396,8 @@ public class StackOverFlowService extends StackOverflowImplBase
     public void deleteUser(DeleteUserRequest request, io.grpc.stub.StreamObserver<DeleteUserResponse> responseObserver)
     {
         try{
-            logger.info(Constants.DELETE_USER_REQUEST);
             queryEngine.getDataBaseConnection().startTransaction();
+            logger.info(Constants.DELETE_USER_REQUEST);
             User user = Utils.checkToken(request.getRequestHeaders().getAuthorization().getAccessToken(),Constants.ACCESS);
             long userId = user.getUserId();
             queryEngine.deleteSkills(userId);
@@ -494,10 +494,9 @@ public class StackOverFlowService extends StackOverflowImplBase
         try
         {
             logger.info(Constants.GET_USER_DETAILS_BY_ID_REQUEST);
-            User user = Utils.checkToken(request.getRequestHeaders().getAuthorization().getAccessToken(),Constants.ACCESS);
-            long userId = user.getUserId();
+            long userId = request.getUserId();
             GetUserDetailsDAO getUserDetailsDAO = queryEngine.getUserDetailsById(userId);
-            ResponseHeaders responseHeaders = Utils.getResponseHeaders(null,StatusCode.SUCCESS)
+            ResponseHeaders responseHeaders = Utils.getResponseHeaders(null,StatusCode.SUCCESS);
             GetUserDetailsByIdResponse getUserDetailsByIdResponse = GetUserDetailsByIdResponse.newBuilder().setResponseHeaders(responseHeaders).setRating(getUserDetailsDAO.getRating()).setUsername(getUserDetailsDAO.getUserName()).build();
             responseObserver.onNext(getUserDetailsByIdResponse);
         }

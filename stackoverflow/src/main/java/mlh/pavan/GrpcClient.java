@@ -119,6 +119,12 @@ public class GrpcClient
         ChangeUserStatusResponse changeUserStatusResponse = blockingStub.changeUserStatus(changeUserStatusRequest);
         System.out.println(changeUserStatusResponse);
     }
+    public static void TestGetUserDetailsById(StackOverflowBlockingStub blockingStub)
+    {
+        GetUserDetailsByIdRequest request = GetUserDetailsByIdRequest.newBuilder().setUserId(60).build();
+        GetUserDetailsByIdResponse response = blockingStub.getUserDetailsById(request);
+        System.out.println(response.getRating());
+    }
     public static void main(String args[])
     {
         ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost",8080).usePlaintext().build();
@@ -140,5 +146,6 @@ public class GrpcClient
 //        TestDeleteUser(stackOverflowBlockingStub);
 //        TestUpdateRating(stackOverflowBlockingStub);
 //        TestChangeUserStatus(stackOverflowBlockingStub);
+        TestGetUserDetailsById(stackOverflowBlockingStub);
     }
 }

@@ -25829,6 +25829,11 @@ public final class Stackoverflow {
      * <code>.RequestHeaders requestHeaders = 1;</code>
      */
     mlh.pavan.grpc.Stackoverflow.RequestHeadersOrBuilder getRequestHeadersOrBuilder();
+
+    /**
+     * <code>int64 userId = 2;</code>
+     */
+    long getUserId();
   }
   /**
    * Protobuf type {@code GetUserDetailsByIdRequest}
@@ -25843,6 +25848,7 @@ public final class Stackoverflow {
       super(builder);
     }
     private GetUserDetailsByIdRequest() {
+      userId_ = 0L;
     }
 
     @java.lang.Override
@@ -25880,6 +25886,11 @@ public final class Stackoverflow {
                 requestHeaders_ = subBuilder.buildPartial();
               }
 
+              break;
+            }
+            case 16: {
+
+              userId_ = input.readInt64();
               break;
             }
             default: {
@@ -25935,6 +25946,15 @@ public final class Stackoverflow {
       return getRequestHeaders();
     }
 
+    public static final int USERID_FIELD_NUMBER = 2;
+    private long userId_;
+    /**
+     * <code>int64 userId = 2;</code>
+     */
+    public long getUserId() {
+      return userId_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -25952,6 +25972,9 @@ public final class Stackoverflow {
       if (requestHeaders_ != null) {
         output.writeMessage(1, getRequestHeaders());
       }
+      if (userId_ != 0L) {
+        output.writeInt64(2, userId_);
+      }
       unknownFields.writeTo(output);
     }
 
@@ -25964,6 +25987,10 @@ public final class Stackoverflow {
       if (requestHeaders_ != null) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(1, getRequestHeaders());
+      }
+      if (userId_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(2, userId_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -25986,6 +26013,8 @@ public final class Stackoverflow {
         result = result && getRequestHeaders()
             .equals(other.getRequestHeaders());
       }
+      result = result && (getUserId()
+          == other.getUserId());
       result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
@@ -26001,6 +26030,9 @@ public final class Stackoverflow {
         hash = (37 * hash) + REQUESTHEADERS_FIELD_NUMBER;
         hash = (53 * hash) + getRequestHeaders().hashCode();
       }
+      hash = (37 * hash) + USERID_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getUserId());
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -26140,6 +26172,8 @@ public final class Stackoverflow {
           requestHeaders_ = null;
           requestHeadersBuilder_ = null;
         }
+        userId_ = 0L;
+
         return this;
       }
 
@@ -26171,6 +26205,7 @@ public final class Stackoverflow {
         } else {
           result.requestHeaders_ = requestHeadersBuilder_.build();
         }
+        result.userId_ = userId_;
         onBuilt();
         return result;
       }
@@ -26221,6 +26256,9 @@ public final class Stackoverflow {
         if (other == mlh.pavan.grpc.Stackoverflow.GetUserDetailsByIdRequest.getDefaultInstance()) return this;
         if (other.hasRequestHeaders()) {
           mergeRequestHeaders(other.getRequestHeaders());
+        }
+        if (other.getUserId() != 0L) {
+          setUserId(other.getUserId());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -26366,6 +26404,32 @@ public final class Stackoverflow {
           requestHeaders_ = null;
         }
         return requestHeadersBuilder_;
+      }
+
+      private long userId_ ;
+      /**
+       * <code>int64 userId = 2;</code>
+       */
+      public long getUserId() {
+        return userId_;
+      }
+      /**
+       * <code>int64 userId = 2;</code>
+       */
+      public Builder setUserId(long value) {
+        
+        userId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int64 userId = 2;</code>
+       */
+      public Builder clearUserId() {
+        
+        userId_ = 0L;
+        onChanged();
+        return this;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -27492,42 +27556,43 @@ public final class Stackoverflow {
       " \001(\0132\017.RequestHeaders\022\034\n\006status\030\003 \001(\0162\014." +
       "USER_STATUS\022\024\n\014webRTCSecret\030\004 \001(\t\"E\n\030Cha" +
       "ngeUserStatusResponse\022)\n\017responseHeaders" +
-      "\030\001 \001(\0132\020.ResponseHeaders\"D\n\031GetUserDetai" +
+      "\030\001 \001(\0132\020.ResponseHeaders\"T\n\031GetUserDetai" +
       "lsByIdRequest\022\'\n\016requestHeaders\030\001 \001(\0132\017." +
-      "RequestHeaders\"i\n\032GetUserDetailsByIdResp" +
-      "onse\022)\n\017responseHeaders\030\001 \001(\0132\020.Response" +
-      "Headers\022\020\n\010username\030\002 \001(\t\022\016\n\006rating\030\003 \001(" +
-      "\001*;\n\nSKILL_NAME\022\014\n\010NO_SKILL\020\000\022\010\n\004JAVA\020\002\022" +
-      "\n\n\006PYTHON\020\003\022\t\n\005MYSQL\020\004*E\n\020SKILL_DIFFICUL" +
-      "TY\022\021\n\rNO_DIFFICULTY\020\000\022\010\n\004EASY\020\001\022\n\n\006MEDIU" +
-      "M\020\002\022\010\n\004HARD\020\003*=\n\nStatusCode\022\013\n\007SUCCESS\020\000" +
-      "\022\022\n\016INTERNAL_ERROR\020\001\022\016\n\nDB_FAILURE\020\002*K\n\013" +
-      "USER_STATUS\022\014\n\010INACTIVE\020\000\022\n\n\006ACTIVE\020\001\022\014\n" +
-      "\010QUESTION\020\002\022\n\n\006ANSWER\020\003\022\010\n\004CALL\020\0042\240\007\n\rSt" +
-      "ackOverflow\022&\n\005Greet\022\r.GreetRequest\032\016.Gr" +
-      "eetResponse\022)\n\006SignUp\022\016.SignUpRequest\032\017." +
-      "SignUpResponse\022&\n\005Login\022\r.LoginRequest\032\016" +
-      ".LoginResponse\022/\n\010GetToken\022\020.GetTokenReq" +
-      "uest\032\021.GetTokenResponse\0225\n\nCheckToken\022\022." +
-      "CheckTokenRequest\032\023.CheckTokenResponse\022)" +
-      "\n\006Logout\022\016.LogoutRequest\032\017.LogoutRespons" +
-      "e\022A\n\016ChangePassword\022\026.ChangePasswordRequ" +
-      "est\032\027.ChangePasswordResponse\022A\n\016ChangeUs" +
-      "erName\022\026.ChangeUserNameRequest\032\027.ChangeU" +
-      "serNameResponse\022J\n\021ChangeDescription\022\031.C" +
-      "hangeDescriptionRequest\032\032.ChangeDescript" +
-      "ionResponse\0228\n\013ChangeSkill\022\023.ChangeSkill" +
-      "Request\032\024.ChangeSkillResponse\022/\n\010AddSkil" +
-      "l\022\020.AddSkillRequest\032\021.AddSkillResponse\0228" +
-      "\n\013DeleteSkill\022\023.DeleteSkillRequest\032\024.Del" +
-      "eteSkillResponse\0225\n\nDeleteUser\022\022.DeleteU" +
-      "serRequest\032\023.DeleteUserResponse\022;\n\014Updat" +
-      "eRating\022\024.UpdateRatingRequest\032\025.UpdateRa" +
-      "tingResponse\022G\n\020ChangeUserStatus\022\030.Chang" +
-      "eUserStatusRequest\032\031.ChangeUserStatusRes" +
-      "ponse\022M\n\022GetUserDetailsById\022\032.GetUserDet" +
-      "ailsByIdRequest\032\033.GetUserDetailsByIdResp" +
-      "onseB\020\n\016mlh.pavan.grpcb\006proto3"
+      "RequestHeaders\022\016\n\006userId\030\002 \001(\003\"i\n\032GetUse" +
+      "rDetailsByIdResponse\022)\n\017responseHeaders\030" +
+      "\001 \001(\0132\020.ResponseHeaders\022\020\n\010username\030\002 \001(" +
+      "\t\022\016\n\006rating\030\003 \001(\001*;\n\nSKILL_NAME\022\014\n\010NO_SK" +
+      "ILL\020\000\022\010\n\004JAVA\020\002\022\n\n\006PYTHON\020\003\022\t\n\005MYSQL\020\004*E" +
+      "\n\020SKILL_DIFFICULTY\022\021\n\rNO_DIFFICULTY\020\000\022\010\n" +
+      "\004EASY\020\001\022\n\n\006MEDIUM\020\002\022\010\n\004HARD\020\003*=\n\nStatusC" +
+      "ode\022\013\n\007SUCCESS\020\000\022\022\n\016INTERNAL_ERROR\020\001\022\016\n\n" +
+      "DB_FAILURE\020\002*K\n\013USER_STATUS\022\014\n\010INACTIVE\020" +
+      "\000\022\n\n\006ACTIVE\020\001\022\014\n\010QUESTION\020\002\022\n\n\006ANSWER\020\003\022" +
+      "\010\n\004CALL\020\0042\240\007\n\rStackOverflow\022&\n\005Greet\022\r.G" +
+      "reetRequest\032\016.GreetResponse\022)\n\006SignUp\022\016." +
+      "SignUpRequest\032\017.SignUpResponse\022&\n\005Login\022" +
+      "\r.LoginRequest\032\016.LoginResponse\022/\n\010GetTok" +
+      "en\022\020.GetTokenRequest\032\021.GetTokenResponse\022" +
+      "5\n\nCheckToken\022\022.CheckTokenRequest\032\023.Chec" +
+      "kTokenResponse\022)\n\006Logout\022\016.LogoutRequest" +
+      "\032\017.LogoutResponse\022A\n\016ChangePassword\022\026.Ch" +
+      "angePasswordRequest\032\027.ChangePasswordResp" +
+      "onse\022A\n\016ChangeUserName\022\026.ChangeUserNameR" +
+      "equest\032\027.ChangeUserNameResponse\022J\n\021Chang" +
+      "eDescription\022\031.ChangeDescriptionRequest\032" +
+      "\032.ChangeDescriptionResponse\0228\n\013ChangeSki" +
+      "ll\022\023.ChangeSkillRequest\032\024.ChangeSkillRes" +
+      "ponse\022/\n\010AddSkill\022\020.AddSkillRequest\032\021.Ad" +
+      "dSkillResponse\0228\n\013DeleteSkill\022\023.DeleteSk" +
+      "illRequest\032\024.DeleteSkillResponse\0225\n\nDele" +
+      "teUser\022\022.DeleteUserRequest\032\023.DeleteUserR" +
+      "esponse\022;\n\014UpdateRating\022\024.UpdateRatingRe" +
+      "quest\032\025.UpdateRatingResponse\022G\n\020ChangeUs" +
+      "erStatus\022\030.ChangeUserStatusRequest\032\031.Cha" +
+      "ngeUserStatusResponse\022M\n\022GetUserDetailsB" +
+      "yId\022\032.GetUserDetailsByIdRequest\032\033.GetUse" +
+      "rDetailsByIdResponseB\020\n\016mlh.pavan.grpcb\006" +
+      "proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -27756,7 +27821,7 @@ public final class Stackoverflow {
     internal_static_GetUserDetailsByIdRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_GetUserDetailsByIdRequest_descriptor,
-        new java.lang.String[] { "RequestHeaders", });
+        new java.lang.String[] { "RequestHeaders", "UserId", });
     internal_static_GetUserDetailsByIdResponse_descriptor =
       getDescriptor().getMessageTypes().get(36);
     internal_static_GetUserDetailsByIdResponse_fieldAccessorTable = new
