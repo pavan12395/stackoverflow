@@ -67,9 +67,9 @@ public class Constants
 
     public static String ACCESS = "ACCESS";
 
-    public static int ACCESS_EXPIRY = 10;
+    public static int ACCESS_EXPIRY = 500000;
 
-    public static int REFRESH_EXPIRY = 5000;
+    public static int REFRESH_EXPIRY = 5000000;
 
     public static String INVALID_JWT ="Invalid JWT token";
 

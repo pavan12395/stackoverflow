@@ -30,7 +30,7 @@ Queries
 
     public static final String DeleteUser = "delete from users where id=:userid";
 
-    public static final String UpdateRating = "update users set rating=:rating where id=:userid";
+    public static final String UpdateRating = "update users set rating=rating + :rating where id=:userid";
 
     public static final String ChangeUserStatus = "update live_users set status=:user_status,webrtc_secret=:webrtc_secret where id=:id";
 

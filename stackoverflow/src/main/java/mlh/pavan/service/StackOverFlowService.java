@@ -92,6 +92,10 @@ public class StackOverFlowService extends StackOverflowImplBase
             String userName = request.getUserName();
             String password = request.getPassword();
             UserDAO userdao = queryEngine.getUserDetails(userName);
+            if(userdao==null)
+            {
+                throw new Exception("User not found!");
+            }
             String hashedPassword = userdao.getPassword();
             if(!Utils.checkPassword(password,hashedPassword))
             {
@@ -460,6 +464,7 @@ public class StackOverFlowService extends StackOverflowImplBase
             {
                 throw new Exception(Constants.USER_FETCH_STATUS_UNABLE);
             }
+            logger.info(request.getQuestionDetails());
             if(StringUtils.isEmptyOrWhitespaceOnly(request.getQuestionDetails())) {
                 queryEngine.updateUserStatus(userId, request.getStatus(), request.getWebRTCSecret());
             }
