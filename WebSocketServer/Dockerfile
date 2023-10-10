@@ -17,4 +17,6 @@ COPY . .
 EXPOSE 5000
 
 # Start the application
-CMD ["npm", "start"]
+CMD export DATABASE=$DB_NAME && \
+export DB_USERNAME=$DB_USER_NAME && npm start
+

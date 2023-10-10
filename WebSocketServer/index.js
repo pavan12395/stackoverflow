@@ -1,4 +1,4 @@
-const {USER_ADDED_ROUTE,USERS_EVENT,ERROR_FETCH_LIVE_USERS_MESSAGE,SERVER_LISTENING_MESSAGE,WEB_SOCKET_MESSAGE,INVALID_API_KEY,API_KEY,QUESTION_STATUS,WEB_SOCKET_PORT,SERVER_PORT,SUCCESS} = require("./constants/constants")
+const {USER_ADDED_ROUTE,USERS_EVENT,ERROR_FETCH_LIVE_USERS_MESSAGE,SERVER_LISTENING_MESSAGE,WEB_SOCKET_MESSAGE,INVALID_API_KEY,API_KEY,QUESTION_STATUS,WEB_SOCKET_PORT,SERVER_PORT,SUCCESS,WEB_SOCKET_LISTENING_MESSAGE} = require("./constants/constants")
 const express = require('express');
 const app = express();
 const {connectDB} = require("./database/db")
@@ -54,6 +54,7 @@ app.post(USER_ADDED_ROUTE,async (req,res,next)=>
 app.listen(SERVER_PORT,()=>
 {
     console.log(SERVER_LISTENING_MESSAGE)
+    console.log(WEB_SOCKET_LISTENING_MESSAGE)
 });
 
 io.on("connection",async (socket)=>

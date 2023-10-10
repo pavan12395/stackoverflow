@@ -9,11 +9,11 @@ USER_ADDED_PORT
 
 
 docker run -d \
-  -p 5001:5001 \
-  -e DATABASE=stackoverflow \
-  -e DB_USERNAME=root328949823 \
-  -e DB_PASSWORD=1909051123432 \
-  -e DB_HOST=localhost \
+  -p 5002:5001 \
+  -e DB_NAME=stackoverflow \
+  -e DB_USER_NAME=root \
+  -e DB_PASSWORD=190905112 \
+  -e DB_HOST=host.docker.internal \
   -e API_KEY=AIzaSyDaGmWKa4JsXZ-HjGw7ISLn_3namBGewQe \
   -e QUESTION_STATUS=2 \
   -e SERVER_PORT=5001 \

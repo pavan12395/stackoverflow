@@ -103,10 +103,10 @@ public class PropertyReader
                 e.printStackTrace();
             }
 
-            this.driverName = readEnv("database.driver",dataBaseproperties.getProperty("database.driver"));
-            this.dbConnUrl = readEnv("database.url",dataBaseproperties.getProperty("database.url"));
-            this.dbUserName = readEnv("database.username",dataBaseproperties.getProperty("database.username"));
-            this.dbPassword = readEnv("database.password",dataBaseproperties.getProperty("database.password"));
+            this.driverName = readEnv("database_driver",dataBaseproperties.getProperty("database.driver"));
+            this.dbConnUrl = readEnv("database_url",dataBaseproperties.getProperty("database.url"));
+            this.dbUserName = readEnv("database_username",dataBaseproperties.getProperty("database.username"));
+            this.dbPassword = readEnv("database_password",dataBaseproperties.getProperty("database.password"));
             this.accessTokenSecret = readEnv("ACCESS_TOKEN_SECRET",authProperties.getProperty("ACCESS_TOKEN_SECRET"));
             this.refreshTokenSecret = readEnv("REFRESH_TOKEN_SECRET",authProperties.getProperty("REFRESH_TOKEN_SECRET"));
             this.salt = readEnv("PASSWORD_SALT",authProperties.getProperty("PASSWORD_SALT"));

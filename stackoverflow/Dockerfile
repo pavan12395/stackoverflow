@@ -18,4 +18,9 @@ RUN mkdir stackoverflow
 COPY target /stackoverflow/target
 WORKDIR /stackoverflow
 
-CMD ["java","-cp","target/stackoverflow-1.0-SNAPSHOT.jar","mlh.pavan.GrpcServer"]
+CMD export USER_ADDED_ENDPOINT="http://${NODE_HOST}:${NODE_PORT}/userAdded" && \
+export database_url="mysql://${DB_HOST}:${DB_PORT}/${DB_NAME}" && \
+export database_username=${DB_USER_NAME} && \
+export database_password=${DB_PASSWORD} && \
+export USER_ADDED_API_KEY=${API_KEY} && \
+java -cp target/stackoverflow-1.0-SNAPSHOT.jar mlh.pavan.GrpcServer
