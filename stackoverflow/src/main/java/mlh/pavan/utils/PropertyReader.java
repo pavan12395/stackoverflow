@@ -1,6 +1,9 @@
 package mlh.pavan.utils;
 
 import com.mysql.cj.util.StringUtils;
+import mlh.pavan.GrpcServer;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.mindrot.jbcrypt.BCrypt;
 
 import java.io.FileNotFoundException;
@@ -9,6 +12,8 @@ import java.util.Properties;
 
 public class PropertyReader
 {
+    private static final Logger logger = LogManager.getLogger(PropertyReader.class);
+
     private String driverName;
 
     private String dbConnUrl;
@@ -76,6 +81,7 @@ public class PropertyReader
     private String readEnv(String key,String prop)
     {
             String envValue = System.getenv(key);
+            logger.info("Read the env Key : "+key+" got the value "+envValue);
             return StringUtils.isEmptyOrWhitespaceOnly(envValue) ? prop : envValue;
     }
     private PropertyReader()
@@ -98,7 +104,6 @@ public class PropertyReader
             }
 
             this.driverName = readEnv("database.driver",dataBaseproperties.getProperty("database.driver"));
-
             this.dbConnUrl = readEnv("database.url",dataBaseproperties.getProperty("database.url"));
             this.dbUserName = readEnv("database.username",dataBaseproperties.getProperty("database.username"));
             this.dbPassword = readEnv("database.password",dataBaseproperties.getProperty("database.password"));
