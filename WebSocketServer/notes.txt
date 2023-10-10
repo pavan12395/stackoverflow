@@ -1,0 +1,21 @@
+Environment variables are
+
+
+Database url , usrnmae , password , name
+
+api_key
+WEB_SOCKET_PORT
+USER_ADDED_PORT
+
+
+docker run -d \
+  -p 5001:5001 \
+  -e DATABASE=stackoverflow \
+  -e DB_USERNAME=root328949823 \
+  -e DB_PASSWORD=1909051123432 \
+  -e DB_HOST=localhost \
+  -e API_KEY=AIzaSyDaGmWKa4JsXZ-HjGw7ISLn_3namBGewQe \
+  -e QUESTION_STATUS=2 \
+  -e SERVER_PORT=5001 \
+  -e WEB_SOCKET_PORT=4001 \
+  websockets:1
