@@ -9,7 +9,7 @@ USER_ADDED_PORT
 
 
 docker run -d \
-  -p 5002:5001 \
+  -p 5001:5001 \
   -e DB_NAME=stackoverflow \
   -e DB_USER_NAME=root \
   -e DB_PASSWORD=190905112 \
