@@ -113,10 +113,27 @@ public class PropertyReader
             this.grpcServerPort = Integer.parseInt(readEnv("GRPC_SERVER_PORT",authProperties.getProperty("GRPC_SERVER_PORT")));
             this.userAddedEndPoint = readEnv("USER_ADDED_ENDPOINT",authProperties.getProperty("USER_ADDED_ENDPOINT"));
             this.userAddedAPIKey = readEnv("USER_ADDED_APIKEY",authProperties.getProperty("USER_ADDED_APIKEY"));
+
         }
         catch(Exception e)
         {
             e.printStackTrace();
+        }finally {
+            logger.info("****** Printing PropertyReader ****");
+            printConfigVariables();
+            logger.info("****** Printing PropertyReader ****");
         }
+    }
+    public void printConfigVariables() {
+        logger.info("Database Driver: " + this.driverName);
+        logger.info("Database URL: " + this.dbConnUrl);
+        logger.info("Database Username: " + this.dbUserName);
+        logger.info("Database Password: " + this.dbPassword);
+        logger.info("Access Token Secret: " + this.accessTokenSecret);
+        logger.info("Refresh Token Secret: " + this.refreshTokenSecret);
+        logger.info("Password Salt: " + this.salt);
+        logger.info("GRPC Server Port: " + this.grpcServerPort);
+        logger.info("User Added Endpoint: " + this.userAddedEndPoint);
+        logger.info("User Added API Key: " + this.userAddedAPIKey);
     }
 }
