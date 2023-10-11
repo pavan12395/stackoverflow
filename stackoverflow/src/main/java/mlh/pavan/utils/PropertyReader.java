@@ -81,7 +81,6 @@ public class PropertyReader
     private String readEnv(String key,String prop)
     {
             String envValue = System.getenv(key);
-            logger.info("Read the env Key : "+key+" got the value "+envValue);
             return StringUtils.isEmptyOrWhitespaceOnly(envValue) ? prop : envValue;
     }
     private PropertyReader()
@@ -118,22 +117,6 @@ public class PropertyReader
         catch(Exception e)
         {
             e.printStackTrace();
-        }finally {
-            logger.info("****** Printing PropertyReader ****");
-            printConfigVariables();
-            logger.info("****** Printing PropertyReader ****");
         }
-    }
-    public void printConfigVariables() {
-        logger.info("Database Driver: " + this.driverName);
-        logger.info("Database URL: " + this.dbConnUrl);
-        logger.info("Database Username: " + this.dbUserName);
-        logger.info("Database Password: " + this.dbPassword);
-        logger.info("Access Token Secret: " + this.accessTokenSecret);
-        logger.info("Refresh Token Secret: " + this.refreshTokenSecret);
-        logger.info("Password Salt: " + this.salt);
-        logger.info("GRPC Server Port: " + this.grpcServerPort);
-        logger.info("User Added Endpoint: " + this.userAddedEndPoint);
-        logger.info("User Added API Key: " + this.userAddedAPIKey);
     }
 }
