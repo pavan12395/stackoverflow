@@ -13,6 +13,17 @@ const database = process.env.DATABASE
 const username = process.env.DB_USERNAME
 const password = process.env.DB_PASSWORD
 const host = process.env.DB_HOST
+const port = process.env.DB_PORT
 const QUESTION_STATUS = process.env.QUESTION_STATUS || 2
 const SUCCESS = "Success";
-module.exports = {USER_ADDED_ROUTE,USERS_EVENT,ERROR_FETCH_LIVE_USERS_MESSAGE,SERVER_LISTENING_MESSAGE,WEB_SOCKET_MESSAGE,INVALID_API_KEY,API_KEY,database,username,password,host,WEB_SOCKET_PORT,SERVER_PORT,QUESTION_STATUS,SUCCESS,WEB_SOCKET_LISTENING_MESSAGE}
+console.log("********Recieved Environment Variables****");
+console.log("SERVER_PORT : "+SERVER_PORT)
+console.log("WEB_SOCKET_PORT : "+WEB_SOCKET_PORT)
+console.log("API_KEY : "+API_KEY)
+console.log("database : "+database)
+console.log("db_username : "+username)
+console.log("db_password : "+password)
+console.log("db_host : "+host)
+console.log("db_port : "+port)
+console.log("********Recieved Environment Variables****");
+module.exports = {USER_ADDED_ROUTE,USERS_EVENT,ERROR_FETCH_LIVE_USERS_MESSAGE,SERVER_LISTENING_MESSAGE,WEB_SOCKET_MESSAGE,INVALID_API_KEY,API_KEY,database,username,password,host,WEB_SOCKET_PORT,SERVER_PORT,QUESTION_STATUS,SUCCESS,WEB_SOCKET_LISTENING_MESSAGE,port}

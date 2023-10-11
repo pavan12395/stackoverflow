@@ -15,7 +15,6 @@ docker run -d \
   -e DB_PASSWORD=190905112 \
   -e DB_HOST=host.docker.internal \
   -e API_KEY=AIzaSyDaGmWKa4JsXZ-HjGw7ISLn_3namBGewQe \
-  -e QUESTION_STATUS=2 \
   -e SERVER_PORT=5001 \
   -e WEB_SOCKET_PORT=4001 \
   websockets:1

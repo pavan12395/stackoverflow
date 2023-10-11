@@ -13,9 +13,8 @@ import java.util.List;
 
 public class GrpcClient
 {
-    public static String accessToken = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyIiwiZXhwIjoxNjk2MjQ3NTc5LCJpc3MiOiJzdGFja292ZXJmbG93IiwidXNlcklkIjo3MCwidXNlck5hbWUiOiJwYXZhbjIiLCJkZXNjcmlwdGlvbiI6ImhlbGxvIHdvbHJkIiwic2tpbGxzIjoiW3tcInNraWxsTmFtZV9cIjoyLFwiZGlmZmljdWx0eV9cIjoxLFwibWVtb2l6ZWRJc0luaXRpYWxpemVkXCI6LTEsXCJ1bmtub3duRmllbGRzXCI6e1wiZmllbGRzXCI6e319LFwibWVtb2l6ZWRTaXplXCI6LTEsXCJtZW1vaXplZEhhc2hDb2RlXCI6MH1dIn0.I-SrOWsAcPT5Wg_YM8qmBb4c12tnW3GDaOgxt9Sa3y8";
-//    public static String accessToken = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyIiwiZXhwIjoxNjk1NzI4Mzc2LCJpc3MiOiJzdGFja292ZXJmbG93IiwidXNlcklkIjoyNywidXNlck5hbWUiOiJwYXZhbjEiLCJkZXNjcmlwdGlvbiI6ImRlc2MiLCJza2lsbHMiOiJbe1wic2tpbGxOYW1lX1wiOjMsXCJkaWZmaWN1bHR5X1wiOjIsXCJtZW1vaXplZElzSW5pdGlhbGl6ZWRcIjotMSxcInVua25vd25GaWVsZHNcIjp7XCJmaWVsZHNcIjp7fX0sXCJtZW1vaXplZFNpemVcIjotMSxcIm1lbW9pemVkSGFzaENvZGVcIjowfSx7XCJza2lsbE5hbWVfXCI6MixcImRpZmZpY3VsdHlfXCI6MixcIm1lbW9pemVkSXNJbml0aWFsaXplZFwiOi0xLFwidW5rbm93bkZpZWxkc1wiOntcImZpZWxkc1wiOnt9fSxcIm1lbW9pemVkU2l6ZVwiOi0xLFwibWVtb2l6ZWRIYXNoQ29kZVwiOjB9XSJ9.uzfy4DsQd8t2he9iBg48kJe3hmSgWty8VancxuIvVNo";
-    public static String refreshToken = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyIiwiZXhwIjoxNjk1OTY5MjU1LCJpc3MiOiJzdGFja292ZXJmbG93IiwidXNlcklkIjoxNiwidXNlck5hbWUiOiJwYXZhbjEyMzQ1NiIsImRlc2NyaXB0aW9uIjoiZGVzYyIsInNraWxscyI6Ilt7XCJza2lsbE5hbWVfXCI6MyxcImRpZmZpY3VsdHlfXCI6MixcIm1lbW9pemVkSXNJbml0aWFsaXplZFwiOi0xLFwidW5rbm93bkZpZWxkc1wiOntcImZpZWxkc1wiOnt9fSxcIm1lbW9pemVkU2l6ZVwiOi0xLFwibWVtb2l6ZWRIYXNoQ29kZVwiOjB9LHtcInNraWxsTmFtZV9cIjoyLFwiZGlmZmljdWx0eV9cIjoyLFwibWVtb2l6ZWRJc0luaXRpYWxpemVkXCI6LTEsXCJ1bmtub3duRmllbGRzXCI6e1wiZmllbGRzXCI6e319LFwibWVtb2l6ZWRTaXplXCI6LTEsXCJtZW1vaXplZEhhc2hDb2RlXCI6MH1dIn0.OEl5Wndl3JWuQPEDHyKh-7QG3rIPkGrC5CVFWl33ZWc";
+    public static String accessToken = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyIiwiZXhwIjoxNzI3MDAwODIyLCJpc3MiOiJzdGFja292ZXJmbG93IiwidXNlcklkIjoxLCJ1c2VyTmFtZSI6InBhdmFuMiIsImRlc2NyaXB0aW9uIjoiZGVzYyIsInNraWxscyI6Ilt7XCJza2lsbE5hbWVfXCI6MyxcImRpZmZpY3VsdHlfXCI6MixcIm1lbW9pemVkSXNJbml0aWFsaXplZFwiOjEsXCJ1bmtub3duRmllbGRzXCI6e1wiZmllbGRzXCI6e319LFwibWVtb2l6ZWRTaXplXCI6LTEsXCJtZW1vaXplZEhhc2hDb2RlXCI6MH0se1wic2tpbGxOYW1lX1wiOjIsXCJkaWZmaWN1bHR5X1wiOjIsXCJtZW1vaXplZElzSW5pdGlhbGl6ZWRcIjoxLFwidW5rbm93bkZpZWxkc1wiOntcImZpZWxkc1wiOnt9fSxcIm1lbW9pemVkU2l6ZVwiOi0xLFwibWVtb2l6ZWRIYXNoQ29kZVwiOjB9XSJ9.YrVsU8yzaSkSc1dIrZ4kkSYvUt4LFVmRUTwNbyANtDQ";
+    public static String refreshToken = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyIiwiZXhwIjoxOTk3MDAwODIyLCJpc3MiOiJzdGFja292ZXJmbG93IiwidXNlcklkIjoxLCJ1c2VyTmFtZSI6InBhdmFuMiIsImRlc2NyaXB0aW9uIjoiZGVzYyIsInNraWxscyI6Ilt7XCJza2lsbE5hbWVfXCI6MyxcImRpZmZpY3VsdHlfXCI6MixcIm1lbW9pemVkSXNJbml0aWFsaXplZFwiOjEsXCJ1bmtub3duRmllbGRzXCI6e1wiZmllbGRzXCI6e319LFwibWVtb2l6ZWRTaXplXCI6LTEsXCJtZW1vaXplZEhhc2hDb2RlXCI6MH0se1wic2tpbGxOYW1lX1wiOjIsXCJkaWZmaWN1bHR5X1wiOjIsXCJtZW1vaXplZElzSW5pdGlhbGl6ZWRcIjoxLFwidW5rbm93bkZpZWxkc1wiOntcImZpZWxkc1wiOnt9fSxcIm1lbW9pemVkU2l6ZVwiOi0xLFwibWVtb2l6ZWRIYXNoQ29kZVwiOjB9XSJ9.4Z3-cEhRzhwDEYtJCcSemEayUUWwT7oBbDjdhVlNeow";
     public static void TestSignUpRequest(StackOverflowBlockingStub blockingStub)
     {
         Skill skill1 = Skill.newBuilder().setDifficulty(SKILL_DIFFICULTY.MEDIUM).setSkillName(SKILL_NAME.PYTHON).build();
@@ -24,13 +23,13 @@ public class GrpcClient
         skillList.add(skill1);
         skillList.add(skill2);
         SignUpRequest signUpRequest = SignUpRequest.newBuilder()
-        .setUserName("pavan2").setPassword("pass").setDescription("desc").addAllSkills(skillList).build();
+        .setUserName("pavan3").setPassword("pass").setDescription("desc").addAllSkills(skillList).build();
         SignUpResponse signUpResponse  = blockingStub.signUp(signUpRequest);
         System.out.println(signUpResponse);
     }
     public static void TestLoginRequest(StackOverflowBlockingStub blockingStub)
     {
-        LoginRequest loginRequest = LoginRequest.newBuilder().setUserName("pavan123456").setPassword("helloworld1").build();
+        LoginRequest loginRequest = LoginRequest.newBuilder().setUserName("pavan2").setPassword("password").build();
         LoginResponse loginResponse = blockingStub.login(loginRequest);
         System.out.println(loginResponse);
     }
@@ -50,7 +49,7 @@ public class GrpcClient
     {
         Authorization authorization = Authorization.newBuilder().setAccessToken(accessToken).build();
         RequestHeaders requestHeaders = RequestHeaders.newBuilder().setAuthorization(authorization).build();
-        ChangePasswordRequest changePasswordRequest = ChangePasswordRequest.newBuilder().setRequestHeaders(requestHeaders).setPassword("helloworld").setNewPassword("helloworld1").build();
+        ChangePasswordRequest changePasswordRequest = ChangePasswordRequest.newBuilder().setRequestHeaders(requestHeaders).setPassword("pass").setNewPassword("password").build();
         ChangePasswordResponse changePasswordResponse = blockingStub.changePassword(changePasswordRequest);
         System.out.println(changePasswordResponse);
     }
@@ -128,7 +127,7 @@ public class GrpcClient
     }
     public static void main(String args[])
     {
-        ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost",8085).usePlaintext().build();
+        ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost",8087).usePlaintext().build();
 
         // stubs - generate from proto
 
